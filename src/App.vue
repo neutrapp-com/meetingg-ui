@@ -41,7 +41,7 @@
       <br>
 
 
-      <div style="position: absolute; width: 50%; left: 50%; background-color: #1c1f2e;">
+      <div style="width: 50%; background-color: #1c1f2e;">
         <meeting-actions meetingTitle="Réunion test" meetingDescription="Une réunion juste pour le test" meetingId="127 258 9516" :meetingMembers="partList" />
       </div>
 
@@ -49,6 +49,9 @@
         <meeting-list :meetingsList="meetingList" />
       </div>
 
+      <br><br><br>
+
+      <meeting-page/>
 
     </div>
 </template>
@@ -72,6 +75,8 @@ import participantList from './components/widgets/participantList.vue';
 import meetingActions from './components/widgets/meetingActions.vue';
 import meetingList from './components/widgets/meetingList.vue';
 
+import meetingPage from './components/pages/meetingPage.vue';
+
 var partList2 = [
   { id: Math.random(), fullname: 'Jhon Doe', avatar: 'https://www.assyst.de/cms/upload/sub/digitalisierung/15-M.jpg' },
   { id: Math.random(), fullname: 'Jhon Doe', avatar: 'https://www.assyst.de/cms/upload/sub/digitalisierung/15-M.jpg' },
@@ -80,7 +85,7 @@ var partList2 = [
 
 export default {
   name: "App",
-  components: { SquareButton, WidgetDateTime, Navbar, WidgetMeeting, TextButton, IconButton, ParticipantCard, MeetingId, manageMeeting, participantList, meetingActions, meetingList },
+  components: { SquareButton, WidgetDateTime, Navbar, WidgetMeeting, TextButton, IconButton, ParticipantCard, MeetingId, manageMeeting, participantList, meetingActions, meetingList, meetingPage },
   acitons : {
   },
   data(){
