@@ -1,7 +1,7 @@
 <template>
-<a>
+<a v-bind="{href: link}" >
     <div class="textbutton" v-bind:style="{ background: color, color: fontColor }">
-        <p>{{ text }}</p>
+        {{ text }}
     </div>
 </a>
 </template>
@@ -22,6 +22,10 @@ export default {
         fontColor : {
             default : '#97989e',
             type: String
+        },
+        link : {
+            default : '#',
+            type: String
         }
     }
 }
@@ -29,9 +33,11 @@ export default {
 
 <style lang="scss">
 .textbutton{
-    @apply h-12 px-6 py-3 rounded-lg;
+    @apply px-6 py-3 rounded-lg;
     @apply border-2 rounded-lg;
+    min-height: 3rem;
     border-color: #2f3240;
+    font-size: 1rem;
 
     &:hover{
         @apply cursor-pointer transform  scale-105 shadow-2xl ;

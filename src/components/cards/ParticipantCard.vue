@@ -1,6 +1,6 @@
 <template>
-<a>
-    <div class="participant" v-bind:style="{ background: color }">
+<a v-bind="{href: link}">
+    <div class="participant">
         <div class="icon-contener">
             <div class="icon" v-bind:style="{ backgroundImage: `url(${icon})`}"></div>
         </div>
@@ -24,6 +24,10 @@ export default {
         },
         fullname : {
             default : 'name firstname',
+            type: String
+        },
+        link : {
+            default : '#',
             type: String
         }
     }

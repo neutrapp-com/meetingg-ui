@@ -1,5 +1,5 @@
 <template>
-<a>
+<a v-bind="{href: link}" >
     <div class="iconbutton" v-bind:style="{ background: color }">
         <div class="icon" v-bind:style="{ backgroundImage: `url(${icon})`}">
             
@@ -19,6 +19,10 @@ export default {
         },
         color : {
             default : '#232634',
+            type: String
+        },
+        link : {
+            default : '#',
             type: String
         }
     }
