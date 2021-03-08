@@ -7,9 +7,9 @@
 </template>
 
 <script>
-    import MeetingId from '../cards/MeetingId.vue';
+    import MeetingId from '../../cards/MeetingId.vue';
     import manageMeeting from './manageMeeting.vue';
-    import participantList from './participantList.vue';
+    import participantList from '../participantList.vue';
 
     export default {
         name : 'meetingActions',
@@ -36,7 +36,7 @@
                 type: String
             },
             meetingMembers : {
-                default : [{ profileLink: "1", fullname: 'Jhon Doe', icon: 'https://www.assyst.de/cms/upload/sub/digitalisierung/15-M.jpg' }],
+                default : [{ profileLink: "1", fullname: 'Jhon Doe', icon: 'https://i.imgur.com/DkwKnRj.jpg' }],
                 type: Array()
             }
         },

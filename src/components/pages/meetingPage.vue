@@ -6,8 +6,8 @@
 </template>
 
 <script>
-    import meetingList from '../widgets/meetingList.vue';
-    import meetingActions from '../widgets/meetingActions.vue';
+    import meetingList from '../widgets/meeting/meetingList.vue';
+    import meetingActions from '../widgets/meeting/meetingActions.vue';
 
     export default {
         name : 'meetingPage',
@@ -34,22 +34,22 @@
                 type: String
             },
             meetingMembers : {
-                default : [{ profileLink: "1", fullname: 'Jhon Doe', icon: 'https://www.assyst.de/cms/upload/sub/digitalisierung/15-M.jpg' }, { profileLink: "2", fullname: 'Jhon Doe 2', icon: 'https://www.assyst.de/cms/upload/sub/digitalisierung/15-M.jpg' }],
+                default : [{ profileLink: "1", fullname: 'Jhon Doe', icon: 'https://i.imgur.com/DkwKnRj.jpg' }, { profileLink: "2", fullname: 'Jhon Doe 2', icon: 'https://i.imgur.com/DkwKnRj.jpg' }],
                 type: Array()
             },
             meetingsList : {
                 default : [
                     {title: "Reunion", color: '#212534', startTime: (Date.now()/1000 + 3600 * 3), endTime: (Date.now()/1000  + 3600 * 4), members: [
-                        { id: Math.random(), fullname: 'Jhon Doe', avatar: 'https://www.assyst.de/cms/upload/sub/digitalisierung/15-M.jpg' },
-                        { id: Math.random(), fullname: 'Jhon Doe', avatar: 'https://www.assyst.de/cms/upload/sub/digitalisierung/15-M.jpg' },
-                        { id: Math.random(), fullname: 'Jhon Doe', avatar: 'https://www.assyst.de/cms/upload/sub/digitalisierung/15-M.jpg' }]
+                        { id: Math.random(), fullname: 'Jhon Doe', avatar: 'https://i.imgur.com/DkwKnRj.jpg' },
+                        { id: Math.random(), fullname: 'Jhon Doe', avatar: 'https://i.imgur.com/DkwKnRj.jpg' },
+                        { id: Math.random(), fullname: 'Jhon Doe', avatar: 'https://i.imgur.com/DkwKnRj.jpg' }]
                     },
                     {title: "Reunion 2", color: '#212534', startTime: (Date.now()/1000 + 3600 * 3), endTime: (Date.now()/1000  + 3600 * 4), members: [
-                        { id: Math.random(), fullname: 'Jhon Doe', avatar: 'https://www.assyst.de/cms/upload/sub/digitalisierung/15-M.jpg' },
-                        { id: Math.random(), fullname: 'Jhon Doe', avatar: 'https://www.assyst.de/cms/upload/sub/digitalisierung/15-M.jpg' },
-                        { id: Math.random(), fullname: 'Jhon Doe', avatar: 'https://www.assyst.de/cms/upload/sub/digitalisierung/15-M.jpg' },
-                        { id: Math.random(), fullname: 'Jhon Doe', avatar: 'https://www.assyst.de/cms/upload/sub/digitalisierung/15-M.jpg' },
-                        { id: Math.random(), fullname: 'Jhon Doe', avatar: 'https://www.assyst.de/cms/upload/sub/digitalisierung/15-M.jpg' }]
+                        { id: Math.random(), fullname: 'Jhon Doe', avatar: 'https://i.imgur.com/DkwKnRj.jpg' },
+                        { id: Math.random(), fullname: 'Jhon Doe', avatar: 'https://i.imgur.com/DkwKnRj.jpg' },
+                        { id: Math.random(), fullname: 'Jhon Doe', avatar: 'https://i.imgur.com/DkwKnRj.jpg' },
+                        { id: Math.random(), fullname: 'Jhon Doe', avatar: 'https://i.imgur.com/DkwKnRj.jpg' },
+                        { id: Math.random(), fullname: 'Jhon Doe', avatar: 'https://i.imgur.com/DkwKnRj.jpg' }]
                     }
                 ],
                 type: Array()

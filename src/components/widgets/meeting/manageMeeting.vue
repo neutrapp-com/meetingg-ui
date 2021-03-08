@@ -18,8 +18,8 @@
 </template>
 
 <script>
-    import TextButton from '../cards/TextButton.vue';
-    import IconButton from '../cards/IconButton.vue';
+    import TextButton from '../../cards/TextButton.vue';
+    import IconButton from '../../cards/IconButton.vue';
 
     export default {
         name : 'manageMeeting',
