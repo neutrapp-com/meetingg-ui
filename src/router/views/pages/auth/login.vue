@@ -1,17 +1,26 @@
 <template>
-    <div>
-        <square-button icon="add-circle" color="#0e78f9" title="Join Meeting" description="Via invitation link" />
+    <div class="w-full h-screen text-center text-white">
+        <p class="text-4xl font-bold">Meetingg</p>
+        <p class="text-xl font-bold">Sign In</p>
+        <router-link to="/register">You don't have an account ?</router-link>
+        <router-link to="/">
+            <button class="ml-3 py-2 px-4 text-white rounded">Login</button>
+        </router-link>
     </div>
 </template>
 
 <script>
 
-import SquareButton from '@/components/cards/SquareButton.vue'
-
 
     export default {
         components:{
-            SquareButton
         }
     }
 </script>
+
+<style scoped>
+button{
+    background-color: #242736;
+    border: 2px solid #2F3240;
+}
+</style>
