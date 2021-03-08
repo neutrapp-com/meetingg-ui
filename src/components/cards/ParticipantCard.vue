@@ -1,8 +1,8 @@
 <template>
-<a v-bind="{href: link}">
+<a href="#">
     <div class="participant">
-        <div class="icon-contener">
-            <div class="icon" v-bind:style="{ backgroundImage: `url(${icon})`}"></div>
+        <div class="avatar-contener">
+            <avatar :image="avatar" />
         </div>
         <div class="sep"></div>
         <div class="text">
@@ -15,18 +15,20 @@
 
 
 <script>
+import avatar from '../shared/avatar.vue'
 export default {
+  components: { avatar },
     name: 'ParticipantCard',
     props : {
-        icon : {
-            default : 'help',
+        avatar : {
+            default : '',
             type: String
         },
         fullname : {
             default : 'name firstname',
             type: String
         },
-        link : {
+        id : {
             default : '#',
             type: String
         }
@@ -46,11 +48,11 @@ export default {
         @apply cursor-pointer transform  scale-105 shadow-2xl ;
     }
 
-    .icon-contener{
+    .avatar-contener{
         @apply w-full h-full;
         max-height: 30%;
-        .icon{
-            @apply h-12 w-12 bg-no-repeat bg-contain rounded-lg;
+
+        .avatar{
             margin: auto;
         }
     }

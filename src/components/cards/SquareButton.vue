@@ -1,7 +1,7 @@
 <template>
-    <a class="squarebutton" v-bind:style="{ background: color }">
+    <a class="squarebutton" :style="{ background: color }">
         <div class="icon">
-            <ion-icon v-bind:name="icon"></ion-icon>
+            <ion-icon :name="icon"></ion-icon>
         </div>
         <div class="info">
             <h3>{{ title }}</h3>
