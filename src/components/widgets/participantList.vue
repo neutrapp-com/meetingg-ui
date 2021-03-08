@@ -3,12 +3,12 @@
         <h1>Participants:</h1>
         <div class="participants" >
 
-            <div v-for="member in getMembers" v-bind:key="member.profileLink">
-                <participant-card v-bind="{ link: `${member.profileLink}`, fullname: `${member.fullname}`, icon: `${member.icon}`}"/>
+            <div v-for="member in getMembers" v-bind:key="member.id">
+                <participant-card v-bind="member"/>
             </div>
 
             <div style="backgroud-color: red;">
-                <participant-card link="#" fullname="INVITE MEMBERS" icon="https://cdn3.iconfinder.com/data/icons/basic-interface/100/add_user-512.png"/>
+                <participant-card link="#" fullname="INVITE MEMBERS" avatar="https://cdn3.iconfinder.com/data/icons/basic-interface/100/add_user-512.png"/>
             </div>
 
         </div>
@@ -24,18 +24,18 @@
         props : {
             members : {
                 default : [
-                    { profileLink: "1", fullname: 'Jhon Doe', icon: 'https://www.assyst.de/cms/upload/sub/digitalisierung/15-M.jpg' },
-                    { profileLink: "2", fullname: 'Jaques Richard', icon: 'https://www.assyst.de/cms/upload/sub/digitalisierung/15-M.jpg' },
-                    { profileLink: "3", fullname: 'Patrick James', icon: 'https://www.assyst.de/cms/upload/sub/digitalisierung/15-M.jpg' },
-                    { profileLink: "4", fullname: 'Ricardo Baldos', icon: 'https://www.assyst.de/cms/upload/sub/digitalisierung/15-M.jpg' },
-                    { profileLink: "5", fullname: 'Dente Rack', icon: 'https://www.assyst.de/cms/upload/sub/digitalisierung/15-M.jpg' },
-                    { profileLink: "6", fullname: 'Gibs stark', icon: 'https://www.assyst.de/cms/upload/sub/digitalisierung/15-M.jpg' },
-                    { profileLink: "1", fullname: 'Jhon Doe', icon: 'https://www.assyst.de/cms/upload/sub/digitalisierung/15-M.jpg' },
-                    { profileLink: "2", fullname: 'Jaques Richard', icon: 'https://www.assyst.de/cms/upload/sub/digitalisierung/15-M.jpg' },
-                    { profileLink: "3", fullname: 'Patrick James', icon: 'https://www.assyst.de/cms/upload/sub/digitalisierung/15-M.jpg' },
-                    { profileLink: "4", fullname: 'Ricardo Baldos', icon: 'https://www.assyst.de/cms/upload/sub/digitalisierung/15-M.jpg' },
-                    { profileLink: "5", fullname: 'Dente Rack', icon: 'https://www.assyst.de/cms/upload/sub/digitalisierung/15-M.jpg' },
-                    { profileLink: "6", fullname: 'Gibs stark', icon: 'https://www.assyst.de/cms/upload/sub/digitalisierung/15-M.jpg' }
+                    { id: "1", fullname: 'Jhon Doe', avatar: 'https://i.imgur.com/DkwKnRj.jpg' },
+                    { id: "2", fullname: 'Jaques Richard', avatar: 'https://i.imgur.com/DkwKnRj.jpg' },
+                    { id: "3", fullname: 'Patrick James', avatar: 'https://i.imgur.com/DkwKnRj.jpg' },
+                    { id: "4", fullname: 'Ricardo Baldos', avatar: 'https://i.imgur.com/DkwKnRj.jpg' },
+                    { id: "5", fullname: 'Dente Rack', avatar: 'https://i.imgur.com/DkwKnRj.jpg' },
+                    { id: "6", fullname: 'Gibs stark', avatar: 'https://i.imgur.com/DkwKnRj.jpg' },
+                    { id: "1", fullname: 'Jhon Doe', avatar: 'https://i.imgur.com/DkwKnRj.jpg' },
+                    { id: "2", fullname: 'Jaques Richard', avatar: 'https://i.imgur.com/DkwKnRj.jpg' },
+                    { id: "3", fullname: 'Patrick James', avatar: 'https://i.imgur.com/DkwKnRj.jpg' },
+                    { id: "4", fullname: 'Ricardo Baldos', avatar: 'https://i.imgur.com/DkwKnRj.jpg' },
+                    { id: "5", fullname: 'Dente Rack', avatar: 'https://i.imgur.com/DkwKnRj.jpg' },
+                    { id: "6", fullname: 'Gibs stark', avatar: 'https://i.imgur.com/DkwKnRj.jpg' }
                 ],
                 type: Array()
             }
