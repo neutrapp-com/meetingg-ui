@@ -60,7 +60,6 @@
 
 import SquareButton from '@/components/cards/SquareButton.vue'
 import WidgetDateTime from '@/components/widgets/WidgetDateTime.vue';
-import WidgetMeeting from '@/components/widgets/WidgetMeeting.vue';
 import Navbar from '@/components/navbar.vue';
 
 import TextButton from '@/components/cards/TextButton.vue';
@@ -68,11 +67,7 @@ import IconButton from '@/components/cards/IconButton.vue';
 import ParticipantCard from '@/components/cards/ParticipantCard.vue';
 import MeetingId from '@/components/cards/MeetingId.vue';
 
-import manageMeeting from '@/components/widgets/manageMeeting.vue';
 import participantList from '@/components/widgets/participantList.vue';
-
-import meetingActions from '@/components/widgets/meetingActions.vue';
-import meetingList from '@/components/widgets/meetingList.vue';
 
 import meetingPage from '@/components/pages/meetingPage.vue';
 
@@ -91,7 +86,16 @@ export default {
     }],
     items : []
   },
-   components: { SquareButton, WidgetDateTime, Navbar, WidgetMeeting, TextButton, IconButton, ParticipantCard, MeetingId, manageMeeting, participantList, meetingActions, meetingList, meetingPage },
+   components: { 
+     SquareButton, 
+     WidgetDateTime, 
+     Navbar, 
+     TextButton, 
+     IconButton, 
+     ParticipantCard,
+     MeetingId, 
+    participantList, 
+   meetingPage },
 actions : {
   },
   data(){
