@@ -3,7 +3,7 @@
     <SideBar />
     <div class="w-full">
         <navbar :title="getTitle" />
-        <div class="flex sm:flex-wrap md:flex-nowrap w-full pt-24 h-full divide-x divide-white divide-opacity-5">
+        <div class="flex flex-wrap lg:flex-nowrap w-full pt-24 h-full divide-x divide-white divide-opacity-5">
             <slot />
         </div>
     </div>
