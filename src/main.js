@@ -5,7 +5,7 @@ import store from './state/store'
 import "./assets/css/index.scss"
 import 'vue-ionicons/ionicons.scss';
 
-createApp(App)
+const app = createApp(App)
     .use(store)
     .use(router)
     .mount('#app')

@@ -6,8 +6,8 @@
 </template>
 
 <script>
-    import meetingList from '../widgets/meeting/meetingList.vue';
-    import meetingActions from '../widgets/meeting/meetingActions.vue';
+    import meetingList from '../widgets/meeting/List.vue';
+    import meetingActions from '../widgets/meeting/Actions.vue';
 
     export default {
         name : 'meetingPage',

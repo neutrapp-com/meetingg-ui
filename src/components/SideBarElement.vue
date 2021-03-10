@@ -29,9 +29,7 @@ export default {
     },
     computed:{
         getIcon(){
-            let icon = this.icon + (!this.active && '-outline' || '');
-            console.log(icon);
-            return icon;
+            return this.icon + (!this.active && '-outline' || '');
         }
     }
 }
