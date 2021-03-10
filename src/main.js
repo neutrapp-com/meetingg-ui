@@ -1,7 +1,7 @@
 import { createApp } from 'vue'
 import App from './App.vue'
 import router from './router'
-import store from './store'
+import store from './state/store'
 import "./assets/css/index.css"
 import 'vue-ionicons/ionicons.scss';
 

@@ -88,6 +88,48 @@ import authMethods from '../../../../state/helpers'
 export default {
     components:{
     },
+    data() {
+        return {
+        agree: null,
+        username: null,
+        email: null,
+        password: null,
+        cpassword: null,
+        regError: null,
+        tryingToRegister: false,
+        isRegisterError: false,
+        }
+    },
+    methods: {
+    ...authMethods,
+    // Try to register the user in with the email, firstname
+    // and password they provided.
+    tryToRegisterIn() {
+      this.tryingToRegister = true
+      // Reset the regError if it existed.
+      this.regError = null
+      return this.register({
+        username: this.username,
+        email: this.email,
+        password: this.password,
+        cpassword: this.cpassword,
+        agree: !!this.agree,
+      })
+        .then((token) => {
+          this.tryingToRegister = false
+          this.isRegisterError = false
+          // Redirect to the originally requested page, or to the confirm-account page
+          this.$router.push( 
+            this.$route.query.redirectFrom || { name: 'confirm-account' , params : { email : this.email } }
+          )
+        })
+        .catch((error) => {
+          this.tryingToRegister = false
+          this.regError = error.response ? error.response.data.message : ''
+          this.isRegisterError = true
+        })
+    },
+  }
 }
 </script>
 
