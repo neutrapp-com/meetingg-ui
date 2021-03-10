@@ -51,7 +51,7 @@
 
 <script>
 
-import authMethods from '../../../../state/helpers'
+import authMethods from '@/state/helpers'
 
 
 export default {

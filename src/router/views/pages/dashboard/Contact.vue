@@ -17,7 +17,7 @@
     </div>
   </div>  
   <div class="flex-grow h-full">
-    
+      <p>{{getContactName}}</p>
   </div>
 </template>
 
