@@ -1,5 +1,5 @@
 <template>
-    <div :style="{backgroundImage: `url(${image})`}" class="avatar avatar-size"></div>
+<div :style="{backgroundImage: `url(${image})`}" class="avatar avatar-size" :class="size"></div>
 </template>
 
 <script>
@@ -8,7 +8,11 @@ export default {
         image: {
             default : 'https://picsum.photos/300/300?i=' + Math.random(),
             type: String
-        }
+        },
+        size: {
+            default: "w-14 h-14",
+            type: String
+        },
     }
 }
 </script>

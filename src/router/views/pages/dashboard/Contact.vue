@@ -15,61 +15,112 @@
             <list-sub-group v-for="subGroup in getSubGroups" v-bind:key="subGroup.id" :items="subGroup.items" :title="subGroup.title" />
         </list-group>
     </div>
-</div>
-<div class="flex-grow h-full">
-    <p>{{getContactName}}</p>
-</div>
+  </div>  
+  <div class="flex-grow h-full p-6">
+    <div class="w-full flex flex-col bg-white bg-opacity-5 rounded-lg border border-white border-opacity-5 p-10 divide-y divide-white divide-opacity-5">
+        <div class="flex w-full pb-10">
+            <avatar size="w-32 h-32"/>
+            <p class="self-center text-4xl ml-10 text-white font-bold">{{currentContact.firstname + " " + currentContact.lastname}}</p>  
+        </div>
+        <div class="w-full flex justify-between py-5 text-gray-400">
+            <div class="flex space-x-6">
+                <div class="bg-white bg-opacity-5 border border-white border-opacity-5 h-12 rounded-lg items-center justify-center flex">
+                    <ion-icon class="text-gray-400 text-xl ml-4" name="call-outline"></ion-icon>
+                    <p class="mx-4">Call</p>
+                </div>
+                <div class="message h-12 border border-white border-opacity-5 rounded-lg items-center justify-center flex">
+                    <ion-icon class="text-white text-xl ml-4" name="chatbox-ellipses-outline"></ion-icon>
+                    <p class="mx-4 text-white">Message</p>
+                </div>
+                <div class="bg-white border border-white border-opacity-5 bg-opacity-5 h-12 rounded-lg items-center justify-center flex">
+                    <ion-icon class="text-gray-400 text-xl ml-4" name="videocam-outline"></ion-icon>
+                    <p class="mx-4">Video-Call</p>
+                </div>
+            </div>
+            <div class="flex space-x-6">
+                <div class="bg-white border border-white border-opacity-5 bg-opacity-5 w-12 h-12 rounded-lg items-center justify-center flex">
+                    <ion-icon class="text-gray-400 text-xl" name="create-outline"></ion-icon>
+                </div>
+                <div class="bg-white border border-white border-opacity-5 bg-opacity-5 w-12 h-12 rounded-lg items-center justify-center flex">
+                    <ion-icon class="text-gray-400 text-xl" name="trash-outline"></ion-icon>
+                </div>
+            </div>
+        </div>
+        <div class="flex w-full pb-6">
+            <p class="text-xl font-bold text-white mt-16">Contact's Info</p>
+        </div>
+        <div>
+            <div class="flex w-full pt-6">
+                <div class="flex w-2/3">
+                    <div class="bg-white border border-white border-opacity-5 bg-opacity-5 w-12 h-12 rounded-lg items-center justify-center flex">
+                        <ion-icon class="text-gray-400 text-xl" name="call-outline"></ion-icon>
+                    </div>
+                    <div class="text-white mt-1 ml-4">
+                        <p class="text-xs text-gray-400">Phone</p>
+                        <p>{{currentContact.phone}}</p>
+                    </div>
+                </div>
+                <div class="flex w-1/2">
+                    <div class="bg-white border border-white border-opacity-5 bg-opacity-5 w-12 h-12 rounded-lg items-center justify-center flex">
+                        <ion-icon class="text-gray-400 text-xl" name="print-outline"></ion-icon>
+                    </div>
+                    <div class="text-white mt-1 ml-4">
+                        <p class="text-xs text-gray-400">Fax</p>
+                        <p>{{currentContact.fax}}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="flex w-full pt-6">
+                <div class="flex w-2/3">
+                    <div class="bg-white border border-white border-opacity-5 bg-opacity-5 w-12 h-12 rounded-lg items-center justify-center flex">
+                        <ion-icon class="text-gray-400 text-xl" name="mail-outline"></ion-icon>
+                    </div>
+                    <div class="text-white mt-1 ml-4">
+                        <p class="text-xs text-gray-400">Email</p>
+                        <p>{{currentContact.email}}</p>
+                    </div>
+                </div>
+                <div class="flex w-1/2">
+                    <div class="bg-white border border-white border-opacity-5 bg-opacity-5 w-12 h-12 rounded-lg items-center justify-center flex">
+                        <ion-icon class="text-gray-400 text-xl" name="business-outline"></ion-icon>
+                    </div>
+                    <div class="text-white mt-1 ml-4">
+                        <p class="text-xs text-gray-400">City</p>
+                        <p>{{currentContact.city}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
 </template>
 
 <script>
+
+import Avatar from '@/components/shared/avatar.vue'
 import ListGroup from '@/components/shared/ListGroup.vue'
 import ListSubGroup from '@/components/shared/ListSubGroup.vue'
 
 export default {
-    components: {
+    components:{
+        Avatar,
         ListGroup,
         ListSubGroup
     },
-    data() {
-        return {
+    data(){
+        return{
             tabContact: false,
-            groups: [{
-                    id: 1,
-                    title: "Starred",
-                    items: [{
-                        id: 1,
-                        name: 'Yassin Rais',
-                    }, {
-                        id: 2,
-                        name: 'Remy Duclos'
-                    }]
-                },
-                {
-                    id: 2,
-                    title: "Others",
-                    items: [{
-                        id: 1,
-                        name: 'Yassin Rais',
-                    }, 
-                    {
-                        id: 2,
-                        name: 'Remy Duclos'
-                    },
-                    {
-                        id: 3,
-                        name: 'Remy Duclos'
-                    },
-                    {
-                        id: 4,
-                        name: 'Remy Duclos'
-                    },
-                    {
-                        id: 5,
-                        name: 'Remy Duclos'
-                    },
-                    ]
-                },
-            ]
+            currentContact:{
+                firstname: "Rais",
+                lastname: "Yassin",
+                email: "yassmail@gmail.com",
+                phone: "06 01 02 03 04",
+                fax: "03 24 65 89 78",
+                city: "Reims",
+                status: 0,
+                id:1,
+
+            }
         }
     },
     computed: {
@@ -93,4 +144,8 @@ export default {
 .active {
     @apply text-white bg-white bg-opacity-10 rounded-lg border border-white border-opacity-5;
 }
+.message{
+    background-color: #0e78f9;
+}
+
 </style>
