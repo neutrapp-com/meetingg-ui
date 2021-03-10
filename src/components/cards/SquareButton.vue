@@ -40,7 +40,7 @@ export default {
 .squarebutton{
     fill: white;
 
-    @apply relative bg-blue-500  p-8 rounded-2xl w-full h-44 text-white;
+    @apply relative bg-blue-500  p-8 rounded-2xl w-56 h-56 text-white;
 
     &:hover{
         @apply cursor-pointer shadow-2xl ;
