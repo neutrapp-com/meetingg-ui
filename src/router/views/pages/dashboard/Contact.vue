@@ -97,7 +97,7 @@
 
 <script>
 
-import Avatar from '@/components/shared/avatar.vue'
+import Avatar from '@/components/shared/Avatar.vue'
 import ListGroup from '@/components/shared/ListGroup.vue'
 import ListSubGroup from '@/components/shared/ListSubGroup.vue'
 
