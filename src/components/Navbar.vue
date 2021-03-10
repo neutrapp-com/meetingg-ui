@@ -1,5 +1,5 @@
 <template> 
-    <nav class="h-24 fixed w-full flex items-center navbar noselect"> 
+    <nav class="h-24 fixed w-full flex items-center navbar noselect z-50"> 
         <p class="font-bold ml-5 text-white text-xl">{{title}}</p>
     </nav>
 </template>

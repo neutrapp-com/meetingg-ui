@@ -1,14 +1,12 @@
 <template>
     <div class="contact" :class="active == true ? 'active' : ''">
         <avatar :image="avatar" />
-        <a class="">
-            {{ fullname }}
-        </a>
+        <p class="ml-4 self-center">{{name}}</p>
     </div>
 </template>
 
 <script>
-import avatar from "../shared/avatar.vue"
+import avatar from "../shared/Avatar.vue"
 
 export default {
     components: { avatar },
@@ -16,7 +14,7 @@ export default {
         avatar : {
             type : String
         },
-        fullname : {
+        name : {
             type : String
         },
         active : Boolean
@@ -26,7 +24,7 @@ export default {
 
 <style lang="scss" scoped>
 .contact {
-    @apply font-semibold text-xl bg-opacity-10 w-full flex items-center space-x-4 p-3 rounded-xl text-white cursor-pointer; 
+    @apply text-xl bg-opacity-10 w-full flex items-center space-x-4 p-3 rounded-xl text-white cursor-pointer; 
 
     &:hover,&.active{
         background-color: #0e78f9;

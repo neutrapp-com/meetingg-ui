@@ -1,12 +1,12 @@
 <template>
-<div :style="{backgroundImage: `url(${image})`}" class="avatar"></div>
+    <div :style="{backgroundImage: `url(${image})`}" class="avatar avatar-size"></div>
 </template>
 
 <script>
 export default {
     props: {
         image: {
-            default : 'https://i.imgur.com/DkwKnRj.jpeg',
+            default : 'https://picsum.photos/300/300?i=' + Math.random(),
             type: String
         }
     }
@@ -15,8 +15,11 @@ export default {
 
 <style lang="scss" scoped>
 .avatar {
-    @apply w-14 h-14 rounded-xl;
+    @apply rounded-xl;
     background-size: cover;
     background-position: center;
+}
+.avatar-size{
+    @apply w-14 h-14;
 }
 </style>

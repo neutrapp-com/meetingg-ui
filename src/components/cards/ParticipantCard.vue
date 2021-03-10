@@ -15,7 +15,7 @@
 
 
 <script>
-import avatar from '../shared/avatar.vue'
+import avatar from '../shared/Avatar.vue'
 export default {
   components: { avatar },
     name: 'ParticipantCard',
