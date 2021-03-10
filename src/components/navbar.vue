@@ -1,32 +1,28 @@
 <template>
-  <nav class="navbar">
-    <div class="container">
-      <div class="block">
-      </div>
-    </div>
-  </nav>
+  <div class="h-20 fixed w-full flex items-center container">
+        <p class="font-bold ml-5 text-white text-xl">{{title}}</p>
+  </div>
 </template>
 
 <script>
+
 export default {
-    name: 'Navbar'
+    name: 'Navbar',
+    components:{
+      
+    },
+    props:{
+        title : {
+            default : 'Home',
+            type: String
+        },
+    }
 }
 </script>
 
-<style lang="scss" scoped>
-.navbar {
-  @apply flex sticky w-full items-center justify-between px-6 h-16 bg-white text-gray-700 border-b border-gray-200 z-10;
-
-  .container {
-    @apply flex items-center;
-
-    .block {
-      @apply hidden md:block md:flex md:justify-between md:bg-transparent;
-    }
-
-    .wishlist {
-      @apply flex items-center p-3 font-medium mr-2 text-center bg-gray-300 rounded  hover:bg-gray-400 focus:outline-none focus:bg-gray-400;
-    }
-  }
+<style scoped>
+.container{
+  background-color: #1C1F2E;
+  border-bottom: 0.5px solid rgba(255, 255, 255, 0.1)
 }
 </style>
