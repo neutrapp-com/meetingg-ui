@@ -5,35 +5,32 @@
     </div>
 
     <div class="mt-16">
-        <side-bar-element icon="home" :active="home" />
-        <side-bar-element icon="chatbox-ellipses" :active="messages" />
-        <side-bar-element icon="time" :active="meetings" />
-        <side-bar-element icon="person-circle" :active="contacts" />
+        <side-bar-element :link="route.path" v-for="route in getMenu" :key="route.name" :title="route.title"  :icon="route.icon" :active="menuActive(route.name)" />
     </div>
-    
+
     <div class="w-24 absolute bottom-0">
-        <side-bar-element icon="cog" :active="true" />         
+        <side-bar-element link="/profile/settings" icon="cog" :active="menuActive('Settings')" />         
     </div>
 </div>
 </template>
 
 <script>
+import { dashboardMenu } from '../router/routes';
 import SideBarElement from './SideBarElement.vue'
 
 export default {
     components: {
         SideBarElement
     },
-    data() {
-        return {
-            home: true,
-            messages: false,
-            meetings: false,
-            contacts: false,
-            shedule: false,
-
+    methods: {
+        menuActive(routeName){
+            return routeName === this.$route.name;
         }
     },
-    computed: {},
+    computed : {
+        getMenu(){
+            return dashboardMenu;
+        }
+    }
 }
 </script>

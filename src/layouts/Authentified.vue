@@ -2,7 +2,7 @@
 <div class="flex divide-x divide-white divide-opacity-5">
     <SideBar />
     <div class="w-full">
-        <navbar />
+        <navbar :title="getTitle" />
         <div class="flex flex-wrap w-full pt-20 h-full divide-x divide-white divide-opacity-5">
             <slot />
         </div>
@@ -19,6 +19,11 @@ export default {
         SideBar,
         Navbar,
     },
+    computed: {
+        getTitle(){
+            return this.$route.name;
+        }
+    }
 }
 </script>
 

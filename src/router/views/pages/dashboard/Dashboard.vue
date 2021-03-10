@@ -4,11 +4,9 @@
     <square-button icon="add-circle" color="#0e78f9" title="Join Meeting" description="Via invitation link" />
     <square-button icon="calendar-outline" color="#0e78f9" title="Schedule" description="Plan your meetings" />
     <square-button icon="desktop-outline" color="#0e78f9" title="Share  Screen" description="Show your work" />
-      FDP
   </div>  
   <div class="flex-grow  h-full">
     <h2>
-      FDP
     </h2>
   </div>
 </template>
