@@ -1,5 +1,5 @@
 <template>
-<div :style="{backgroundImage: `url(${image})`}" class="avatar"></div>
+<div :style="{backgroundImage: `url(${image})`}" class="avatar" :class="size"></div>
 </template>
 
 <script>
@@ -8,14 +8,18 @@ export default {
         image: {
             default : 'https://i.imgur.com/DkwKnRj.jpeg',
             type: String
-        }
+        },
+        size: {
+            default: "w-14 h-14",
+            type: String
+        },
     }
 }
 </script>
 
 <style lang="scss" scoped>
 .avatar {
-    @apply w-14 h-14 rounded-xl;
+    @apply rounded-xl;
     background-size: cover;
     background-position: center;
 }
