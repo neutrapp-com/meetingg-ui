@@ -1,59 +1,21 @@
 <template>
-  <div class="h-screen flex">
+  <div class="flex">
     <SideBar/>
-    <navbar />
+    <div class="w-full">
+      <navbar />
+      <div class="flex w-full pt-20 pl-20">
+        <div class=" bg-red-600">
+           <square-button icon="videocam" color="#ff742e" title="New Meeting" description="Setup new meeting" />
+          <square-button icon="add-circle" color="#0e78f9" title="Join Meeting" description="Via invitation link" />
+          <square-button icon="calendar-outline" color="#0e78f9" title="Schedule" description="Plan your meetings" />
+          <square-button icon="desktop-outline" color="#0e78f9" title="Share  Screen" description="Show your work" />
+        </div>  
+        <div class="container bg-blue-600 h-full">
 
+        </div>
+      </div>
+    </div>
   </div>
-      <div class="listbutton">
-        <square-button icon="videocam" color="#ff742e" title="New Meeting" description="Setup new meeting" />
-        <square-button icon="add-circle" color="#0e78f9" title="Join Meeting" description="Via invitation link" />
-        <square-button icon="calendar-outline" color="#0e78f9" title="Schedule" description="Plan your meetings" />
-        <square-button icon="desktop-outline" color="#0e78f9" title="Share  Screen" description="Show your work" />
-      </div>
-
-      <div class="listwidgets">
-          <widget-date-time />
-          <widget-meeting />
-      </div>
-
-      <div class="currentTest" style="background-color: #1c1f2e">
-          <text-button text="Start" color="#0e78f9" fontColor="#FFFFFF" link="https://youtube.com"/>
-          <text-button text="Copy invitation" link="page1"/>
-          <text-button text="Join from Room"/>
-
-          <participant-card icon="https://www.assyst.de/cms/upload/sub/digitalisierung/15-M.jpg" fullname="petersonne jean-claude de la vega"/>
-          <participant-card icon="https://www.assyst.de/cms/upload/sub/digitalisierung/15-M.jpg" fullname="Michel barder"/>
-
-          <meeting-id numberId="707 904 6594"/>
-      </div>
-
-      <br>
-      <div style="background-color: #1c1f2e;">
-        <manage-meeting title="Titre de la réunion" description="It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like)." />
-      </div>
-
-      <br>
-
-      <div style="background-color: #1c1f2e;">
-        <participant-list :members="partList" />
-      </div>
-
-      <br>
-
-
-      <div style="width: 50%; background-color: #1c1f2e;">
-        <meeting-actions meetingTitle="Réunion test" meetingDescription="Une réunion juste pour le test" meetingId="127 258 9516" :meetingMembers="partList" />
-      </div>
-
-      <div style="width: 50%; background-color: #1c1f2e;">
-        <meeting-list :meetingsList="meetingList" />
-      </div>
-
-      <br><br><br>
-
-      <meeting-page/>
-
-
     
 </template>
 
@@ -90,15 +52,9 @@ export default {
     items : []
   },
    components: { 
-     SquareButton, 
      SideBar,
-     WidgetDateTime, 
      Navbar, 
-     TextButton, 
-     ParticipantCard,
-     MeetingId, 
-    participantList, 
-   meetingPage },
+},
 actions : {
   },
   data(){
@@ -119,13 +75,8 @@ actions : {
 }
 </script>
 
-
-<style lang="scss">
-  .listbutton,.listwidgets,.currentTest{
-    display: flex;
-
-    > a , > div {
-      @apply m-3;
-    }
-  }
+<style scoped>
+.container{
+  border-left: 0.5px solid rgba(255, 255, 255, 0.1)
+}
 </style>
