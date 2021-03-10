@@ -1,6 +1,9 @@
 <template>
-  <navbar />
-    <div>
+  <div class="h-screen flex">
+    <SideBar/>
+    <navbar />
+
+  </div>
       <div class="listbutton">
         <square-button icon="videocam" color="#ff742e" title="New Meeting" description="Setup new meeting" />
         <square-button icon="add-circle" color="#0e78f9" title="Join Meeting" description="Via invitation link" />
@@ -17,9 +20,6 @@
           <text-button text="Start" color="#0e78f9" fontColor="#FFFFFF" link="https://youtube.com"/>
           <text-button text="Copy invitation" link="page1"/>
           <text-button text="Join from Room"/>
-
-          <icon-button icon="https://icons-for-free.com/iconfiles/png/512/svg+create+edit+edit+file+office+pencil+writing+creativ+icon-1320185158722776676.png"/>
-          <icon-button icon="https://image.flaticon.com/icons/png/512/61/61848.png"/>
 
           <participant-card icon="https://www.assyst.de/cms/upload/sub/digitalisierung/15-M.jpg" fullname="petersonne jean-claude de la vega"/>
           <participant-card icon="https://www.assyst.de/cms/upload/sub/digitalisierung/15-M.jpg" fullname="Michel barder"/>
@@ -53,17 +53,20 @@
 
       <meeting-page/>
 
-    </div>
+
+    
 </template>
 
 <script>
 
 import SquareButton from '@/components/cards/SquareButton.vue'
+
+import SideBar from '../../../../components/side_bar'
+
 import WidgetDateTime from '@/components/widgets/WidgetDateTime.vue';
 import Navbar from '@/components/navbar.vue';
 
 import TextButton from '@/components/cards/TextButton.vue';
-import IconButton from '@/components/cards/IconButton.vue';
 import ParticipantCard from '@/components/cards/ParticipantCard.vue';
 import MeetingId from '@/components/cards/MeetingId.vue';
 
@@ -88,10 +91,10 @@ export default {
   },
    components: { 
      SquareButton, 
+     SideBar,
      WidgetDateTime, 
      Navbar, 
      TextButton, 
-     IconButton, 
      ParticipantCard,
      MeetingId, 
     participantList, 
