@@ -12,7 +12,7 @@
     </div>
     <div class="w-full py-6 scroll">
         <list-group :title="tabContact ? 'My Contacts' : 'My Channels'">
-            <list-sub-group v-for="subGroup in getSubGroups" v-bind:key="subGroup.id" :items="subGroup.items" :title="subGroup.title" />
+            <list-sub-group v-on:contactClicked="currentContact = $event" v-for="subGroup in getSubGroups" v-bind:key="subGroup.id" :items="subGroup.items" :title="subGroup.title" />
         </list-group>
     </div>
   </div>  
@@ -113,14 +113,93 @@ export default {
             currentContact:{
                 firstname: "Rais",
                 lastname: "Yassin",
-                email: "yassmail@gmail.com",
+                email: "yassine@rais.me",
                 phone: "06 01 02 03 04",
                 fax: "03 24 65 89 78",
                 city: "Reims",
                 status: 0,
                 id:1,
 
-            }
+            },
+            groups: [{
+                    id: 1,
+                    title: "Starred",
+                    items: [{
+                        firstname: "Rais",
+                        lastname: "Yassin",
+                        email: "yassine@rais.me",
+                        phone: "06 01 02 03 04",
+                        fax: "03 24 65 89 78",
+                        city: "Reims",
+                        status: 0,
+                        id:1,
+                    }, {
+                        id: 2,
+                        firstname: "Rais",
+                        lastname: "Yassin",
+                        email: "yassine@rais.me",
+                        phone: "06 01 02 03 04",
+                        fax: "03 24 65 89 78",
+                        city: "Reims",
+                        status: 0,
+                    }]
+                },
+                {
+                    id: 2,
+                    title: "Others",
+                    items: [{
+                        firstname: "Rais",
+                        lastname: "Yassin",
+                        email: "yassine@rais.me",
+                        phone: "06 01 02 03 04",
+                        fax: "03 24 65 89 78",
+                        city: "Reims",
+                        status: 0,
+                        id:1,
+                    }, 
+                    {
+                        id: 2,
+                        firstname: "Rais",
+                        lastname: "Mohammed",
+                        email: "yassine@rais.me",
+                        phone: "06 01 02 03 04",
+                        fax: "03 24 65 89 78",
+                        city: "Reims",
+                        status: 0,
+                    },
+                    {
+                        id: 3,
+                        firstname: "Rais",
+                        lastname: "Remy",
+                        email: "yassine@rais.me",
+                        phone: "06 01 02 03 04",
+                        fax: "03 24 65 89 78",
+                        city: "Reims",
+                        status: 0,
+                    },
+                    {
+                        id: 4,
+                        firstname: "Papriko",
+                        lastname: "Albero",
+                        email: "alberto@rais.me",
+                        phone: "06 01 02 03 04",
+                        fax: "03 24 65 89 78",
+                        city: "Reims",
+                        status: 0,
+                    },
+                    {
+                        id: 5,
+                        firstname: "Rais",
+                        lastname: "Yassin",
+                        email: "yassine@rais.me",
+                        phone: "06 01 02 03 04",
+                        fax: "03 24 65 89 78",
+                        city: "Reims",
+                        status: 0,
+                    },
+                    ]
+                },
+            ]
         }
     },
     computed: {

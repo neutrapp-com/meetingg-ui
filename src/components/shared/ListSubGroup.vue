@@ -10,7 +10,7 @@
         </div>
     </div>
     <div v-if="isOpen" class="content mt-2 mb-6 ml-6">
-        <contact v-for="contact in getItems" :key="contact.id" v-bind="contact" />
+        <contact v-for="contact in getItems" :key="contact.id" @click="$emit('contactClicked' , contact)" v-bind="contact" />
     </div>
 </div>
 </template>
