@@ -21,12 +21,12 @@ const errorPagesRoutes = [
     {
         path: '/404',
         name: '404 error',
-        component: () => import('./views/pages/error/404'),
+        component: () => import('./views/pages/error/404.vue'),
     },
     {
         path: '/500',
         name: '500 error',
-        component: () => import('./views/pages/error/500'),
+        component: () => import('./views/pages/error/500.vue'),
     },
 ]
 
@@ -36,41 +36,41 @@ const dashboardRoutes = [
         name: 'Dashboard',
         icon: 'home',
         menu: true,
-        component: () => import('./views/pages/dashboard/Dashboard'),
+        component: () => import('./views/pages/dashboard/Dashboard.vue'),
     },
     {
         path: '/chat',
         name: 'Chat',
         icon: 'chatbox-ellipses',
         menu: true,
-        component: () => import('./views/pages/dashboard/Dashboard'),
+        component: () => import('./views/pages/dashboard/Dashboard.vue'),
     },
     {
         path: '/meetings',
         name: 'Meetings',
         icon: 'time',
         menu: true,
-        component: () => import('./views/pages/dashboard/Dashboard'),
+        component: () => import('./views/pages/dashboard/Dashboard.vue'),
     },
     {
         path: '/contact',
         name: 'Contact',
         icon: 'person-circle',
         menu: true,
-        component: () => import('./views/pages/dashboard/Dashboard'),
+        component: () => import('./views/pages/dashboard/Contact.vue'),
     },
     {
         path: '/shedule',
         name: 'Shedule',
         icon: 'calendar',
         menu: true,
-        component: () => import('./views/pages/dashboard/Dashboard'),
+        component: () => import('./views/pages/dashboard/Dashboard.vue'),
     },
     {
         path: '/profile/settings',
         name: 'Settings',
         menu: false,
-        component: () => import('./views/pages/dashboard/Dashboard'),
+        component: () => import('./views/pages/dashboard/Dashboard.vue'),
     },
 ].map(route => {
     return {
