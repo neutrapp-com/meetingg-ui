@@ -1,5 +1,5 @@
 <template>
-<div class="meeting-id" v-bind:style="{ background: color }">
+<div class="meeting" v-bind:style="{ background: color }">
     <div class="icon">
         <div class="text-icon">
             <p>Id</p>
@@ -26,8 +26,8 @@ export default {
 </script>
 
 <style lang="scss">
-.meeting-id{
-    @apply flex;
+.meeting{
+    @apply flex w-full;
     min-width: 30rem; /* can provoked some problems, remove if you need */
     .icon{
         @apply flex;

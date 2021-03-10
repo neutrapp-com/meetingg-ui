@@ -1,17 +1,42 @@
 <template>
     <div class="widget">
-        <h2>12:02</h2>
-        <p>{{ updateDateWidget }}</p>
+        <h2>{{ getTimeHour }}<small class="text-md">:{{ getTimeSeconds }}</small> </h2>
+        <p>{{ getTimeFormat }}</p>
     </div>
 </template>
 
 <script>
+import moment from 'moment';
+
 export default {
-    name : 'WidgetDateTime',
-    computed : {
-        updateDateWidget(){
-            return (new Date()).toString();
-        }
+    data () {
+        return {
+            datetime : Date.now()
+        } 
+    },
+    computed: {
+        getTimeFormat() {
+            return moment(this.datetime).format('LLLL')
+        },
+        getTimeHour(){
+            return moment(this.datetime).format('hh:mm')
+        },
+        getTimeSeconds(){
+            return moment(this.datetime).format('s').padStart(2,'0');
+        },
+    },
+    methods : {
+        getDateTime(){
+            return this.datetime;
+        },
+        updateTime() {
+            var self = this;
+            self.datetime = Date.now();
+            setTimeout(self.updateTime, 1000) // recursive!
+        },
+    },
+    mounted: function() {
+      this.updateTime();
     }
 }
 </script>

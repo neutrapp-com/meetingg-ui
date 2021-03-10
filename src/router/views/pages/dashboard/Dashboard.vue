@@ -16,11 +16,11 @@
     </div>
 </div>
 <div class="flex flex-grow p-16">
-    <div class="flex flex-col w-full">
-      <div>
+    <div class="flex flex-col w-full widgets">
+      <div class="widget-item">
         <widget-date-time />
       </div>
-      <div>
+      <div class="widget-item">
         <meeting-list />
       </div>
     </div>
@@ -30,10 +30,12 @@
 <script>
 import SquareButton from '@/components/cards/SquareButton.vue';
 import WidgetDateTime from '@/components/widgets/WidgetDateTime.vue';
+import MeetingList from '../../../../components/widgets/meeting/List.vue';
 export default {
     components: {
         SquareButton,
-        WidgetDateTime
+        WidgetDateTime,
+        MeetingList
     }
 }
 </script>
@@ -41,5 +43,9 @@ export default {
 <style scoped>
 .buttons {
     height: min-content;
+}
+
+.widgets{
+    @apply space-y-8;
 }
 </style>
