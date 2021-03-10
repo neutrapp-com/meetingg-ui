@@ -4,7 +4,7 @@
         <ion-icon class="text-white text-3xl" name="videocam"></ion-icon>
     </div>
 
-    <div class="mt-28">
+    <div class="mt-16 pt-1">
         <side-bar-element :link="route.path" v-for="route in getMenu" :key="route.name" :title="route.title"  :icon="route.icon" :active="menuActive(route.name)" />
     </div>
 

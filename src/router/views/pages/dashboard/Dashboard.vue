@@ -22,7 +22,7 @@
 </template>
 
 <script>
-import SquareButton from '../../../../components/cards/SquareButton.vue';
+import SquareButton from '@/components/cards/SquareButton.vue';
 export default {
   components: { SquareButton }
 }
