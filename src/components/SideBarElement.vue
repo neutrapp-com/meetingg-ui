@@ -1,8 +1,8 @@
 <template>
 <router-link :to="link">
-    <div :class="active ? 'active':''" class="side-btn">
+    <a :title="title" :class="active ? 'active':''" class="side-btn">
         <ion-icon class="icon" :name="getIcon"></ion-icon>
-    </div>
+    </a>
 </router-link>
 </template>
 
@@ -10,6 +10,10 @@
 <script>
 export default {
     props : {
+        title : {
+            default : '',
+            type: String
+        },
         icon : {
             default : 'home',
             type: String

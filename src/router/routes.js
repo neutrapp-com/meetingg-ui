@@ -34,19 +34,58 @@ const dashboardRoutes = [
     {
         path: '/',
         name: 'Dashboard',
-        header: 'Navigation',
+        icon: 'home',
+        menu: true,
+        component: () => import('./views/pages/dashboard/Dashboard'),
+    },
+    {
+        path: '/chat',
+        name: 'Chat',
+        icon: 'chatbox-ellipses',
+        menu: true,
+        component: () => import('./views/pages/dashboard/Dashboard'),
+    },
+    {
+        path: '/meetings',
+        name: 'Meetings',
+        icon: 'time',
+        menu: true,
+        component: () => import('./views/pages/dashboard/Dashboard'),
+    },
+    {
+        path: '/contact',
+        name: 'Contact',
+        icon: 'person-circle',
+        menu: true,
+        component: () => import('./views/pages/dashboard/Dashboard'),
+    },
+    {
+        path: '/shedule',
+        name: 'Shedule',
+        icon: 'calendar',
+        menu: true,
+        component: () => import('./views/pages/dashboard/Dashboard'),
+    },
+    {
+        path: '/profile/settings',
+        name: 'Settings',
+        menu: false,
         component: () => import('./views/pages/dashboard/Dashboard'),
     },
 ].map(route => {
     return {
         ...route,
         meta: {
-            layout: 'Authentified'
+            layout: 'Authentified',
+            menu: route.meta && route.meta.menu && true || false
         }
     }
 });
 
+const dashboardMenu = dashboardRoutes.filter(route => true === route.menu);
+
 const allRoutes = [...authRoutes, ...errorPagesRoutes, ...dashboardRoutes];
 
 export default allRoutes;
+export { allRoutes, dashboardMenu };
 
