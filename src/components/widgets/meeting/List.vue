@@ -11,11 +11,10 @@
 </template>
 
 <script>
-    import meeting from '../meeting.vue';
+    import Meeting from '../Meeting.vue';
 
     export default {
-        name : 'meetingList',
-        components: { meeting },
+        components: { Meeting },
         props : {
             meetingsList : {
                 default : [
