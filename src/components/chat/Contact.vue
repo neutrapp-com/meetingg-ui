@@ -1,7 +1,7 @@
 <template>
     <div class="contact" :class="active == true ? 'active' : ''">
         <avatar :image="avatar" />
-        <p class="ml-4 self-center">{{name}}</p>
+        <p class="ml-4 self-center">{{ getFullName }}</p>
     </div>
 </template>
 
@@ -14,10 +14,17 @@ export default {
         avatar : {
             type : String
         },
-        name : {
+        firstname : {
             type : String
         },
+        lastname : {type: String},
+        email : {type: String},
         active : Boolean
+    },
+    computed: {
+        getFullName(){
+            return this.firstname + ' ' + this.lastname;
+        }
     }
 }
 </script>
