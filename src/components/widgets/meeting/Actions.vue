@@ -8,12 +8,11 @@
 
 <script>
     import MeetingId from '../../cards/MeetingId.vue';
-    import manageMeeting from './manageMeeting.vue';
+    import Manage from './Manage.vue';
     import participantList from '../participantList.vue';
 
     export default {
-        name : 'meetingActions',
-        components: { MeetingId, manageMeeting, participantList},
+        components: { MeetingId, Manage, participantList},
         props : {
             meetingTitle : {
                 default : 'Meeting Title',

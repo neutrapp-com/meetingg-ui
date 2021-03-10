@@ -1,10 +1,10 @@
 <template>
 <div class="w-24 h-screen pr-1 relative sidebar">
-    <div class="flex items-center bg-blue-600 text-center mt-4 mx-auto rounded-xl h-14 w-14 content-center justify-center">
+    <div class="flex items-center bg-blue-600 text-center mt-6 mx-auto rounded-xl h-14 w-14 content-center justify-center">
         <ion-icon class="text-white text-3xl" name="videocam"></ion-icon>
     </div>
 
-    <div class="mt-16">
+    <div class="mt-16 pt-1">
         <side-bar-element :link="route.path" v-for="route in getMenu" :key="route.name" :title="route.title"  :icon="route.icon" :active="menuActive(route.name)" />
     </div>
 

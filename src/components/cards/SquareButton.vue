@@ -40,7 +40,7 @@ export default {
 .squarebutton{
     fill: white;
 
-    @apply relative bg-blue-500  p-8 rounded-2xl w-full h-44 text-white;
+    @apply relative bg-blue-500  p-8 rounded-2xl w-56 h-56 text-white;
 
     &:hover{
         @apply cursor-pointer shadow-2xl ;
@@ -54,16 +54,16 @@ export default {
         }
         
         p{
-            @apply mt-1;
+            @apply mt-1 mb-2;
         }
     }
     
     .icon{
         @apply
             text-center
-            p-1 m-0
-            rounded-2xl border-solid border-white
-            h-14 w-14
+            p-2 m-0
+            rounded-xl border-solid border-white
+            h-16 w-16
             flex flex-wrap content-center justify-center ;
 
         background: rgba(255,255,255,0.15);
