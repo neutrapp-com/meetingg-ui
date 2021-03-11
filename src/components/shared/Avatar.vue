@@ -19,11 +19,8 @@ export default {
 
 <style lang="scss" scoped>
 .avatar {
-    @apply rounded-xl;
+    @apply rounded-lg;
     background-size: cover;
     background-position: center;
-}
-.avatar-size{
-    @apply w-14 h-14;
 }
 </style>
