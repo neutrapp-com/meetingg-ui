@@ -50,7 +50,7 @@ const dashboardRoutes = [
         name: 'Meetings',
         icon: 'time',
         menu: true,
-        component: () => import('./views/pages/dashboard/Dashboard.vue'),
+        component: () => import('./views/pages/dashboard/Meeting.vue'),
     },
     {
         path: '/contact',

@@ -6,7 +6,6 @@
             <div v-for="member in getMembers" v-bind:key="member.id">
                 <participant-card v-bind="member"/>
             </div>
-
             <div style="backgroud-color: red;">
                 <participant-card link="#" fullname="INVITE MEMBERS" avatar="https://cdn3.iconfinder.com/data/icons/basic-interface/100/add_user-512.png"/>
             </div>
@@ -19,7 +18,7 @@
     import ParticipantCard from '../cards/ParticipantCard.vue';
 
     export default {
-        name : 'participantList',
+        name : 'ParticipantList',
         components: { ParticipantCard },
         props : {
             members : {

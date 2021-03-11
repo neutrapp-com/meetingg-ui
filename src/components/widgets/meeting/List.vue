@@ -71,7 +71,7 @@ export default {
 
 <style lang="scss" scoped>
 .widget {
-    @apply flex flex w-full;
+    @apply flex flex-col w-full;
 
     h1 {
         @apply p-4;

@@ -1,6 +1,6 @@
 <template>
     <div class="widget">
-        <manage-meeting v-bind="{ title: `${ meetingTitle }`, startTime: `${ startTime }`, endTime: `${ endTime }`, description: `${ meetingDescription }` }" />
+        <manage v-bind="{ title: `${ meetingTitle }`, startTime: `${ startTime }`, endTime: `${ endTime }`, description: `${ meetingDescription }` }" />
         <meeting-id v-bind="{ numberId: `${ meetingId }` }"/>
         <participant-list :members="meetingMembers" />
     </div>
@@ -9,10 +9,12 @@
 <script>
     import MeetingId from '../../cards/MeetingId.vue';
     import Manage from './Manage.vue';
-    import participantList from '../participantList.vue';
+    import ParticipantList from '../ParticipantList.vue';
 
     export default {
-        components: { MeetingId, Manage, participantList},
+        components: { MeetingId,
+                        Manage,
+                        ParticipantList},
         props : {
             meetingTitle : {
                 default : 'Meeting Title',
