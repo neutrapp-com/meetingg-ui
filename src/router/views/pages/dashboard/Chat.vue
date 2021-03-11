@@ -14,31 +14,37 @@
                 <ion-icon class="text-gray-400 text-xl" name="search-outline"></ion-icon>
             </div>
         </div>  
-        <div class="flex flex-col w-full text-white p-6">
-            <div class="flex w-full font-bold text-xl mb-4">Starred</div>
-            <div class="flex mt-4">        
-                <div class="w-full p-1 cursor-pointer rounded-lg flex text-gray-400 justify-between">
-                    <div class="flex w-full">
-                        <ion-icon class="text-xl text-gray-400 px-3 my-3" name="star"></ion-icon>
-                        <div class="title my-3">Starred Messages</div>
-                    </div>
-                    <div class="bg-white bg-opacity-5 w-12 h-10 p-1 rounded-lg items-center justify-center flex border border-white border-opacity-5">
-                        0
-                    </div>
-                </div>
-            </div>
-            <div class="flex">        
-                <div class="w-full p-1 cursor-pointer rounded-lg flex text-gray-400 justify-between">
-                    <div class="flex w-full">
-                        <ion-icon class="text-xl text-gray-400 px-3 my-3" name="person-add"></ion-icon>
-                        <div class="title my-3">Contact Requests</div>
-                    </div>
-                    <div class="bg-white bg-opacity-5 w-12 h-10 p-1 rounded-lg items-center justify-center flex border border-white border-opacity-5">
-                        0
+        <div class="flex flex-col scroll">
+            <div class="flex flex-col w-full text-white p-6">
+                <div class="flex w-full font-bold text-xl mb-4">Starred</div>
+                <div class="flex mt-4">        
+                    <div class="w-full p-1 cursor-pointer rounded-lg flex text-gray-400 justify-between">
+                        <div class="flex w-full">
+                            <ion-icon class="text-xl text-gray-400 px-3 my-3" name="star"></ion-icon>
+                            <div class="title my-3">Starred Messages</div>
+                        </div>
+                        <div class="bg-white bg-opacity-5 w-12 h-10 p-1 rounded-lg items-center justify-center flex border border-white border-opacity-5">
+                            0
+                        </div>
                     </div>
                 </div>
+                <div class="flex">        
+                    <div class="w-full p-1 cursor-pointer rounded-lg flex text-gray-400 justify-between">
+                        <div class="flex w-full">
+                            <ion-icon class="text-xl text-gray-400 px-3 my-3" name="person-add"></ion-icon>
+                            <div class="title my-3">Contact Requests</div>
+                        </div>
+                        <div class="bg-white bg-opacity-5 w-12 h-10 p-1 rounded-lg items-center justify-center flex border border-white border-opacity-5">
+                            0
+                        </div>
+                    </div>
+                </div>
+                <contact v-for="contact in getItems" :key="contact.id" @click="$emit('contactClicked' , contact)" v-bind="contact" />
             </div>
-            <contact v-for="contact in getItems" :key="contact.id" @click="$emit('contactClicked' , contact)" v-bind="contact" />
+            <div class="flex flex-col w-full text-white p-6">
+                <div class="flex w-full font-bold text-xl mb-4">Recent</div>
+                <contact v-for="contact in getItems" :key="contact.id" @click="$emit('contactClicked' , contact)" v-bind="contact" />
+            </div>
         </div>
     </div>
     <div class="flex-grow w-1/2 divide-y divide-white divide-opacity-5">
