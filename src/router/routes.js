@@ -43,7 +43,7 @@ const dashboardRoutes = [
         name: 'Chat',
         icon: 'chatbox-ellipses',
         menu: true,
-        component: () => import('./views/pages/dashboard/Dashboard.vue'),
+        component: () => import('./views/pages/dashboard/Chat.vue'),
     },
     {
         path: '/meetings',
