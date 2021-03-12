@@ -1,5 +1,5 @@
 <template>
-    <div class="widget flex divide-y divide-white divide-opacity-5">
+    <div class="widget flex divide-y divide-light divide-opacity-5">
         <div class="flex w-full justify-between mb-4"> 
             <h1> {{title}} </h1>
             <p class="mr-4">

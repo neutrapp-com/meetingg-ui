@@ -12,6 +12,7 @@ module.exports = {
       ...colors,
       dark: '#1c1f2e',
       light: '#fcfafa',
+      active: '#0e78f9',
     },
     backgroundColor: theme => ({
       ...theme('colors'),

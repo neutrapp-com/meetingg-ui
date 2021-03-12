@@ -52,7 +52,7 @@
 <style scoped lang="scss">
 
 .widget {
-    @apply flex flex-col w-full divide-y divide-white divide-opacity-5;
+    @apply flex flex-col w-full divide-y divide-light divide-opacity-5;
 }
 
 </style>
