@@ -48,19 +48,19 @@
         </div>
     </div>
     <div class="flex-grow w-1/2 divide-y divide-white divide-opacity-5">
-        <div class="flex justify-between w-full p-4">
+        <div class="flex justify-between w-full p-6">
             <div class="flex">
-                <avatar size="w-8 h-8"/>
+                <avatar size="w-12 h-12"/>
                 <p class="self-center text-xl ml-6 text-white">{{getCurrentDiscussion.firstname + " " + getCurrentDiscussion.lastname}}</p>  
             </div>
             <div class="flex space-x-4">
-                <div class="bg-white border border-white border-opacity-5 bg-opacity-5 w-8 h-8 rounded-lg items-center justify-center flex">
+                <div class="bg-white border border-white border-opacity-5 bg-opacity-5 w-12 h-12 rounded-lg items-center justify-center flex">
                     <ion-icon class="text-gray-400 text-xl" name="videocam-outline"></ion-icon>
                 </div>
-                <div class="bg-white border border-white border-opacity-5 bg-opacity-5 w-8 h-8 rounded-lg items-center justify-center flex">
+                <div class="bg-white border border-white border-opacity-5 bg-opacity-5 w-12 h-12 rounded-lg items-center justify-center flex">
                     <ion-icon class="text-gray-400 text-xl" name="call-outline"></ion-icon>
                 </div>
-                <div class="bg-white border border-white border-opacity-5 bg-opacity-5 w-8 h-8 rounded-lg items-center justify-center flex">
+                <div class="bg-white border border-white border-opacity-5 bg-opacity-5 w-12 h-12 rounded-lg items-center justify-center flex">
                     <ion-icon class="text-gray-400 text-xl" name="star-outline"></ion-icon>
                 </div>
             </div>
@@ -158,6 +158,6 @@ export default {
     background-color: #0e78f9;
 }
 .chatpanel{
-    height: 90%;
+    height: 85%;
 }
 </style>
