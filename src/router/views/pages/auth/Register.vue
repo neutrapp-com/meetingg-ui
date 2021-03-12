@@ -6,7 +6,7 @@
     <div class="form-group">
         <div class="flex -mr-px justify-center p-3">
             <span
-                class="flex items-center leading-normal bg-white px-3 border-0 rounded rounded-r-none text-2xl text-gray-500"
+                class="flex items-center leading-normal bg-light px-3 border-0 rounded rounded-r-none text-2xl text-gray-500"
             >
                 <ion-icon name="person-outline"></ion-icon>
             </span>
@@ -22,7 +22,7 @@
     <div class="form-group">
         <div class="flex -mr-px justify-center p-3">
             <span
-                class="flex items-center leading-normal bg-white px-3 border-0 rounded rounded-r-none text-2xl text-gray-500"
+                class="flex items-center leading-normal bg-light px-3 border-0 rounded rounded-r-none text-2xl text-gray-500"
             >
                 <ion-icon name="mail-outline"></ion-icon>
             </span>
@@ -38,7 +38,7 @@
     <div class="form-group">
         <div class="flex -mr-px justify-center p-3">
             <span
-                class="flex items-center leading-normal bg-white px-3 border-0 rounded rounded-r-none text-2xl text-gray-500"
+                class="flex items-center leading-normal bg-light px-3 border-0 rounded rounded-r-none text-2xl text-gray-500"
             >
                 <ion-icon name="lock-closed-outline"></ion-icon>
             </span>
@@ -54,7 +54,7 @@
     <div class="form-group">
         <div class="flex -mr-px justify-center p-3">
             <span
-                class="flex items-center leading-normal bg-white px-3 border-0 rounded rounded-r-none text-2xl text-gray-500"
+                class="flex items-center leading-normal bg-light px-3 border-0 rounded rounded-r-none text-2xl text-gray-500"
             >
                 <ion-icon name="repeat-outline"></ion-icon>
             </span>

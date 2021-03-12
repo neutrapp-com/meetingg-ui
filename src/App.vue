@@ -49,7 +49,7 @@ export default {
 
 <style lang="scss">
 html{
-  @apply bg-light text-dark;
+  @apply bg-light  text-dark;
 
   & .dark{
     @apply bg-dark text-light;

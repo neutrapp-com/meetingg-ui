@@ -8,13 +8,13 @@
 
 <style lang="scss" >
 .form-group{
-    @apply flex flex-wrap items-stretch w-full relative bg-white text-black items-center rounded;
+    @apply flex flex-wrap items-stretch w-full relative bg-light text-black items-center rounded;
 }
 .btn-auth{
     @apply w-2/3 mt-6 py-2  mx-auto bg-dark rounded font-bold text-light;
 
     .dark & {
-        @apply bg-white text-dark;
+        @apply bg-light text-dark;
     }
 }
 </style>
