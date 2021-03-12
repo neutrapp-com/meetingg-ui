@@ -79,7 +79,6 @@
     @apply flex flex-col;
 
     h1{
-        @apply p-4;
         color: white;
         font-size: 2rem;
     }
