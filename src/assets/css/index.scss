@@ -16,7 +16,6 @@
 
 body,
 html {
-  background-color: #1c1f2e;
   font-family: "Gilroy", Arial, Helvetica, sans-serif;
 }
 
@@ -33,6 +32,7 @@ html {
 .scroll {
   overflow-y: scroll;
   max-height: 100vh;
+  padding-right: 4px;
 }
 
 @media (min-width: 600px) {

@@ -1,6 +1,11 @@
 <template> 
-    <nav class="h-24 fixed w-full flex items-center navbar noselect z-50"> 
-        <p class="font-bold ml-5 text-white text-xl">{{title}}</p>
+    <nav class="navbar h-24 w-full fixed flex items-center justify-between noselect z-50"> 
+        <div >
+            <p class="font-bold ml-5 text-white text-xl">{{title}}</p>
+        </div>
+        <div>
+            <p class="font-bold  text-white text-xl">profile icon</p>
+        </div>
     </nav>
 </template>
 
@@ -20,7 +25,9 @@ export default {
 
 <style lang="scss" scoped>
 .navbar {
-    background-color: #1C1F2E;
+    // background-color: #1C1F2E;
     border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+
+    width: calc(100vw - 6rem);
 }
 </style>
