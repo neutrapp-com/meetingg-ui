@@ -67,14 +67,30 @@
         </div>
         <div class="flex flex-col chatpanel content-between divide-y divide-white divide-opacity-5">
             <chat-box class="flex w-full h-full"/>
-            <chat-input class="flex w-full"/>
+            <chat-input class="flex w-full" :destination="getCurrentDiscussion.firstname + ' ' + getCurrentDiscussion.lastname"/>
         </div>
     </div>
-    <div class="flex-grow w-1/4 p-6">
-        <div class="add-members border border-white border-opacity-5 w-full h-12 px-4 rounded-lg items-center justify-between flex">
-            <ion-icon class="text-white text-xl" name="add-outline"></ion-icon>
-            <p class="text-white">Add members</p>
-            <div class="w-12"></div>
+    <div class="flex-grow w-1/4 divide-y divide-white divide-opacity-5">
+        <div class="flex p-6">
+            <div class="add-members border border-white border-opacity-5 w-full h-12 px-4 rounded-lg items-center justify-between flex">
+                <ion-icon class="text-white text-xl" name="add-outline"></ion-icon>
+                <p class="text-white">Add members</p>
+                <div class="w-12"></div>
+            </div>
+        </div>
+        <div class="flex flex-col space-y-6 p-6 pt-4">
+            <container-list title="Images" icon="image-outline">
+                <div v-if="image.length ===0"><p>Nothing here</p></div>
+            </container-list>
+            <container-list title="Files" icon="document-outline">
+                <div v-if="image.length ===0"><p>Nothing here</p></div>
+            </container-list>
+            <container-list title="Starred" icon="star-outline">
+                <div v-if="image.length ===0"><p>Nothing here</p></div>
+            </container-list>
+            <container-list title="More Options" icon="settings-outline">
+                <div v-if="image.length ===0"><p>Nothing here</p></div>
+            </container-list>
         </div>
     </div>
   </div>
@@ -85,7 +101,7 @@ import Avatar from '../../../../components/shared/Avatar.vue'
 import ChatBox from '../../../../components/shared/ChatBox.vue'
 import ChatInput from '../../../../components/shared/ChatInput.vue'
 import Contact from '../../../../components/chat/Contact.vue'
-
+import ContainerList from '@/components/ContainerList.vue'
 
 export default {
      data(){
@@ -109,13 +125,17 @@ export default {
                     city: "Reims",
                     status: 0,
                 }],
+
+            image: [
+            ]
         }
     },
     components:{
         Avatar,
         ChatBox,
         ChatInput,
-        Contact
+        Contact,
+        ContainerList
     },
 
     computed:{

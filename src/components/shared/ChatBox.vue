@@ -1,5 +1,5 @@
 <template>
-    <div class="p-4 h-1/3">
+    <div class="p-4">
         <p>Chat Display</p>
     </div>
 </template>
