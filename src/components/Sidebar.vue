@@ -1,5 +1,5 @@
 <template>
-<div class="w-24 h-screen pr-1 relative sidebar">
+<div class="sidebar">
     <div class="logo">
         <ion-icon name="videocam"></ion-icon>
     </div>
@@ -38,10 +38,10 @@ export default {
 
 <style lang="scss" scoped>
 .sidebar{
-    @apply text-dark;
+    @apply text-dark w-24 h-screen pr-1 relative ;
 
     .dark & {
-        @apply text-light;
+        @apply text-light; 
     }
 
     .logo{

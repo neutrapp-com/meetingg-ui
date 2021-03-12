@@ -11,10 +11,20 @@ module.exports = {
     colors: {
       ...colors,
       dark: '#1c1f2e',
-      light: '#ffffff',
+      light: '#fcfafa',
     },
     backgroundColor: theme => ({
       ...theme('colors'),
+    }),
+    borderColor: theme => ({
+      ...theme('colors'),
+      dark: 'rgba(29, 29, 29, 0.131)',
+      light: 'rgba(255, 255, 255, 0.05)',
+    }),
+    divideColor: theme => ({
+      ...theme('colors'),
+      dark: 'rgba(29, 29, 29, 0.131)',
+      light: 'rgba(255, 255, 255, 0.05)',
     })
   },
   variants: {

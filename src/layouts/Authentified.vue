@@ -1,9 +1,9 @@
 <template>
-<div class="flex divide-x divide-white divide-opacity-5">
+<div class="lauth">
     <SideBar />
     <div class="main">
         <navbar :title="getTitle" />
-        <div class="flex flex-wrap lg:flex-nowrap w-full pt-24 h-full lg:divide-x divide-white divide-opacity-5 sm:space-y-8 md:space-y-0 justify-center">
+        <div class="container">
             <slot />
         </div>
     </div>
@@ -20,18 +20,29 @@ export default {
         Navbar,
     },
     computed: {
-        getTitle(){
+        getTitle() {
             return this.$route.name;
         }
     }
 }
 </script>
 
-<style scoped>
-.container {
-    border-left: 0.5px solid rgba(255, 255, 255, 0.1)
-}
-.main{
-    @apply flex-grow;
+<style lang="scss" scoped>
+.lauth {
+    @apply flex divide-x divide-dark divide-opacity-5;
+    
+    &.dark  {
+        @apply divide-light;
+        .container {
+                @apply divide-light;
+        }
+    }
+    .container {
+        @apply flex flex-wrap lg:flex-nowrap w-full pt-24 h-full lg:divide-x divide-dark divide-opacity-5 sm:space-y-8 md:space-y-0 justify-center;
+    }
+
+    .main {
+        @apply flex-grow;
+    }
 }
 </style>
