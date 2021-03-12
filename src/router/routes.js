@@ -71,7 +71,7 @@ const dashboardRoutes = [
         name: 'Shedule',
         icon: 'calendar',
         menu: true,
-        component: () => import('./views/pages/dashboard/Dashboard.vue'),
+        component: () => import('./views/pages/dashboard/Shedule.vue'),
     },
     {
         path: '/profile/settings',
