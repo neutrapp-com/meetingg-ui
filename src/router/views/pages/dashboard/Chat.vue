@@ -3,11 +3,11 @@
     <div class="flex flex-col w-1/4 divide-y divide-light ">
         <div class="flex justify-between p-6">
             <div class="flex flex-row h-12 w-full bg-light mr-4 bg-opacity-5 rounded-lg p-1 noselect">
-                <input type="text" id="search" class="flex-shrink pl-3 flex-grow bg-transparent text-white flex-auto leading-normal w-px flex-1 border-0 border-grey-light rounded rounded-l-none self-center relative  font-roboto text-md outline-none" placeholder="Jump to..." />
+                <input type="text" id="search" class="flex-shrink pl-3 flex-grow bg-light bg-opacity-0 text-white flex-auto leading-normal w-px flex-1 border-0 border-grey-light rounded rounded-l-none self-center relative  font-roboto text-md outline-none" placeholder="Jump to..." />
             </div>
-            <div class="bg-light bg-opacity-5 w-14 h-12 rounded-lg items-center justify-center flex">
+            <btn>
                 <ion-icon class="icon-btn" name="search-outline"></ion-icon>
-            </div>
+            </btn>
         </div>
         <div class="flex flex-grow flex-col scroll">
             <div class="flex flex-col w-full text-white p-6">

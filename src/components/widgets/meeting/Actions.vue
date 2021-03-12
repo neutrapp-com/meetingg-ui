@@ -7,9 +7,9 @@
 </template>
 
 <script>
-    import MeetingId from '../../cards/MeetingId.vue';
+    import MeetingId from './MeetingId.vue';
     import Manage from './Manage.vue';
-    import ParticipantList from '../ParticipantList.vue';
+    import ParticipantList from './ParticipantList.vue';
 
     export default {
         components: { MeetingId,

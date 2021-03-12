@@ -3,12 +3,12 @@
     <div class="header">
         <Switch :items="[{name : 'contact',title :'Contact', },{name : 'channels',title :'Meetings', selected:true}]" v-on:switch="tab = $event" />
 
-        <div class="bg-light bg-opacity-5 w-12 h-12 rounded-lg items-center justify-center flex">
+        <btn>
             <ion-icon class="text-white text-xl" name="person-add"></ion-icon>
-        </div>
+        </btn>
     </div>
-    <div class="w-full py-6 scroll">
-        <list-group :title="tab.title">
+    <div class="w-full p-6 scroll">
+        <list-group class="pr-6" :title="tab.title">
             <list-sub-group v-on:contactClicked="currentContact = $event" v-for="subGroup in getSubGroups" v-bind:key="subGroup.id" :items="subGroup.items" :title="subGroup.title" />
         </list-group>
     </div>
@@ -212,10 +212,10 @@ export default {
 
 <style lang="scss" scoped>
 .contact-list {
-    @apply flex flex-col w-2/5 p-6 divide-y divide-light divide-opacity-5;
+    @apply flex flex-col w-2/5 divide-y divide-light divide-opacity-5;
 
     .header{
-        @apply flex w-full justify-between pb-6;
+        @apply flex w-full p-6 justify-between;
     }
 }
 

@@ -15,8 +15,7 @@
 </template>
 
 <script>
-    import ParticipantCard from '../cards/ParticipantCard.vue';
-
+    import ParticipantCard from '../../cards/ParticipantCard.vue';
     export default {
         name : 'ParticipantList',
         components: { ParticipantCard },
@@ -52,7 +51,7 @@
 
 <style scoped lang="scss">
 .widget {
-    @apply flex flex-col p-4;
+    @apply flex flex-col;
 
     h1{
         @apply p-4;
@@ -60,7 +59,7 @@
     }
 
     .participants{
-        @apply flex flex-wrap p-4;
+        @apply flex flex-wrap pt-4;
 
         div{
             padding-right: 12px;
