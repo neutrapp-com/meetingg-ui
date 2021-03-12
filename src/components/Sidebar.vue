@@ -1,7 +1,7 @@
 <template>
 <div class="w-24 h-screen pr-1 relative sidebar">
-    <div class="flex items-center bg-blue-600 text-center mt-6 mx-auto rounded-xl h-14 w-14 content-center justify-center">
-        <ion-icon class="text-white text-3xl" name="videocam"></ion-icon>
+    <div class="logo">
+        <ion-icon name="videocam"></ion-icon>
     </div>
 
     <div class="mt-16 pt-1">
@@ -34,3 +34,18 @@ export default {
     }
 }
 </script>
+
+
+<style lang="scss" scoped>
+.sidebar{
+    @apply text-dark;
+
+    .dark & {
+        @apply text-light;
+    }
+
+    .logo{
+        @apply flex items-center bg-blue-600 text-center mt-6 mx-auto rounded-xl h-14 w-14 content-center justify-center text-white text-3xl;
+    }
+}
+</style>

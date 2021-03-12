@@ -1,10 +1,11 @@
 export const state = {
+    theme: 'dark'
 }
 
 export const mutations = {
     SET_THEME(state, theme) {
         state.theme = theme;
-        localStorage.theme = theme;
+        localStorage.setItem('theme', theme);
     }
 }
 
@@ -40,5 +41,8 @@ export const actions = {
 export const getters = {
     getTheme: (state) => {
         return state.theme;
+    },
+    isNightMode: (state) => {
+        return state.theme === 'dark';
     }
 }

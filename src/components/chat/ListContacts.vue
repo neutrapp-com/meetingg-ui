@@ -58,8 +58,11 @@ export default {
 
 <style lang="scss" scoped>
 .contact-list{
-    @apply text-white  p-4  rounded-2xl;
+    @apply text-dark  p-4  rounded-2xl;
 
+    .dark & {
+        @apply text-light;
+    }
     .title{
         @apply  ml-4 text-3xl font-semibold;
     }

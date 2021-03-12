@@ -37,15 +37,19 @@ export default {
 
 <style lang="scss" scoped>
 .side-btn{
-    @apply my-2 flex items-center text-center mx-auto rounded-xl h-14 w-14 content-center justify-center;
+    @apply my-2 flex items-center text-center mx-auto rounded-xl h-14 w-14 content-center justify-center text-dark;
     border-color: #2f3240;
 
+    .dark & {
+        @apply text-light;
+    }
+
     .icon{
-        @apply text-white text-opacity-60 text-3xl;
+        @apply  text-opacity-60 text-3xl;
     }
     
     &:hover, &.active{
-        @apply bg-gray-200 bg-opacity-5  text-white bg-bottom;
+        @apply bg-gray-200 bg-opacity-5  bg-bottom;
 
         .icon{
             @apply text-opacity-90;

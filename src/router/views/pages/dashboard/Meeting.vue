@@ -8,8 +8,8 @@
 </template>
 
 <script>
-import meetingList from '../../../../components/widgets/meeting/List.vue';
-import meetingActions from '../../../../components/widgets/meeting/Actions.vue';
+import meetingList from '@/components/widgets/meeting/List.vue';
+import meetingActions from '@/components/widgets/meeting/Actions.vue';
 export default {
     components: {
         meetingList,
