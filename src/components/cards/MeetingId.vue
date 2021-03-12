@@ -27,7 +27,7 @@ export default {
 
 <style lang="scss">
 .meeting{
-    @apply flex w-full;
+    @apply flex w-full py-4;
     min-width: 30rem; /* can provoked some problems, remove if you need */
     .icon{
         @apply flex;
