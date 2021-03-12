@@ -52,13 +52,7 @@
 <style scoped lang="scss">
 
 .widget {
-    @apply flex flex-col;
-    padding: 10px 30px 10px 30px;
-
-    div{
-        padding-top: 24px;
-    }
-
+    @apply flex flex-col w-full;
 }
 
 </style>

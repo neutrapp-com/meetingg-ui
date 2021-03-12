@@ -48,33 +48,49 @@
         </div>
     </div>
     <div class="flex-grow w-1/2 divide-y divide-white divide-opacity-5">
-        <div class="flex justify-between w-full p-4">
+        <div class="flex justify-between w-full p-6">
             <div class="flex">
-                <avatar size="w-8 h-8"/>
+                <avatar size="w-12 h-12"/>
                 <p class="self-center text-xl ml-6 text-white">{{getCurrentDiscussion.firstname + " " + getCurrentDiscussion.lastname}}</p>  
             </div>
             <div class="flex space-x-4">
-                <div class="bg-white border border-white border-opacity-5 bg-opacity-5 w-8 h-8 rounded-lg items-center justify-center flex">
+                <div class="bg-white border border-white border-opacity-5 bg-opacity-5 w-12 h-12 rounded-lg items-center justify-center flex">
                     <ion-icon class="text-gray-400 text-xl" name="videocam-outline"></ion-icon>
                 </div>
-                <div class="bg-white border border-white border-opacity-5 bg-opacity-5 w-8 h-8 rounded-lg items-center justify-center flex">
+                <div class="bg-white border border-white border-opacity-5 bg-opacity-5 w-12 h-12 rounded-lg items-center justify-center flex">
                     <ion-icon class="text-gray-400 text-xl" name="call-outline"></ion-icon>
                 </div>
-                <div class="bg-white border border-white border-opacity-5 bg-opacity-5 w-8 h-8 rounded-lg items-center justify-center flex">
+                <div class="bg-white border border-white border-opacity-5 bg-opacity-5 w-12 h-12 rounded-lg items-center justify-center flex">
                     <ion-icon class="text-gray-400 text-xl" name="star-outline"></ion-icon>
                 </div>
             </div>
         </div>
         <div class="flex flex-col chatpanel content-between divide-y divide-white divide-opacity-5">
             <chat-box class="flex w-full h-full"/>
-            <chat-input class="flex w-full"/>
+            <chat-input class="flex w-full" :destination="getCurrentDiscussion.firstname + ' ' + getCurrentDiscussion.lastname"/>
         </div>
     </div>
-    <div class="flex-grow w-1/4 p-6">
-        <div class="add-members border border-white border-opacity-5 w-full h-12 px-4 rounded-lg items-center justify-between flex">
-            <ion-icon class="text-white text-xl" name="add-outline"></ion-icon>
-            <p class="text-white">Add members</p>
-            <div class="w-12"></div>
+    <div class="flex-grow w-1/4 divide-y divide-white divide-opacity-5">
+        <div class="flex p-6">
+            <div class="add-members border border-white border-opacity-5 w-full h-12 px-4 rounded-lg items-center justify-between flex">
+                <ion-icon class="text-white text-xl" name="add-outline"></ion-icon>
+                <p class="text-white">Add members</p>
+                <div class="w-12"></div>
+            </div>
+        </div>
+        <div class="flex flex-col space-y-6 p-6 pt-4">
+            <container-list title="Images" icon="image-outline">
+                <div v-if="image.length ===0"><p>Nothing here</p></div>
+            </container-list>
+            <container-list title="Files" icon="document-outline">
+                <div v-if="image.length ===0"><p>Nothing here</p></div>
+            </container-list>
+            <container-list title="Starred" icon="star-outline">
+                <div v-if="image.length ===0"><p>Nothing here</p></div>
+            </container-list>
+            <container-list title="More Options" icon="settings-outline">
+                <div v-if="image.length ===0"><p>Nothing here</p></div>
+            </container-list>
         </div>
     </div>
   </div>
@@ -85,6 +101,7 @@ import Avatar from '@/components/shared/Avatar.vue'
 import ChatBox from '@/components/shared/ChatBox.vue'
 import ChatInput from '@/components/shared/ChatInput.vue'
 import Contact from '@/components/chat/Contact.vue'
+import ContainerList from '@/components/ContainerList.vue'
 
 
 export default {
@@ -109,13 +126,17 @@ export default {
                     city: "Reims",
                     status: 0,
                 }],
+
+            image: [
+            ]
         }
     },
     components:{
         Avatar,
         ChatBox,
         ChatInput,
-        Contact
+        Contact,
+        ContainerList
     },
 
     computed:{
@@ -138,6 +159,6 @@ export default {
     background-color: #0e78f9;
 }
 .chatpanel{
-    height: 90%;
+    height: 85%;
 }
 </style>
