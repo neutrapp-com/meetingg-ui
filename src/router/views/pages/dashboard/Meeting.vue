@@ -1,5 +1,5 @@
 <template>
-    <div class="flex w-full divide-x divide-white divide-opacity-5">
+    <div class="flex w-full divide-x divide-light divide-opacity-5">
         <div class="flex w-1/2 p-6 scroll">
             <list :meetingsList="list"/>
         </div>  

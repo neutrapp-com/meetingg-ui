@@ -1,26 +1,23 @@
 <template>
-<div class="flex flex-col w-2/5 p-6 divide-y divide-white divide-opacity-5">
-    <div class="flex w-full justify-between pb-6">
-        <div class="flex flex-row h-12 bg-light bg-opacity-5 rounded-lg p-1 noselect">
-            <button @click="switchContact" :class="tabContact ? 'active' : 'text-gray-400'" class="w-32 focus:outline-none">Contacts</button>
-            <button @click="switchChannel" :class="!tabContact ? 'active' : 'text-gray-400'" class="w-32 focus:outline-none">Channels</button>
-        </div>
+<div class="contact-list">
+    <div class="header">
+        <Switch :items="[{name : 'contact',title :'Contact', },{name : 'channels',title :'Meetings', selected:true}]" v-on:switch="tab = $event" />
 
         <div class="bg-light bg-opacity-5 w-12 h-12 rounded-lg items-center justify-center flex">
             <ion-icon class="text-white text-xl" name="person-add"></ion-icon>
         </div>
     </div>
     <div class="w-full py-6 scroll">
-        <list-group :title="tabContact ? 'My Contacts' : 'My Channels'">
+        <list-group :title="tab.title">
             <list-sub-group v-on:contactClicked="currentContact = $event" v-for="subGroup in getSubGroups" v-bind:key="subGroup.id" :items="subGroup.items" :title="subGroup.title" />
         </list-group>
     </div>
-  </div>  
-  <div class="flex-grow h-full p-6">
-    <div class="w-full flex flex-col bg-light bg-opacity-5 rounded-lg border border-white border-opacity-5 p-10 divide-y divide-white divide-opacity-5">
+</div>
+<div class="flex-grow h-full p-6">
+    <div class="contact-box">
         <div class="flex w-full pb-10">
-            <avatar size="w-32 h-32"/>
-            <p class="self-center text-4xl ml-10 text-white font-bold">{{currentContact.firstname + " " + currentContact.lastname}}</p>  
+            <avatar size="w-32 h-32" />
+            <p class="self-center text-4xl ml-10 text-white font-bold">{{currentContact.firstname + " " + currentContact.lastname}}</p>
         </div>
         <div class="w-full flex justify-between py-5 text-gray-400">
             <div class="flex space-x-6">
@@ -52,7 +49,7 @@
         <div>
             <div class="flex w-full pt-6">
                 <div class="flex w-2/3">
-                    <div class="bg-light border border-white border-opacity-5 bg-opacity-5 w-12 h-12 rounded-lg items-center justify-center flex">
+                    <div class="contact-info">
                         <ion-icon class="text-gray-400 text-xl" name="call-outline"></ion-icon>
                     </div>
                     <div class="text-white mt-1 ml-4">
@@ -61,7 +58,7 @@
                     </div>
                 </div>
                 <div class="flex w-1/2">
-                    <div class="bg-light border border-white border-opacity-5 bg-opacity-5 w-12 h-12 rounded-lg items-center justify-center flex">
+                    <div class="contact-info">
                         <ion-icon class="text-gray-400 text-xl" name="print-outline"></ion-icon>
                     </div>
                     <div class="text-white mt-1 ml-4">
@@ -72,7 +69,7 @@
             </div>
             <div class="flex w-full pt-6">
                 <div class="flex w-2/3">
-                    <div class="bg-light border border-white border-opacity-5 bg-opacity-5 w-12 h-12 rounded-lg items-center justify-center flex">
+                    <div class="contact-info">
                         <ion-icon class="text-gray-400 text-xl" name="mail-outline"></ion-icon>
                     </div>
                     <div class="text-white mt-1 ml-4">
@@ -81,7 +78,7 @@
                     </div>
                 </div>
                 <div class="flex w-1/2">
-                    <div class="bg-light border border-white border-opacity-5 bg-opacity-5 w-12 h-12 rounded-lg items-center justify-center flex">
+                    <div class="contact-info">
                         <ion-icon class="text-gray-400 text-xl" name="business-outline"></ion-icon>
                     </div>
                     <div class="text-white mt-1 ml-4">
@@ -92,27 +89,28 @@
             </div>
         </div>
     </div>
-  </div>
+</div>
 </template>
 
 <script>
-
 import Avatar from '@/components/shared/Avatar.vue'
 import ListGroup from '@/components/shared/ListGroup.vue'
 import ListSubGroup from '@/components/shared/ListSubGroup.vue'
 import Btn from '@/components/shared/Btn.vue'
+import Switch from '@/components/shared/Switch.vue'
 
 export default {
-    components:{
+    components: {
         Avatar,
         ListGroup,
         ListSubGroup,
-        Btn
+        Btn,
+        Switch,
     },
-    data(){
-        return{
-            tabContact: false,
-            currentContact:{
+    data() {
+        return {
+            tab: {},
+            currentContact: {
                 firstname: "Rais",
                 lastname: "Yassin",
                 email: "yassine@rais.me",
@@ -120,7 +118,7 @@ export default {
                 fax: "03 24 65 89 78",
                 city: "Reims",
                 status: 0,
-                id:1,
+                id: 1,
 
             },
             groups: [{
@@ -134,7 +132,7 @@ export default {
                         fax: "03 24 65 89 78",
                         city: "Reims",
                         status: 0,
-                        id:1,
+                        id: 1,
                     }, {
                         id: 2,
                         firstname: "Rais",
@@ -150,55 +148,55 @@ export default {
                     id: 2,
                     title: "Others",
                     items: [{
-                        firstname: "Rais",
-                        lastname: "Yassin",
-                        email: "yassine@rais.me",
-                        phone: "06 01 02 03 04",
-                        fax: "03 24 65 89 78",
-                        city: "Reims",
-                        status: 0,
-                        id:1,
-                    }, 
-                    {
-                        id: 2,
-                        firstname: "Rais",
-                        lastname: "Mohammed",
-                        email: "yassine@rais.me",
-                        phone: "06 01 02 03 04",
-                        fax: "03 24 65 89 78",
-                        city: "Reims",
-                        status: 0,
-                    },
-                    {
-                        id: 3,
-                        firstname: "Rais",
-                        lastname: "Remy",
-                        email: "yassine@rais.me",
-                        phone: "06 01 02 03 04",
-                        fax: "03 24 65 89 78",
-                        city: "Reims",
-                        status: 0,
-                    },
-                    {
-                        id: 4,
-                        firstname: "Papriko",
-                        lastname: "Albero",
-                        email: "alberto@rais.me",
-                        phone: "06 01 02 03 04",
-                        fax: "03 24 65 89 78",
-                        city: "Reims",
-                        status: 0,
-                    },
-                    {
-                        id: 5,
-                        firstname: "Rais",
-                        lastname: "Yassin",
-                        email: "yassine@rais.me",
-                        phone: "06 01 02 03 04",
-                        fax: "03 24 65 89 78",
-                        city: "Reims",
-                        status: 0,
-                    },
+                            firstname: "Rais",
+                            lastname: "Yassin",
+                            email: "yassine@rais.me",
+                            phone: "06 01 02 03 04",
+                            fax: "03 24 65 89 78",
+                            city: "Reims",
+                            status: 0,
+                            id: 1,
+                        },
+                        {
+                            id: 2,
+                            firstname: "Rais",
+                            lastname: "Mohammed",
+                            email: "yassine@rais.me",
+                            phone: "06 01 02 03 04",
+                            fax: "03 24 65 89 78",
+                            city: "Reims",
+                            status: 0,
+                        },
+                        {
+                            id: 3,
+                            firstname: "Rais",
+                            lastname: "Remy",
+                            email: "yassine@rais.me",
+                            phone: "06 01 02 03 04",
+                            fax: "03 24 65 89 78",
+                            city: "Reims",
+                            status: 0,
+                        },
+                        {
+                            id: 4,
+                            firstname: "Papriko",
+                            lastname: "Albero",
+                            email: "alberto@rais.me",
+                            phone: "06 01 02 03 04",
+                            fax: "03 24 65 89 78",
+                            city: "Reims",
+                            status: 0,
+                        },
+                        {
+                            id: 5,
+                            firstname: "Rais",
+                            lastname: "Yassin",
+                            email: "yassine@rais.me",
+                            phone: "06 01 02 03 04",
+                            fax: "03 24 65 89 78",
+                            city: "Reims",
+                            status: 0,
+                        },
                     ]
                 },
             ]
@@ -209,24 +207,27 @@ export default {
             return this.groups;
         }
     },
-    methods: {
-        switchContact() {
-            this.tabContact = true;
-        },
-        switchChannel() {
-            this.tabContact = false;
-        }
-
-    }
 }
 </script>
 
-<style scoped>
-.active {
-    @apply text-white bg-light bg-opacity-10 rounded-lg border border-white border-opacity-5;
+<style lang="scss" scoped>
+.contact-list {
+    @apply flex flex-col w-2/5 p-6 divide-y divide-light divide-opacity-5;
+
+    .header{
+        @apply flex w-full justify-between pb-6;
+    }
 }
-.message{
+
+.message {
     background-color: #0e78f9;
 }
 
+.contact-box {
+    @apply w-full flex flex-col bg-light bg-opacity-5 rounded-lg border border-white border-opacity-5 p-10 divide-y divide-light divide-opacity-5;
+}
+
+.contact-info {
+    @apply bg-light border border-white border-opacity-5 bg-opacity-5 w-12 h-12 rounded-lg items-center justify-center flex;
+}
 </style>

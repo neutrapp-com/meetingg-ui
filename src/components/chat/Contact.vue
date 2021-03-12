@@ -1,5 +1,5 @@
 <template>
-    <div class="contact" :class="active == true ? 'active' : ''">
+    <div class="contact-user" :class="active == true ? 'active' : ''">
         <avatar :image="avatar" size="w-14 h-14"/>
         <p class="ml-4 self-center text-sm">{{ getFullName }}</p>
     </div>
@@ -30,7 +30,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.contact {
+.contact-user {
     @apply text-xl bg-opacity-10 w-full flex items-center space-x-4 p-2 rounded-lg transition duration-100 ease-in-out cursor-pointer  text-dark ;
 
     .dark & {
