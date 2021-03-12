@@ -58,7 +58,7 @@ export default {
     @apply flex flex-row h-12 bg-light bg-opacity-5 rounded-lg p-1;
 
     .item{
-        @apply w-32 focus:outline-none text-gray-400;
+        @apply focus:outline-none text-gray-400 w-full;
     }
 
     .active{

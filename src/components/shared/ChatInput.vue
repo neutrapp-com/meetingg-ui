@@ -1,5 +1,5 @@
 <template>
-    <div class="p-4 flex flex-col h-28">
+    <div class="p-4 flex flex-col h-24">
         <div class="flex justify-between w-full pb-4">
             <div class="flex space-x-4">
                 <ion-icon class="text-gray-600 text-2xl" name="document-outline"></ion-icon>

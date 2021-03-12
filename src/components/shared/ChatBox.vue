@@ -1,5 +1,5 @@
 <template>
-    <div class="flex flex-col p-4 scroll">
+    <div class="flex flex-col scroll">
         <div v-for="message in messages" v-bind:key="message.id">
             <user-message  v-if="message.user_id == id" :content="message.content" :date="message.date"/>
             <target-message v-else :content="message.content" :date="message.date"/>

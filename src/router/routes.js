@@ -91,7 +91,25 @@ const dashboardRoutes = [
 
 const dashboardMenu = dashboardRoutes.filter(route => true === route.menu);
 
-const allRoutes = [...authRoutes, ...errorPagesRoutes, ...dashboardRoutes];
+const callRoutes = [
+    {
+        path: '/call',
+        name: 'Call',
+        icon: 'call',
+        menu: true,
+        component: () => import('./views/pages/dashboard/Call.vue'),
+    },
+].map(route => {
+    return {
+        ...route,
+        meta: {
+            layout: 'Authentified',
+            menu: route.meta && route.meta.menu && true || false
+        }
+    }
+});
+
+const allRoutes = [...authRoutes, ...errorPagesRoutes, ...dashboardRoutes, ...callRoutes];
 
 export default allRoutes;
 export { allRoutes, dashboardMenu };
