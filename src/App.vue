@@ -1,9 +1,7 @@
 <template>
-  <div>
-    <component :is="layout">
-      <RouterView :key="$route.fullPath" />
-    </component>
-  </div>
+  <component :is="layout" :class="getTheme">
+    <RouterView :key="$route.fullPath" />
+  </component>
 </template>
 
 
@@ -12,6 +10,8 @@
 
 import { shallowRef, watch } from 'vue'
 import { useRoute } from 'vue-router'
+import { mapActions, mapGetters } from 'vuex'
+
 
 import AppLayoutDefault from '@/layouts/Default'
 
@@ -34,6 +34,25 @@ export default {
       { immediate: true }
     )
     return { layout }
-  }
+  },
+  computed:{
+    ...mapGetters('theme',['getTheme'])
+  },
+  methods : {
+    ...mapActions('theme',['initTheme'])
+  },
+  beforeMount() {
+    this.initTheme();
+  },
 }
 </script>
+
+<style lang="scss">
+html{
+  @apply bg-light text-dark;
+
+  & .dark{
+    @apply bg-dark text-light;
+  }
+}
+</style>

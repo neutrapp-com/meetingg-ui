@@ -97,11 +97,12 @@
 </template>
 
 <script>
-import Avatar from '../../../../components/shared/Avatar.vue'
-import ChatBox from '../../../../components/shared/ChatBox.vue'
-import ChatInput from '../../../../components/shared/ChatInput.vue'
-import Contact from '../../../../components/chat/Contact.vue'
+import Avatar from '@/components/shared/Avatar.vue'
+import ChatBox from '@/components/shared/ChatBox.vue'
+import ChatInput from '@/components/shared/ChatInput.vue'
+import Contact from '@/components/chat/Contact.vue'
 import ContainerList from '@/components/ContainerList.vue'
+
 
 export default {
      data(){

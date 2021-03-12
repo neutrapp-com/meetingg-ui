@@ -15,7 +15,14 @@ const authRoutes = [
         name: 'Password Forget',
         component: () => import('./views/pages/auth/ForgotPassword.vue'),
     },
-]
+].map(route => {
+    return {
+        ...route,
+        meta: {
+            layout: 'Authentification',
+        }
+    }
+});
 
 const errorPagesRoutes = [
     {

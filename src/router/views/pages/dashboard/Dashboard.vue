@@ -22,7 +22,7 @@
 <script>
 import SquareButton from '@/components/cards/SquareButton.vue';
 import WidgetDateTime from '@/components/widgets/WidgetDateTime.vue';
-import MeetingList from '../../../../components/widgets/meeting/List.vue';
+import MeetingList from '@/components/widgets/meeting/List.vue';
 export default {
     components: {
         SquareButton,

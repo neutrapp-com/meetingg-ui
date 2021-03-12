@@ -1,7 +1,7 @@
 <template>
 <div class="flex divide-x divide-white divide-opacity-5">
     <SideBar />
-    <div class="w-full">
+    <div class="main">
         <navbar :title="getTitle" />
         <div class="flex flex-wrap lg:flex-nowrap w-full pt-24 h-full lg:divide-x divide-white divide-opacity-5 sm:space-y-8 md:space-y-0 justify-center">
             <slot />
@@ -30,5 +30,8 @@ export default {
 <style scoped>
 .container {
     border-left: 0.5px solid rgba(255, 255, 255, 0.1)
+}
+.main{
+    @apply flex-grow;
 }
 </style>

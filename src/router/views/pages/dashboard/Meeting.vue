@@ -10,8 +10,8 @@
 </template>
 
 <script>
-import List from '../../../../components/widgets/meeting/List.vue';
-import Actions from '../../../../components/widgets/meeting/Actions.vue';
+import List from '@/components/widgets/meeting/List.vue';
+import Actions from '@/components/widgets/meeting/Actions.vue';
 export default {
     components: {
         List,

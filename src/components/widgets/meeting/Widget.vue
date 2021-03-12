@@ -97,9 +97,12 @@ export default {
 
 <style lang="scss" scoped>
     .widgetmeeting {
-        @apply w-1/2 p-10 rounded-2xl text-white flex;
+        @apply w-1/2 p-10 rounded-2xl text-dark flex;
 
 
+        .dark & {
+            @apply text-light;
+        }
 
         ion-icon {
             fill: white;
