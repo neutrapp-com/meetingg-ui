@@ -24,26 +24,26 @@
         </div>
         <div class="w-full flex justify-between py-5 text-gray-400">
             <div class="flex space-x-6">
-                <div class="bg-white bg-opacity-5 border border-white border-opacity-5 h-12 rounded-lg items-center justify-center flex">
-                    <ion-icon class="text-gray-400 text-xl ml-4" name="call-outline"></ion-icon>
-                    <p class="mx-4">Call</p>
-                </div>
-                <div class="message h-12 border border-white border-opacity-5 rounded-lg items-center justify-center flex">
-                    <ion-icon class="text-white text-xl ml-4" name="chatbox-ellipses-outline"></ion-icon>
-                    <p class="mx-4 text-white">Message</p>
-                </div>
-                <div class="bg-white border border-white border-opacity-5 bg-opacity-5 h-12 rounded-lg items-center justify-center flex">
-                    <ion-icon class="text-gray-400 text-xl ml-4" name="videocam-outline"></ion-icon>
-                    <p class="mx-4">Video-Call</p>
-                </div>
+                <btn>
+                    <ion-icon class="text-gray-400 text-xl" name="call-outline"></ion-icon>
+                    <p class="ml-4">Call</p>
+                </btn>
+                <btn :highlighted="true">
+                    <ion-icon class="text-white text-xl" name="chatbox-ellipses-outline"></ion-icon>
+                    <p class="ml-4 text-white">Message</p>
+                </btn>
+                <btn>
+                    <ion-icon class="text-gray-400 text-xl" name="videocam-outline"></ion-icon>
+                    <p class="ml-4">Video-Call</p>
+                </btn>
             </div>
             <div class="flex space-x-6">
-                <div class="bg-white border border-white border-opacity-5 bg-opacity-5 w-12 h-12 rounded-lg items-center justify-center flex">
+                <btn>
                     <ion-icon class="text-gray-400 text-xl" name="create-outline"></ion-icon>
-                </div>
-                <div class="bg-white border border-white border-opacity-5 bg-opacity-5 w-12 h-12 rounded-lg items-center justify-center flex">
+                </btn>
+                <btn>
                     <ion-icon class="text-gray-400 text-xl" name="trash-outline"></ion-icon>
-                </div>
+                </btn>
             </div>
         </div>
         <div class="flex w-full pb-6">
@@ -100,12 +100,14 @@
 import Avatar from '@/components/shared/Avatar.vue'
 import ListGroup from '@/components/shared/ListGroup.vue'
 import ListSubGroup from '@/components/shared/ListSubGroup.vue'
+import Btn from '@/components/shared/Btn.vue'
 
 export default {
     components:{
         Avatar,
         ListGroup,
-        ListSubGroup
+        ListSubGroup,
+        Btn
     },
     data(){
         return{

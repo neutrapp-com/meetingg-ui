@@ -2,20 +2,33 @@
     <div class="widget flex divide-y divide-white divide-opacity-5">
         <div class="flex w-full justify-between mb-4"> 
             <h1> {{title}} </h1>
-            <p>
+            <p class="mr-4">
                 <ion-icon name="time-outline"></ion-icon> {{ getStartHour }} - {{ getEndHour }} |  {{ getTimeRemaining }}
             </p>
         </div>
         <div class="flex w-full"> 
             <div class="button-list">
-                <div class="flex w-full">
-                    <text-button text="Start" color="#0e78f9" fontColor="#FFFFFF" link="https://youtube.com"/>
-                    <text-button text="Copy invitation" link="page1"/>
-                    <text-button text="Join from Room"/>
+                <div class="flex w-full space-x-4">
+                    <btn :highlighted="true">
+                        <ion-icon class="text-white mr-2 text-xl" name="caret-forward-outline"></ion-icon>
+                        Start
+                    </btn>
+                    <btn>
+                        <ion-icon class="text-gray-400 mr-2 text-xl" name="copy-outline"></ion-icon>
+                        Copy invitation
+                    </btn>
+                    <btn>
+                        <ion-icon class="text-gray-400 mr-2 text-xl" name="log-in-outline"></ion-icon>
+                        Join from Room
+                    </btn>
                 </div>
-                <div class="flex">
-                    <icon-button icon="https://icons-for-free.com/iconfiles/png/512/svg+create+edit+edit+file+office+pencil+writing+creativ+icon-1320185158722776676.png"/>
-                    <icon-button icon="https://image.flaticon.com/icons/png/512/61/61848.png"/>
+                <div class="flex space-x-4">
+                    <btn>
+                        <ion-icon class="text-gray-400 text-xl" name="trash-outline"></ion-icon>
+                    </btn>
+                    <btn>
+                        <ion-icon class="text-gray-400 text-xl" name="create-outline"></ion-icon>
+                    </btn>
                 </div>
             </div>
         </div>
@@ -24,12 +37,11 @@
 </template>
 
 <script>
-    import TextButton from '../../cards/TextButton.vue';
-    import IconButton from '../../cards/IconButton.vue';
+    import Btn from '../../shared/Btn.vue';
 
     export default {
         name : 'manageMeeting',
-        components: { TextButton, IconButton },
+        components: { Btn },
         props : {
             title : {
                 default : 'Meeting Title',
@@ -82,7 +94,7 @@
 
 <style scoped lang="scss">
 .widget {
-    @apply flex flex-col;
+    @apply flex flex-col pb-4;
 
     h1{
         color: white;
@@ -97,9 +109,6 @@
     .button-list{
         @apply flex w-full justify-between py-4;
 
-        a{
-            margin-right: 12px;
-        }
     }
 }
 </style>

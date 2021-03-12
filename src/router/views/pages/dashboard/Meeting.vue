@@ -24,7 +24,7 @@ export default {
                 startTime: (Date.now()/1000 + 3600 * 3),
                 endTime: (Date.now()/1000  + 3600 * 4),
                 meetingDescription: 'Your very cool description',
-                meetingId: 1,
+                meetingId: 'XXX XXX XXX',
                 meetingMembers: [{ 
                         profileLink: "1", 
                         fullname: 'Jhon Doe 1', 
