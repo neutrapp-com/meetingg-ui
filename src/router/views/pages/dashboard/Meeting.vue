@@ -1,10 +1,10 @@
 <template>
     <div class="flex w-full divide-x divide-light divide-opacity-5">
         <div class="flex w-1/2 p-6 scroll">
-            <list :meetingsList="list"/>
+            <list class="pr-6" :meetingsList="list"/>
         </div>  
         <div class="flex w-1/2 p-6 scroll">
-            <actions v-bind="current"/>
+            <actions class="pr-6" v-bind="current"/>
         </div>  
     </div>
 </template>

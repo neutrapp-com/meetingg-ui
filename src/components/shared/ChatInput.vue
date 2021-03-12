@@ -11,15 +11,19 @@
         </div>
         <div class="flex w-full items-center">
             <div class="flex w-full text-gray-400">Message {{destination}}</div>
-            <div class="button border border-white border-opacity-5 h-10 px-6 rounded-lg items-center flex">
+            <btn :highlighted="true">
                 <p class="text-white">Send</p>
-            </div>
+            </btn>
         </div>
     </div>
 </template>
 
 <script>
+import Btn from '@/components/shared/Btn.vue'
     export default {
+        components:{
+            Btn,
+        },
         props:{
             destination: {
                 type: String,
