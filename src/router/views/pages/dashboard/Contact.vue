@@ -1,7 +1,7 @@
 <template>
 <div class="contact-list">
     <div class="header">
-        <Switch :items="[{name : 'contact',title :'Contact', },{name : 'channels',title :'Meetings', selected:true}]" v-on:switch="tab = $event" />
+        <Switch class="w-4/5" :items="[{name : 'contact',title :'Contact', },{name : 'channels',title :'Meetings', selected:true}]" v-on:switch="tab = $event" />
 
         <btn>
             <ion-icon class="text-white text-xl" name="person-add"></ion-icon>
