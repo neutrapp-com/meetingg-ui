@@ -42,7 +42,7 @@ export default {
     }
 
     .main {
-        @apply flex-grow;
+        @apply w-full flex-grow;
     }
 }
 </style>
