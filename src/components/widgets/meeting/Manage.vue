@@ -1,19 +1,25 @@
 <template>
-    <div class="widget">
-        <h1> {{title}} </h1>
-        <h6>
-            <ion-icon name="time-outline"></ion-icon> {{ getStartHour }} - {{ getEndHour }} |  {{ getTimeRemaining }}
-        </h6>
-        <hr>
-        <div class="button-list">
-            <text-button text="Start" color="#0e78f9" fontColor="#FFFFFF" link="https://youtube.com"/>
-            <text-button text="Copy invitation" link="page1"/>
-            <text-button text="Join from Room"/>
-            <icon-button icon="https://icons-for-free.com/iconfiles/png/512/svg+create+edit+edit+file+office+pencil+writing+creativ+icon-1320185158722776676.png"/>
-            <icon-button icon="https://image.flaticon.com/icons/png/512/61/61848.png"/>
+    <div class="widget flex divide-y divide-white divide-opacity-5">
+        <div class="flex w-full justify-between mb-4"> 
+            <h1> {{title}} </h1>
+            <p>
+                <ion-icon name="time-outline"></ion-icon> {{ getStartHour }} - {{ getEndHour }} |  {{ getTimeRemaining }}
+            </p>
         </div>
-        <hr>
-        <h6> {{description}} </h6>
+        <div class="flex w-full"> 
+            <div class="button-list">
+                <div class="flex w-full">
+                    <text-button text="Start" color="#0e78f9" fontColor="#FFFFFF" link="https://youtube.com"/>
+                    <text-button text="Copy invitation" link="page1"/>
+                    <text-button text="Join from Room"/>
+                </div>
+                <div class="flex">
+                    <icon-button icon="https://icons-for-free.com/iconfiles/png/512/svg+create+edit+edit+file+office+pencil+writing+creativ+icon-1320185158722776676.png"/>
+                    <icon-button icon="https://image.flaticon.com/icons/png/512/61/61848.png"/>
+                </div>
+            </div>
+        </div>
+        <p> {{description}} </p>
     </div>
 </template>
 
@@ -83,19 +89,13 @@
         font-size: 2rem;
     }
 
-    h6{
-        @apply p-4;
+    p{
+        @apply pt-4;
         color: #a8a9ae;
     }
 
-    hr{
-        height: 1px;
-        background-color: #a8a9ae;
-        border: none;
-    }
-
     .button-list{
-        @apply flex p-4;
+        @apply flex w-full justify-between py-4;
 
         a{
             margin-right: 12px;
