@@ -67,7 +67,7 @@
         </div>
         <div class="flex flex-col chatpanel content-between divide-y divide-white divide-opacity-5">
             <chat-box class="flex w-full h-full"/>
-            <chat-input class="flex w-full"/>
+            <chat-input class="flex w-full" :destination="getCurrentDiscussion.firstname + ' ' + getCurrentDiscussion.lastname"/>
         </div>
     </div>
     <div class="flex-grow w-1/4 p-6">
