@@ -75,7 +75,7 @@ export default {
     }
 
     .dropmenu {
-        @apply bg-white ring-1 ring-dark ring-opacity-5;
+        @apply bg-light ring-1 ring-dark ring-opacity-5;
 
         .dark & {
             @apply bg-dark text-light ring-white ring-opacity-5;

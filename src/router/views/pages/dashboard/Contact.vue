@@ -1,12 +1,12 @@
 <template>
 <div class="flex flex-col w-2/5 p-6 divide-y divide-white divide-opacity-5">
     <div class="flex w-full justify-between pb-6">
-        <div class="flex flex-row h-12 bg-white bg-opacity-5 rounded-lg p-1 noselect">
+        <div class="flex flex-row h-12 bg-light bg-opacity-5 rounded-lg p-1 noselect">
             <button @click="switchContact" :class="tabContact ? 'active' : 'text-gray-400'" class="w-32 focus:outline-none">Contacts</button>
             <button @click="switchChannel" :class="!tabContact ? 'active' : 'text-gray-400'" class="w-32 focus:outline-none">Channels</button>
         </div>
 
-        <div class="bg-white bg-opacity-5 w-12 h-12 rounded-lg items-center justify-center flex">
+        <div class="bg-light bg-opacity-5 w-12 h-12 rounded-lg items-center justify-center flex">
             <ion-icon class="text-white text-xl" name="person-add"></ion-icon>
         </div>
     </div>
@@ -17,14 +17,14 @@
     </div>
   </div>  
   <div class="flex-grow h-full p-6">
-    <div class="w-full flex flex-col bg-white bg-opacity-5 rounded-lg border border-white border-opacity-5 p-10 divide-y divide-white divide-opacity-5">
+    <div class="w-full flex flex-col bg-light bg-opacity-5 rounded-lg border border-white border-opacity-5 p-10 divide-y divide-white divide-opacity-5">
         <div class="flex w-full pb-10">
             <avatar size="w-32 h-32"/>
             <p class="self-center text-4xl ml-10 text-white font-bold">{{currentContact.firstname + " " + currentContact.lastname}}</p>  
         </div>
         <div class="w-full flex justify-between py-5 text-gray-400">
             <div class="flex space-x-6">
-                <div class="bg-white bg-opacity-5 border border-white border-opacity-5 h-12 rounded-lg items-center justify-center flex">
+                <div class="bg-light bg-opacity-5 border border-white border-opacity-5 h-12 rounded-lg items-center justify-center flex">
                     <ion-icon class="text-gray-400 text-xl ml-4" name="call-outline"></ion-icon>
                     <p class="mx-4">Call</p>
                 </div>
@@ -32,16 +32,16 @@
                     <ion-icon class="text-white text-xl ml-4" name="chatbox-ellipses-outline"></ion-icon>
                     <p class="mx-4 text-white">Message</p>
                 </div>
-                <div class="bg-white border border-white border-opacity-5 bg-opacity-5 h-12 rounded-lg items-center justify-center flex">
+                <div class="bg-light border border-white border-opacity-5 bg-opacity-5 h-12 rounded-lg items-center justify-center flex">
                     <ion-icon class="text-gray-400 text-xl ml-4" name="videocam-outline"></ion-icon>
                     <p class="mx-4">Video-Call</p>
                 </div>
             </div>
             <div class="flex space-x-6">
-                <div class="bg-white border border-white border-opacity-5 bg-opacity-5 w-12 h-12 rounded-lg items-center justify-center flex">
+                <div class="bg-light border border-white border-opacity-5 bg-opacity-5 w-12 h-12 rounded-lg items-center justify-center flex">
                     <ion-icon class="text-gray-400 text-xl" name="create-outline"></ion-icon>
                 </div>
-                <div class="bg-white border border-white border-opacity-5 bg-opacity-5 w-12 h-12 rounded-lg items-center justify-center flex">
+                <div class="bg-light border border-white border-opacity-5 bg-opacity-5 w-12 h-12 rounded-lg items-center justify-center flex">
                     <ion-icon class="text-gray-400 text-xl" name="trash-outline"></ion-icon>
                 </div>
             </div>
@@ -52,7 +52,7 @@
         <div>
             <div class="flex w-full pt-6">
                 <div class="flex w-2/3">
-                    <div class="bg-white border border-white border-opacity-5 bg-opacity-5 w-12 h-12 rounded-lg items-center justify-center flex">
+                    <div class="bg-light border border-white border-opacity-5 bg-opacity-5 w-12 h-12 rounded-lg items-center justify-center flex">
                         <ion-icon class="text-gray-400 text-xl" name="call-outline"></ion-icon>
                     </div>
                     <div class="text-white mt-1 ml-4">
@@ -61,7 +61,7 @@
                     </div>
                 </div>
                 <div class="flex w-1/2">
-                    <div class="bg-white border border-white border-opacity-5 bg-opacity-5 w-12 h-12 rounded-lg items-center justify-center flex">
+                    <div class="bg-light border border-white border-opacity-5 bg-opacity-5 w-12 h-12 rounded-lg items-center justify-center flex">
                         <ion-icon class="text-gray-400 text-xl" name="print-outline"></ion-icon>
                     </div>
                     <div class="text-white mt-1 ml-4">
@@ -72,7 +72,7 @@
             </div>
             <div class="flex w-full pt-6">
                 <div class="flex w-2/3">
-                    <div class="bg-white border border-white border-opacity-5 bg-opacity-5 w-12 h-12 rounded-lg items-center justify-center flex">
+                    <div class="bg-light border border-white border-opacity-5 bg-opacity-5 w-12 h-12 rounded-lg items-center justify-center flex">
                         <ion-icon class="text-gray-400 text-xl" name="mail-outline"></ion-icon>
                     </div>
                     <div class="text-white mt-1 ml-4">
@@ -81,7 +81,7 @@
                     </div>
                 </div>
                 <div class="flex w-1/2">
-                    <div class="bg-white border border-white border-opacity-5 bg-opacity-5 w-12 h-12 rounded-lg items-center justify-center flex">
+                    <div class="bg-light border border-white border-opacity-5 bg-opacity-5 w-12 h-12 rounded-lg items-center justify-center flex">
                         <ion-icon class="text-gray-400 text-xl" name="business-outline"></ion-icon>
                     </div>
                     <div class="text-white mt-1 ml-4">
@@ -221,7 +221,7 @@ export default {
 
 <style scoped>
 .active {
-    @apply text-white bg-white bg-opacity-10 rounded-lg border border-white border-opacity-5;
+    @apply text-white bg-light bg-opacity-10 rounded-lg border border-white border-opacity-5;
 }
 .message{
     background-color: #0e78f9;

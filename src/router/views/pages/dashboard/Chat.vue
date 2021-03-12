@@ -2,7 +2,7 @@
 <div class="flex flex-row w-full divide-x divide-white divide-opacity-5">
     <div class="flex flex-col w-1/4 divide-y divide-white divide-opacity-5">
         <div class="flex justify-between p-6">
-            <div class="flex flex-row h-12 w-full bg-white mr-4 bg-opacity-5 rounded-lg p-1 noselect">
+            <div class="flex flex-row h-12 w-full bg-light mr-4 bg-opacity-5 rounded-lg p-1 noselect">
                 <input
                     type="text"
                     id="search"
@@ -10,7 +10,7 @@
                     placeholder="Jump to..."
                     />   
             </div>
-            <div class="bg-white bg-opacity-5 w-14 h-12 rounded-lg items-center justify-center flex">
+            <div class="bg-light bg-opacity-5 w-14 h-12 rounded-lg items-center justify-center flex">
                 <ion-icon class="text-gray-400 text-xl" name="search-outline"></ion-icon>
             </div>
         </div>  
@@ -23,7 +23,7 @@
                             <ion-icon class="text-xl text-gray-400 px-3 my-3" name="star"></ion-icon>
                             <div class="title my-3">Starred Messages</div>
                         </div>
-                        <div class="bg-white bg-opacity-5 w-12 h-10 p-1 rounded-lg items-center justify-center flex border border-white border-opacity-5">
+                        <div class="bg-light bg-opacity-5 w-12 h-10 p-1 rounded-lg items-center justify-center flex border border-white border-opacity-5">
                             0
                         </div>
                     </div>
@@ -34,7 +34,7 @@
                             <ion-icon class="text-xl text-gray-400 px-3 my-3" name="person-add"></ion-icon>
                             <div class="title my-3">Contact Requests</div>
                         </div>
-                        <div class="bg-white bg-opacity-5 w-12 h-10 p-1 rounded-lg items-center justify-center flex border border-white border-opacity-5">
+                        <div class="bg-light bg-opacity-5 w-12 h-10 p-1 rounded-lg items-center justify-center flex border border-white border-opacity-5">
                             0
                         </div>
                     </div>
@@ -54,13 +54,13 @@
                 <p class="self-center text-xl ml-6 text-white">{{getCurrentDiscussion.firstname + " " + getCurrentDiscussion.lastname}}</p>  
             </div>
             <div class="flex space-x-4">
-                <div class="bg-white border border-white border-opacity-5 bg-opacity-5 w-12 h-12 rounded-lg items-center justify-center flex">
+                <div class="bg-light border border-white border-opacity-5 bg-opacity-5 w-12 h-12 rounded-lg items-center justify-center flex">
                     <ion-icon class="text-gray-400 text-xl" name="videocam-outline"></ion-icon>
                 </div>
-                <div class="bg-white border border-white border-opacity-5 bg-opacity-5 w-12 h-12 rounded-lg items-center justify-center flex">
+                <div class="bg-light border border-white border-opacity-5 bg-opacity-5 w-12 h-12 rounded-lg items-center justify-center flex">
                     <ion-icon class="text-gray-400 text-xl" name="call-outline"></ion-icon>
                 </div>
-                <div class="bg-white border border-white border-opacity-5 bg-opacity-5 w-12 h-12 rounded-lg items-center justify-center flex">
+                <div class="bg-light border border-white border-opacity-5 bg-opacity-5 w-12 h-12 rounded-lg items-center justify-center flex">
                     <ion-icon class="text-gray-400 text-xl" name="star-outline"></ion-icon>
                 </div>
             </div>
