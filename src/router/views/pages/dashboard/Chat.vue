@@ -57,13 +57,13 @@
             </div>
         </div>
         <div class="flex flex-col chatpanel content-between divide-y divide-light ">
-            <chat-box class="flex w-full h-full" />
+            <chat-box class="flex p-4 w-full h-full" />
             <chat-input class="flex w-full" :destination="getCurrentDiscussion.firstname + ' ' + getCurrentDiscussion.lastname" />
         </div>
     </div>
     <div class="flex-grow w-1/4 divide-y divide-light ">
-        <div class="flex p-6">
-            <btn :highlighted="true" class="w-full h-12 rounded-lg ">
+        <div class="flex p-y">
+            <btn :highlighted="true" class="w-full h-12 m-6 rounded-lg ">
                 <ion-icon class="text-white text-xl" name="add-outline"></ion-icon>
                 <p class="text-white">Add members</p>
             </btn>
