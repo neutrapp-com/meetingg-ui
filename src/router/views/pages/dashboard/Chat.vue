@@ -11,38 +11,16 @@
         </div>
         <div class="flex flex-1  scroll">
             <div class="flex flex-col w-full text-light p-6">
-                <div class="flex w-full font-bold text-xl mb-4">Starred</div>
-                <div class="flex mt-4">
-                    <div class="w-full p-1 cursor-pointer rounded-lg flex text-gray-400 justify-between">
-                        <div class="flex w-full">
-                            <ion-icon class="text-xl text-gray-400 px-3 my-3" name="star"></ion-icon>
-                            <div class="title my-3">Starred Messages</div>
-                        </div>
-                        <div class="bg-light bg-opacity-5 w-12 h-10 p-1 rounded-lg items-center justify-center flex border border-white border-opacity-5">
-                            0
-                        </div>
-                    </div>
-                </div>
-                <div class="flex">
-                    <div class="w-full p-1 cursor-pointer rounded-lg flex text-gray-400 justify-between">
-                        <div class="flex w-full">
-                            <ion-icon class="text-xl text-gray-400 px-3 my-3" name="person-add"></ion-icon>
-                            <div class="title my-3">Contact Requests</div>
-                        </div>
-                        <div class="bg-light bg-opacity-5 w-12 h-10 p-1 rounded-lg items-center justify-center flex border border-white border-opacity-5">
-                            0
-                        </div>
-                    </div>
-                </div>
-                <contact v-for="contact in getItems" :key="contact.id" @click="$emit('contactClicked' , contact)" v-bind="contact" />
+                <div class="flex w-full font-bold text-xl mb-4">Discussions</div>
+                <contact v-for="contact in getDiscussions" :key="contact.id" @click="selectDiscussion(contact)" v-bind="contact" />
             </div>
         </div>
     </div>
-    <div class="flex-grow w-1/2 divide-y divide-light ">
+    <div v-if="getSelectedDiscussion !==null" class="flex-grow w-1/2 divide-y divide-light ">
         <div class="flex justify-between w-full p-6">
             <div class="flex">
                 <avatar size="w-12 h-12" />
-                <p class="self-center text-xl ml-6 text-light">{{getCurrentDiscussion.firstname + " " + getCurrentDiscussion.lastname}}</p>
+                <p class="self-center text-xl ml-6 text-light">{{getSelectedDiscussion.firstname + " " + getSelectedDiscussion.lastname}}</p>
             </div>
             <div class="flex space-x-4">
                 <btn>
@@ -58,9 +36,10 @@
         </div>
         <div class="flex flex-col chatpanel content-between divide-y divide-light ">
             <chat-box class="p-5" />
-            <chat-input class=" w-full" :destination="getCurrentDiscussion.firstname + ' ' + getCurrentDiscussion.lastname" />
+            <chat-input class=" w-full" :destination="getSelectedDiscussion.firstname + ' ' + getSelectedDiscussion.lastname" />
         </div>
     </div>
+    <div v-else class="flex-grow w-1/2 divide-y divide-light"> <p>eeee</p></div>
     <div class="flex-grow w-1/4 divide-y divide-light scroll">
         <div class="flex p-y">
             <btn :highlighted="true" class="w-full h-12 m-6 rounded-lg ">
@@ -102,6 +81,14 @@ import Contact from '@/components/chat/Contact.vue'
 import ContainerList from '@/components/ContainerList.vue'
 import Btn from '@/components/shared/Btn.vue'
 
+
+import {
+    discussionComputed,
+    discussionMethods
+} from '@/state/helpers';
+
+
+
 export default {
     components: {
         Avatar,
@@ -111,43 +98,12 @@ export default {
         ContainerList,
         Btn
     },
-    data() {
-        return {
-            group: [{
-                firstname: "Rais",
-                lastname: "Yassin",
-                email: "yassine@rais.me",
-                phone: "06 01 02 03 04",
-                fax: "03 24 65 89 78",
-                city: "Reims",
-                status: 0,
-                id: 1,
-            }, {
-                id: 2,
-                firstname: "Rais",
-                lastname: "Yassin",
-                email: "yassine@rais.me",
-                phone: "06 01 02 03 04",
-                fax: "03 24 65 89 78",
-                city: "Reims",
-                status: 0,
-            }],
-
-            image: []
-        }
+    methods:{
+        ...discussionMethods
     },
-    computed: {
-        getCurrentDiscussion() {
-            return {
-                lastname: "Rais",
-                firstname: "Yassin",
-            }
-        },
-        getItems() {
-            return this.group;
-        },
+    computed:{
+        ...discussionComputed
     }
-
 }
 </script>
 
@@ -160,7 +116,7 @@ export default {
         max-height: calc(100vh - 6rem * 2);
     }
     .btn-icon{
-        @apply text-gray-400 text-xl;
+        @apply text-gray-400 text-5xl;
     }
 }
 </style>

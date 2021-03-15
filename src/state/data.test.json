@@ -93,5 +93,24 @@
                 "group_id": 2
             }
         ]
+    },
+    "discussion": {
+        "list": [
+            {
+                "id": 1,
+                "firstname": "Yassin",
+                "lastname": "Rais"
+            },
+            {
+                "id": 2,
+                "firstname": "Yassin",
+                "lastname": "Rais"
+            },
+            {
+                "id": 3,
+                "firstname": "Yassin",
+                "lastname": "Rais"
+            }
+        ]
     }
 }

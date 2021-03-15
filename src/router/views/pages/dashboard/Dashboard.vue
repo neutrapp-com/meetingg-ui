@@ -7,13 +7,13 @@
         <square-button icon="desktop-outline" color="#0e78f9" title="Share  Screen" description="Show your work" />
     </div>
 </div>
-<div class="flex flex-grow p-16">
-    <div class="flex flex-col w-full widgets">
+<div class="flex flex-grow p-16 scroll">
+    <div class="flex flex-col w-full widgets pr-16">
       <div class="widget-item">
         <widget-date-time />
       </div>
-      <div class="widget-item">
-        <meeting-list />
+      <div class="widget-item pb-16">
+        <meeting-list :meetingsList="getMeetings"/>
       </div>
     </div>
 </div>
@@ -23,11 +23,19 @@
 import SquareButton from '@/components/cards/SquareButton.vue';
 import WidgetDateTime from '@/components/widgets/WidgetDateTime.vue';
 import MeetingList from '@/components/widgets/meeting/List.vue';
+
+import {
+    meetingComputed,
+} from '@/state/helpers';
+
 export default {
     components: {
         SquareButton,
         WidgetDateTime,
         MeetingList
+    },
+    computed:{
+        ...meetingComputed
     }
 }
 </script>
