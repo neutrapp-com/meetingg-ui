@@ -3,9 +3,12 @@
         <div class="flex w-full h-full">
             <camera :participant="getMainCamera"/>
         </div>
-        <div v-for="participant in getSubCamera" v-bind:key="participant.id" class="flex flex-col">
-            <camera class="flex" :participant="participant"/>
+        <div class="scroll">
+            <div v-for="participant in getSubCamera" v-bind:key="participant.id" class="flex flex-col p-1">
+                <camera class="flex" :participant="participant"/>
+            </div>
         </div>
+        
     </div>
 </template>
 
