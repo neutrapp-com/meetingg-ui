@@ -25,7 +25,6 @@ export const getters = {
 export const actions = {
 
     selectDiscussion({ commit }, data) {
-        console.log(data)
         commit('SET_SELECTED_DISCUSSION', data);
     },
 }
