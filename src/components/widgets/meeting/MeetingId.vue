@@ -7,7 +7,7 @@
     </div>
     <div class="text">
         <p>Meeting id:</p>
-        <h1>{{ numberId }}</h1>
+        <h1>{{ id }}</h1>
     </div>
 </div>
 </template>
@@ -17,7 +17,7 @@
 export default {
     name: 'MeetingId',
     props : {
-        numberId : {
+        id : {
             default : 'XXX XXX XXXX',
             type: String
         }
