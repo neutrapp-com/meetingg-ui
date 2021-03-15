@@ -3,14 +3,14 @@ import { mapState, mapGetters, mapActions } from 'vuex'
 /**
  * App Configs
  */
-export const appComputed = {
+const appComputed = {
     ...mapGetters('app', ['getApp'])
 }
 
 /**
  * Layouts
  */
-export const layoutComputed = {
+const layoutComputed = {
     ...mapState('layout', {
         layoutType: (state) => state.layoutType,
         leftSidebarTheme: (state) => state.leftSidebarTheme,
@@ -23,20 +23,33 @@ export const layoutComputed = {
  * Auth
  */
 
-export const authComputed = {
+const authComputed = {
     ...mapState('auth', {
         currentUser: (state) => state.currentUser,
     }),
     ...mapGetters('auth', ['loggedIn', 'getName', 'getAvatar', 'getDefaultAvatar']),
 }
 
-export const authMethods = mapActions('auth', [
+const authMethods = mapActions('auth', [
     'logIn',
     'logOut',
     'register',
     'resetPassword',
 ])
 
+/**
+ * Contact
+ */
+
+const contactMethods = mapActions('contact', [
+    'selectContact'
+]);
+
+const contactComputed = mapGetters('contact', [
+    'getGroups',
+    'getSelectedContact',
+]);
 
 
-export default { authMethods };
+
+export { authMethods, contactComputed, contactMethods, appComputed, layoutComputed, authComputed };
