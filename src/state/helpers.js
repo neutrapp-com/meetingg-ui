@@ -63,6 +63,18 @@ const meetingComputed = mapGetters('meeting', [
     'getSelectedMeeting',
 ]);
 
+/**
+ * Meeting
+ */
+
+const discussionMethods = mapActions('discussion', [
+    'selectDiscussion'
+]);
+
+const discussionComputed = mapGetters('discussion', [
+    'getDiscussions',
+    'getSelectedDiscussion',
+]);
 
 
-export { authMethods, contactComputed, contactMethods, appComputed, layoutComputed, authComputed, meetingMethods, meetingComputed };
+export { authMethods, contactComputed, contactMethods, appComputed, layoutComputed, authComputed, meetingMethods, meetingComputed, discussionMethods, discussionComputed };
