@@ -1,7 +1,7 @@
 <template>
     <img class="mx-auto" src="@/assets/images/logo.png" width="200">
     <h1 class="text-xl font-bold pb-3">Sign In</h1>
-    <router-link to="/register">You don't have an account ?</router-link>
+    <router-link to="/auth/register">You don't have an account ?</router-link>
 
     <div class="form-group">
         <div class="flex -mr-px justify-center p-3">
@@ -9,7 +9,7 @@
                 <ion-icon name="mail-outline"></ion-icon>
             </span>
         </div>
-        <input type="text" id="email" required class="flex-shrink flex-grow flex-auto leading-normal w-px flex-1 border-0 border-grey-light rounded rounded-l-none self-center relative  font-roboto text-md outline-none" placeholder="Email / Username" />
+        <input type="text" v-model="email" id="email" required class="flex-shrink flex-grow flex-auto leading-normal w-px flex-1 border-0 border-grey-light rounded rounded-l-none self-center relative  font-roboto text-md outline-none" placeholder="Email / Username" />
     </div>
 
     <div class="form-group">
@@ -18,18 +18,18 @@
                 <ion-icon name="lock-closed-outline"></ion-icon>
             </span>
         </div>
-        <input type="text" id="password" required class="flex-shrink flex-grow flex-auto leading-normal w-px flex-1 border-0 border-grey-light rounded rounded-l-none self-center relative  font-roboto text-md outline-none" placeholder="Password" />
+        <input type="text" v-model="password" id="password" required class="flex-shrink flex-grow flex-auto leading-normal w-px flex-1 border-0 border-grey-light rounded rounded-l-none self-center relative  font-roboto text-md outline-none" placeholder="Password" />
     </div>
 
     <div class="w-full text-right">
-        <router-link to="/forget">Forgot password ?</router-link>
+        <router-link to="/auth/forget">Forgot password ?</router-link>
     </div>
 
     <button @click="tryToLogIn" class="btn-auth">Sign In</button>
 </template>
 
 <script>
-import authMethods from '@/state/helpers'
+import { authMethods } from '@/state/helpers'
 
 export default {
     components: {},
@@ -50,8 +50,7 @@ export default {
             this.tryingToLogIn = true
             // Reset the authError if it existed.
             this.authError = null
-            this.email = document.getElementById("email").value;
-            this.password = document.getElementById("password").value;
+
 
             return this.logIn({
                     email: this.email,

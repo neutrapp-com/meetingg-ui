@@ -1,10 +1,10 @@
 import axios from 'axios'
-import router from '../../router'
+import router from '@/router'
 import jwtDecode from 'jwt-decode'
 
 
 export const state = {
-    currentUser: getSavedState('auth.currentUser'),
+    user: getSavedState('auth.user'),
     registered: {
         email: null
     }
@@ -12,30 +12,20 @@ export const state = {
 
 export const mutations = {
     SET_CURRENT_USER(state, newValue) {
-        state.currentUser = newValue
-        saveState('auth.currentUser', newValue)
+        state.user = newValue
+        saveState('auth.user', newValue)
         setDefaultAuthHeaders(state)
     },
 }
 
 export const getters = {
-    // Whether the user is currently logged in.
     loggedIn(state) {
-        return !!state.currentUser
-    },
-    getName(state) {
-        return `${state.currentUser.firstname} ${state.currentUser.lastname}`
-    },
-    getDefaultAvatar() {
-        return require(`../../assets/images/avatar.svg`);
-    },
-    getAvatar(state) {
-        return state.currentUser.avatar || getters.getDefaultAvatar;
+        return !!state.user
     },
     tokenExpired(state) {
         try {
-            return !state.currentUser.token || (() => {
-                let dt = jwtDecode(state.currentUser.token);
+            return !state.user.token || (() => {
+                let dt = jwtDecode(state.user.token);
                 return !dt || dt.exp >= (Date.now() - 3600 * 1000) / 1000;
             })(state);
         } catch (e) {
@@ -50,6 +40,7 @@ export const actions = {
     // This is automatically run in `src/state/store.js` when the app
     // starts, along with any other actions named `init` in other modules.
     init({ state, dispatch }) {
+        console.log('init auth');
         setDefaultAuthHeaders(state)
         dispatch('validate')
     },
@@ -73,7 +64,7 @@ export const actions = {
     },
     // register the user
     // eslint-disable-next-line no-unused-vars
-    register({ commit, dispatch, getters }, data) {
+    register({ dispatch, getters }, data) {
         if (getters.loggedIn) return dispatch('validate')
 
         return axios
@@ -85,7 +76,7 @@ export const actions = {
     },
 
     // register the user
-    resetPassword({ commit, dispatch, getters }, { email } = {}) {
+    resetPassword({ dispatch, getters }, { email } = {}) {
         if (getters.loggedIn) return dispatch('validate')
 
         return axios.post('/api/auth/reset', { email }).then((response) => {
@@ -97,12 +88,12 @@ export const actions = {
     // Validates the current user's token and refreshes it
     // with new data from the API.
     validate({ commit, state }) {
-        if (!state.currentUser) return Promise.resolve(null)
+        if (!state.user) return Promise.resolve(null)
 
         return getters.tokenExpired(state) ? axios
             .get('/api/auth/session')
             .then((response) => {
-                const user = response.data.data
+                const user = response.data.session
                 commit('SET_CURRENT_USER', user)
                 return user
             })
@@ -110,15 +101,15 @@ export const actions = {
                 if (error.response && error.response.status === 401) {
                     commit('SET_CURRENT_USER', null)
                 } else {
-                    commit('toasts/ADD_TOAST', {
-                        title: 'Server Down',
-                        content: error.response.data.message ? error.response.data.message : "Server down ... retry"
-                    }, { root: true })
+                    // commit('toasts/ADD_TOAST', {
+                    //     title: 'Server Down',
+                    //     content: error.response.data.message ? error.response.data.message : "Server down ... retry"
+                    // }, { root: true })
                 }
 
-                router.push('/500');
+                router.push('/api/500');
                 return true;
-            }) : new Promise(resolve => resolve(state.currentUser))
+            }) : new Promise(resolve => resolve(state.user))
     },
 }
 
@@ -138,7 +129,7 @@ function saveState(key, state) {
 }
 
 function setDefaultAuthHeaders(state) {
-    axios.defaults.headers.common.Authorization = state.currentUser
-        ? `Bearer ${state.currentUser.token}`
+    axios.defaults.headers.common.Authorization = state.user
+        ? `Bearer ${state.user.token}`
         : ''
 }

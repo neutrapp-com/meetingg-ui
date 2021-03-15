@@ -39,4 +39,3 @@ export const authMethods = mapActions('auth', [
 
 
 
-export default { authMethods };

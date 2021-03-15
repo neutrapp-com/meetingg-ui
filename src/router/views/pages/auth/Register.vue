@@ -69,7 +69,7 @@
     </div>
 
     <div class="w-full text-right">
-    <router-link to="/login">Already have an acount ?</router-link>
+        <router-link to="/auth/login">Already have an acount ?</router-link>
     </div>
 
     <button @click="tryToLogIn" class="btn-auth">Create Account</button>
@@ -77,7 +77,7 @@
 
 <script>
 
-import authMethods from '@/state/helpers'
+import { authMethods } from '@/state/helpers'
 
 
 export default {

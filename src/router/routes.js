@@ -1,3 +1,4 @@
+import store from '@/state/store'
 
 const authRoutes = [
     {
@@ -11,17 +12,21 @@ const authRoutes = [
         component: () => import('./views/pages/auth/Register.vue'),
     },
     {
-        path: '/forget',
+        path: '/forgot',
         name: 'Password Forget',
         component: () => import('./views/pages/auth/ForgotPassword.vue'),
     },
 ].map(route => {
-    return {
+    route = {
         ...route,
-        meta: {
-            layout: 'Authentification',
-        }
+        path: '/auth' + route.path,
     }
+
+    route.meta = {
+        layout: 'Authentification',
+    };
+
+    return route;
 });
 
 const errorPagesRoutes = [
@@ -84,6 +89,7 @@ const dashboardRoutes = [
         ...route,
         meta: {
             layout: 'Authentified',
+            authRequired: true,
             menu: route.meta && route.meta.menu && true || false
         }
     }
