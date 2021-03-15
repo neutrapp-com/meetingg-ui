@@ -1,8 +1,8 @@
 <template>
     <div class="widget">
-        <manage v-bind="{ title: `${ meetingTitle }`, startTime: `${ startTime }`, endTime: `${ endTime }`, description: `${ meetingDescription }` }" />
-        <meeting-id v-bind="{ numberId: `${ meetingId }` }"/>
-        <participant-list :members="meetingMembers" />
+        <manage v-bind="meeting" />
+        <meeting-id v-bind:id="meeting.id"/>
+        <participant-list :members="meeting.members" />
     </div>
 </template>
 
@@ -16,30 +16,9 @@
                         Manage,
                         ParticipantList},
         props : {
-            meetingTitle : {
-                default : 'Meeting Title',
-                type: String
+            meeting: {
+                type: Object
             },
-            startTime : {
-                default : (Date.now()/1000 + 3600 * 3),
-                type: Number
-            },
-            endTime : {
-                default : (Date.now()/1000  + 3600 * 4),
-                type: Number
-            },
-            meetingDescription : {
-                default : 'Your description',
-                type: String
-            },
-            meetingId: {
-                default: 'XXX XXX XXX',
-                type: String
-            },
-            meetingMembers : {
-                default : [{ profileLink: "1", fullname: 'Jhon Doe', icon: 'https://i.imgur.com/DkwKnRj.jpg' }],
-                type: Array()
-            }
         },
         computed : {
             updateDateWidget(){

@@ -1,7 +1,7 @@
 <template>
 <div class="contact-list">
     <div class="header">
-        <Switch class="w-4/5" :items="[{name : 'contact',title :'Contact', },{name : 'channels',title :'Meetings', selected:true}]" v-on:switch="tab = $event" />
+        <Switch class="w-4/5" :items="contactSwitch" v-on:switch="tab = $event" />
 
         <btn>
             <ion-icon class="text-light text-xl" name="person-add"></ion-icon>
@@ -9,15 +9,15 @@
     </div>
     <div class="w-full p-6 scroll">
         <list-group class="pr-6" :title="tab.title">
-            <list-sub-group v-on:contactClicked="currentContact = $event" v-for="subGroup in getSubGroups" v-bind:key="subGroup.id" :items="subGroup.items" :title="subGroup.title" />
+            <list-sub-group v-on:contactClicked="selectContact($event)" v-for="group in getGroups" v-bind:key="group.id" :items="group.contacts" :title="group.title" />
         </list-group>
     </div>
 </div>
 <div class="flex-grow h-full p-6">
-    <div class="contact-box">
+    <div v-if="getSelectedContact !== null" class="contact-box">
         <div class="flex w-full pb-10">
             <avatar size="w-32 h-32" />
-            <p class="self-center text-4xl ml-10 text-light font-bold">{{currentContact.firstname + " " + currentContact.lastname}}</p>
+            <p class="self-center text-4xl ml-10 text-light font-bold">{{getSelectedContact.firstname + " " + getSelectedContact.lastname}}</p>
         </div>
         <div class="w-full flex justify-between py-5 text-gray-400">
             <div class="flex space-x-6">
@@ -54,7 +54,7 @@
                     </div>
                     <div class="text-light mt-1 ml-4">
                         <p class="text-xs text-gray-400">Phone</p>
-                        <p>{{currentContact.phone}}</p>
+                        <p>{{getSelectedContact.phone}}</p>
                     </div>
                 </div>
                 <div class="flex w-1/2">
@@ -63,7 +63,7 @@
                     </div>
                     <div class="text-light mt-1 ml-4">
                         <p class="text-xs text-gray-400">Fax</p>
-                        <p>{{currentContact.fax}}</p>
+                        <p>{{getSelectedContact.fax}}</p>
                     </div>
                 </div>
             </div>
@@ -74,7 +74,7 @@
                     </div>
                     <div class="text-light mt-1 ml-4">
                         <p class="text-xs text-gray-400">Email</p>
-                        <p>{{currentContact.email}}</p>
+                        <p>{{getSelectedContact.email}}</p>
                     </div>
                 </div>
                 <div class="flex w-1/2">
@@ -83,12 +83,13 @@
                     </div>
                     <div class="text-light mt-1 ml-4">
                         <p class="text-xs text-gray-400">City</p>
-                        <p>{{currentContact.city}}</p>
+                        <p>{{getSelectedContact.city}}</p>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+    <div v-else><p>eeee</p></div>
 </div>
 </template>
 
@@ -98,6 +99,11 @@ import ListGroup from '@/components/shared/ListGroup.vue'
 import ListSubGroup from '@/components/shared/ListSubGroup.vue'
 import Btn from '@/components/shared/Btn.vue'
 import Switch from '@/components/shared/Switch.vue'
+
+import {
+    contactComputed,
+    contactMethods
+} from '@/state/helpers';
 
 export default {
     components: {
@@ -109,104 +115,19 @@ export default {
     },
     data() {
         return {
+            contactSwitch:[{name : 'contact',title :'Contact', selected:true},{name : 'channels',title :'Meetings'}],
             tab: {},
-            currentContact: {
-                firstname: "Rais",
-                lastname: "Yassin",
-                email: "yassine@rais.me",
-                phone: "06 01 02 03 04",
-                fax: "03 24 65 89 78",
-                city: "Reims",
-                status: 0,
-                id: 1,
-
-            },
-            groups: [{
-                    id: 1,
-                    title: "Starred",
-                    items: [{
-                        firstname: "Rais",
-                        lastname: "Yassin",
-                        email: "yassine@rais.me",
-                        phone: "06 01 02 03 04",
-                        fax: "03 24 65 89 78",
-                        city: "Reims",
-                        status: 0,
-                        id: 1,
-                    }, {
-                        id: 2,
-                        firstname: "Rais",
-                        lastname: "Yassin",
-                        email: "yassine@rais.me",
-                        phone: "06 01 02 03 04",
-                        fax: "03 24 65 89 78",
-                        city: "Reims",
-                        status: 0,
-                    }]
-                },
-                {
-                    id: 2,
-                    title: "Others",
-                    items: [{
-                            firstname: "Rais",
-                            lastname: "Yassin",
-                            email: "yassine@rais.me",
-                            phone: "06 01 02 03 04",
-                            fax: "03 24 65 89 78",
-                            city: "Reims",
-                            status: 0,
-                            id: 1,
-                        },
-                        {
-                            id: 2,
-                            firstname: "Rais",
-                            lastname: "Mohammed",
-                            email: "yassine@rais.me",
-                            phone: "06 01 02 03 04",
-                            fax: "03 24 65 89 78",
-                            city: "Reims",
-                            status: 0,
-                        },
-                        {
-                            id: 3,
-                            firstname: "Rais",
-                            lastname: "Remy",
-                            email: "yassine@rais.me",
-                            phone: "06 01 02 03 04",
-                            fax: "03 24 65 89 78",
-                            city: "Reims",
-                            status: 0,
-                        },
-                        {
-                            id: 4,
-                            firstname: "Papriko",
-                            lastname: "Albero",
-                            email: "alberto@rais.me",
-                            phone: "06 01 02 03 04",
-                            fax: "03 24 65 89 78",
-                            city: "Reims",
-                            status: 0,
-                        },
-                        {
-                            id: 5,
-                            firstname: "Rais",
-                            lastname: "Yassin",
-                            email: "yassine@rais.me",
-                            phone: "06 01 02 03 04",
-                            fax: "03 24 65 89 78",
-                            city: "Reims",
-                            status: 0,
-                        },
-                    ]
-                },
-            ]
         }
     },
     computed: {
+        ...contactComputed,
         getSubGroups() {
             return this.groups;
         }
     },
+    methods: {
+        ...contactMethods,
+    }
 }
 </script>
 

@@ -21,20 +21,6 @@
         components: { ParticipantCard },
         props : {
             members : {
-                default : [
-                    { id: "1", fullname: 'Jhon Doe', avatar: 'https://i.imgur.com/DkwKnRj.jpg' },
-                    { id: "2", fullname: 'Jaques Richard', avatar: 'https://i.imgur.com/DkwKnRj.jpg' },
-                    { id: "3", fullname: 'Patrick James', avatar: 'https://i.imgur.com/DkwKnRj.jpg' },
-                    { id: "4", fullname: 'Ricardo Baldos', avatar: 'https://i.imgur.com/DkwKnRj.jpg' },
-                    { id: "5", fullname: 'Dente Rack', avatar: 'https://i.imgur.com/DkwKnRj.jpg' },
-                    { id: "6", fullname: 'Gibs stark', avatar: 'https://i.imgur.com/DkwKnRj.jpg' },
-                    { id: "1", fullname: 'Jhon Doe', avatar: 'https://i.imgur.com/DkwKnRj.jpg' },
-                    { id: "2", fullname: 'Jaques Richard', avatar: 'https://i.imgur.com/DkwKnRj.jpg' },
-                    { id: "3", fullname: 'Patrick James', avatar: 'https://i.imgur.com/DkwKnRj.jpg' },
-                    { id: "4", fullname: 'Ricardo Baldos', avatar: 'https://i.imgur.com/DkwKnRj.jpg' },
-                    { id: "5", fullname: 'Dente Rack', avatar: 'https://i.imgur.com/DkwKnRj.jpg' },
-                    { id: "6", fullname: 'Gibs stark', avatar: 'https://i.imgur.com/DkwKnRj.jpg' }
-                ],
                 type: Array()
             }
         },
