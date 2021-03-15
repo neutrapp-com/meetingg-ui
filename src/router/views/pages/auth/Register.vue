@@ -1,129 +1,108 @@
-<template>
+<template>  
+
     <img class="mx-auto" src="@/assets/images/logo.png" width="200">
     <h1 class="text-xl font-bold pb-3">You want to join us ?</h1>
     <p>We're just going to need some information...</p>
 
+    <alert v-if="regError" :title="Error" :message="regError" type="error" />
+
     <div class="form-group">
-        <div class="flex -mr-px justify-center p-3">
-            <span
-                class="flex items-center leading-normal bg-light px-3 border-0 rounded rounded-r-none text-2xl text-gray-500"
-            >
+        <div class="form-icon">
+            <span class="form-input-icon">
                 <ion-icon name="person-outline"></ion-icon>
             </span>
         </div>
-        <input
-        type="text"
-        id="email"
-        required
-        class="flex-shrink flex-grow flex-auto leading-normal w-px flex-1 border-0 border-grey-light rounded rounded-l-none self-center relative  font-roboto text-md outline-none"
-        placeholder="Username"
-        />
+        <input type="text" v-model="firstname" id="firstname" required class="form-input" placeholder="Jhone" />
+        <input type="text" v-model="lastname" id="lastname" required class="form-input right-input" placeholder="Doe" />
     </div>
     <div class="form-group">
-        <div class="flex -mr-px justify-center p-3">
-            <span
-                class="flex items-center leading-normal bg-light px-3 border-0 rounded rounded-r-none text-2xl text-gray-500"
-            >
+        <div class="form-icon">
+            <span class="form-input-icon">
                 <ion-icon name="mail-outline"></ion-icon>
             </span>
         </div>
-        <input
-        type="text"
-        id="email"
-        required
-        class="flex-shrink flex-grow flex-auto leading-normal w-px flex-1 border-0 border-grey-light rounded rounded-l-none self-center relative  font-roboto text-md outline-none"
-        placeholder="Email"
-        />
+        <input type="email" v-model="email" id="email" required class="form-input" placeholder="email@example.com" />
     </div>
     <div class="form-group">
-        <div class="flex -mr-px justify-center p-3">
-            <span
-                class="flex items-center leading-normal bg-light px-3 border-0 rounded rounded-r-none text-2xl text-gray-500"
-            >
+        <div class="form-icon">
+            <span class="form-input-icon">
                 <ion-icon name="lock-closed-outline"></ion-icon>
             </span>
         </div>
-        <input
-        type="text"
-        id="email"
-        required
-        class="flex-shrink flex-grow flex-auto leading-normal w-px flex-1 border-0 border-grey-light rounded rounded-l-none self-center relative  font-roboto text-md outline-none"
-        placeholder="Password"
-        />
-    </div>
-    <div class="form-group">
-        <div class="flex -mr-px justify-center p-3">
-            <span
-                class="flex items-center leading-normal bg-light px-3 border-0 rounded rounded-r-none text-2xl text-gray-500"
-            >
+        <input type="password" id="cpassword" v-model="password" required class="form-input" placeholder="Password" />
+        <div class="form-icon">
+            <span class="form-input-icon">
                 <ion-icon name="repeat-outline"></ion-icon>
             </span>
         </div>
-        <input
-        type="text"
-        id="password"
-        required
-        class="flex-shrink flex-grow flex-auto leading-normal w-px flex-1 border-0 border-grey-light rounded rounded-l-none self-center relative  font-roboto text-md outline-none"
-        placeholder="Confirm Password"
-        />
+        <input type="password" id="cpassword" v-model="cpassword" required class="form-input" placeholder="Confirm Password" />
     </div>
 
-    <div class="w-full text-right">
-    <router-link to="/login">Already have an acount ?</router-link>
+    <div class="flex space-x-2 items-center">
+        <input type="checkbox" v-model="agree" name="agree" id="agree">
+        <label for="agree">
+            I Agre the terms &amp; conditions
+        </label>
     </div>
 
-    <button @click="tryToLogIn" class="btn-auth">Create Account</button>
+    <div class="w-full">
+        <router-link to="/auth/login">Already have an acount ?</router-link>
+    </div>
+
+    <button @click="tryToRegister" class="btn-auth">Create Account</button>
 </template>
 
 <script>
-
-import authMethods from '@/state/helpers'
-
-
+import {
+    authMethods
+} from '@/state/helpers'
+import Alert from '@/components/shared/Alert.vue'
 export default {
-    components:{
-    },
+    components: {Alert},
     data() {
         return {
-        agree: null,
-        username: null,
-        email: null,
-        password: null,
-        cpassword: null,
-        regError: null,
-        tryingToRegister: false,
-        isRegisterError: false,
+            firstname: null,
+            lastname: null,
+            email: null,
+            password: null,
+            cpassword: null,
+            agree: false,
+            regError: null,
         }
     },
     methods: {
-    ...authMethods,
-    // Try to register the user in with the email, firstname
-    // and password they provided.
-    tryToRegisterIn() {
-      this.tryingToRegister = true
-      // Reset the regError if it existed.
-      this.regError = null
-      return this.register({
-        username: this.username,
-        email: this.email,
-        password: this.password,
-        cpassword: this.cpassword,
-        agree: !!this.agree,
-      })
-        .then((token) => {
-          this.tryingToRegister = false
-          this.isRegisterError = false
-          // Redirect to the originally requested page, or to the confirm-account page
-          this.$router.push( 
-            this.$route.query.redirectFrom || { name: 'confirm-account' , params : { email : this.email } }
-          )
-        })
-        .catch((error) => {
-          this.tryingToRegister = false
-          this.regError = error.response ? error.response.data.message : ''
-          this.isRegisterError = true
-        })
-    },
-  }
+        ...authMethods,
+        // Try to register the user in with the email, firstname
+        // and password they provided.
+        tryToRegister() {
+            // Reset the regError if it existed.
+            this.regError = null
+            return this.register({
+                    firstname: this.firstname,
+                    lastname: this.lastname,
+                    email: this.email,
+                    password: this.password,
+                    cpassword: this.cpassword,
+                    agree: !!this.agree,
+                })
+                .then((token) => {
+                    // Redirect to the originally requested page, or to the confirm-account page
+                    this.$router.push(
+                        {
+                            name: 'Login'
+                        }
+                    )
+                })
+                .catch((error) => {
+                    this.regError = error.response ? error.response.data.message : ''
+                })
+        },
+    }
 }
 </script>
+<style lang="scss" scoped>
+    .right-input{
+        border-right: solid 1px rgba(25,25,25,0.1);
+    }
+
+</style>

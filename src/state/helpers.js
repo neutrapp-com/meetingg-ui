@@ -76,5 +76,5 @@ const discussionComputed = mapGetters('discussion', [
     'getSelectedDiscussion',
 ]);
 
-
+ 
 export { authMethods, contactComputed, contactMethods, appComputed, layoutComputed, authComputed, meetingMethods, meetingComputed, discussionMethods, discussionComputed };

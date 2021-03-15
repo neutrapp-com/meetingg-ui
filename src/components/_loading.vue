@@ -1,13 +1,3 @@
-<script>
-export default {
-  page: {
-    title: 'Loading page...',
-    meta: [{ name: 'description', content: 'Loading page...' }],
-  },
-  name: 'Loading',
-}
-</script>
-
 <template>
   <Layout>
     <div class="preloader">
@@ -21,6 +11,17 @@ export default {
     </div>
   </Layout>
 </template>
+
+<script>
+import Layout from '../layouts/Default.vue'
+
+export default {
+  name: 'Loading',
+  components: { 
+    Layout
+   },
+}
+</script>
 
 <style lang="scss" module>
 .loadingIcon {
