@@ -3,14 +3,14 @@
     <div class="flex flex-col w-1/4 divide-y divide-light ">
         <div class="flex justify-between p-6">
             <div class="flex flex-row h-12 w-full bg-light mr-4 bg-opacity-5 rounded-lg p-1 noselect">
-                <input type="text" id="search" class="flex-shrink pl-3 flex-grow bg-light bg-opacity-0 text-white flex-auto leading-normal w-px flex-1 border-0 border-grey-light rounded rounded-l-none self-center relative  font-roboto text-md outline-none" placeholder="Jump to..." />
+                <input type="text" id="search" class="flex-shrink pl-3 flex-grow bg-light bg-opacity-0 text-light flex-auto leading-normal w-px flex-1 border-0 border-grey-light rounded rounded-l-none self-center relative  font-roboto text-md outline-none" placeholder="Jump to..." />
             </div>
             <btn>
                 <ion-icon class="icon-btn" name="search-outline"></ion-icon>
             </btn>
         </div>
-        <div class="flex flex-grow flex-col scroll">
-            <div class="flex flex-col w-full text-white p-6">
+        <div class="flex flex-1  scroll">
+            <div class="flex flex-col w-full text-light p-6">
                 <div class="flex w-full font-bold text-xl mb-4">Starred</div>
                 <div class="flex mt-4">
                     <div class="w-full p-1 cursor-pointer rounded-lg flex text-gray-400 justify-between">
@@ -42,7 +42,7 @@
         <div class="flex justify-between w-full p-6">
             <div class="flex">
                 <avatar size="w-12 h-12" />
-                <p class="self-center text-xl ml-6 text-white">{{getCurrentDiscussion.firstname + " " + getCurrentDiscussion.lastname}}</p>
+                <p class="self-center text-xl ml-6 text-light">{{getCurrentDiscussion.firstname + " " + getCurrentDiscussion.lastname}}</p>
             </div>
             <div class="flex space-x-4">
                 <btn>
@@ -57,15 +57,15 @@
             </div>
         </div>
         <div class="flex flex-col chatpanel content-between divide-y divide-light ">
-            <chat-box class="flex p-4 w-full h-full" />
-            <chat-input class="flex w-full" :destination="getCurrentDiscussion.firstname + ' ' + getCurrentDiscussion.lastname" />
+            <chat-box class="p-5" />
+            <chat-input class=" w-full" :destination="getCurrentDiscussion.firstname + ' ' + getCurrentDiscussion.lastname" />
         </div>
     </div>
-    <div class="flex-grow w-1/4 divide-y divide-light ">
+    <div class="flex-grow w-1/4 divide-y divide-light scroll">
         <div class="flex p-y">
             <btn :highlighted="true" class="w-full h-12 m-6 rounded-lg ">
-                <ion-icon class="text-white text-xl" name="add-outline"></ion-icon>
-                <p class="text-white">Add members</p>
+                <ion-icon class="text-light text-xl" name="add-outline"></ion-icon>
+                <p class="text-light">Add members</p>
             </btn>
         </div>
         <div class="flex flex-col space-y-6 p-6 pt-4">
@@ -156,7 +156,8 @@ export default {
     @apply flex flex-row w-full divide-x divide-light ;
 
     .chatpanel {
-        height: 85%;
+        @apply flex-col;
+        max-height: calc(100vh - 6rem * 2);
     }
     .btn-icon{
         @apply text-gray-400 text-xl;

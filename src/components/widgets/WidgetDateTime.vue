@@ -43,7 +43,7 @@ export default {
 
 <style scoped lang="scss">
 .widget {
-    @apply w-full  p-10 pt-16 rounded-2xl text-white;
+    @apply w-full  p-10 pt-16 rounded-2xl text-light;
 
     h2 {
         @apply text-6xl font-bold p-0 m-0 mb-2 mt-5;

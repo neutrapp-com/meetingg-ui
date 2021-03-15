@@ -4,7 +4,7 @@
         <Switch class="w-4/5" :items="[{name : 'contact',title :'Contact', },{name : 'channels',title :'Meetings', selected:true}]" v-on:switch="tab = $event" />
 
         <btn>
-            <ion-icon class="text-white text-xl" name="person-add"></ion-icon>
+            <ion-icon class="text-light text-xl" name="person-add"></ion-icon>
         </btn>
     </div>
     <div class="w-full p-6 scroll">
@@ -17,7 +17,7 @@
     <div class="contact-box">
         <div class="flex w-full pb-10">
             <avatar size="w-32 h-32" />
-            <p class="self-center text-4xl ml-10 text-white font-bold">{{currentContact.firstname + " " + currentContact.lastname}}</p>
+            <p class="self-center text-4xl ml-10 text-light font-bold">{{currentContact.firstname + " " + currentContact.lastname}}</p>
         </div>
         <div class="w-full flex justify-between py-5 text-gray-400">
             <div class="flex space-x-6">
@@ -26,8 +26,8 @@
                     <p class="ml-4">Call</p>
                 </btn>
                 <btn :highlighted="true">
-                    <ion-icon class="text-white text-xl" name="chatbox-ellipses-outline"></ion-icon>
-                    <p class="ml-4 text-white">Message</p>
+                    <ion-icon class="text-light text-xl" name="chatbox-ellipses-outline"></ion-icon>
+                    <p class="ml-4 text-light">Message</p>
                 </btn>
                 <btn>
                     <ion-icon class="text-gray-400 text-xl" name="videocam-outline"></ion-icon>
@@ -44,7 +44,7 @@
             </div>
         </div>
         <div class="flex w-full pb-6">
-            <p class="text-xl font-bold text-white mt-16">Contact's Info</p>
+            <p class="text-xl font-bold text-light mt-16">Contact's Info</p>
         </div>
         <div>
             <div class="flex w-full pt-6">
@@ -52,7 +52,7 @@
                     <div class="contact-info">
                         <ion-icon class="text-gray-400 text-xl" name="call-outline"></ion-icon>
                     </div>
-                    <div class="text-white mt-1 ml-4">
+                    <div class="text-light mt-1 ml-4">
                         <p class="text-xs text-gray-400">Phone</p>
                         <p>{{currentContact.phone}}</p>
                     </div>
@@ -61,7 +61,7 @@
                     <div class="contact-info">
                         <ion-icon class="text-gray-400 text-xl" name="print-outline"></ion-icon>
                     </div>
-                    <div class="text-white mt-1 ml-4">
+                    <div class="text-light mt-1 ml-4">
                         <p class="text-xs text-gray-400">Fax</p>
                         <p>{{currentContact.fax}}</p>
                     </div>
@@ -72,7 +72,7 @@
                     <div class="contact-info">
                         <ion-icon class="text-gray-400 text-xl" name="mail-outline"></ion-icon>
                     </div>
-                    <div class="text-white mt-1 ml-4">
+                    <div class="text-light mt-1 ml-4">
                         <p class="text-xs text-gray-400">Email</p>
                         <p>{{currentContact.email}}</p>
                     </div>
@@ -81,7 +81,7 @@
                     <div class="contact-info">
                         <ion-icon class="text-gray-400 text-xl" name="business-outline"></ion-icon>
                     </div>
-                    <div class="text-white mt-1 ml-4">
+                    <div class="text-light mt-1 ml-4">
                         <p class="text-xs text-gray-400">City</p>
                         <p>{{currentContact.city}}</p>
                     </div>

@@ -7,29 +7,29 @@
         <div class="flex w-full items-center justify-evenly h-1/5">
             <div class="flex space-x-4">
                 <btn>
-                    <ion-icon class="text-white text-xl" name="mic-outline"></ion-icon>
-                    <ion-icon class="text-white ml-2 text-xl" name="chevron-up-outline"></ion-icon>
+                    <ion-icon class="text-light text-xl" name="mic-outline"></ion-icon>
+                    <ion-icon class="text-light ml-2 text-xl" name="chevron-up-outline"></ion-icon>
                 </btn>
                 <btn>
-                    <ion-icon class="text-white text-xl" name="videocam-outline"></ion-icon>
-                    <ion-icon class="text-white ml-2 text-xl" name="chevron-up-outline"></ion-icon>
+                    <ion-icon class="text-light text-xl" name="videocam-outline"></ion-icon>
+                    <ion-icon class="text-light ml-2 text-xl" name="chevron-up-outline"></ion-icon>
                 </btn>
 
             </div>
             <div class="flex">
                 <div class="border border-light border-opacity-5 h-12 bg-red-600 rounded-lg items-center justify-center flex px-4 cursor-pointer">
-                    <p class="text-white">End Meeting</p>
+                    <p class="text-light">End Meeting</p>
                 </div>
             </div>
 
             <div class="flex space-x-4">
                 <btn>
-                    <ion-icon class="text-white text-xl" name="person-outline"></ion-icon>
-                    <ion-icon class="text-white ml-2 text-xl" name="chevron-up-outline"></ion-icon>
+                    <ion-icon class="text-light text-xl" name="person-outline"></ion-icon>
+                    <ion-icon class="text-light ml-2 text-xl" name="chevron-up-outline"></ion-icon>
                 </btn>
                 <btn :highlighted="true">
-                    <ion-icon class="text-white text-xl" name="chatbox-ellipses-outline"></ion-icon>
-                    <ion-icon class="text-white ml-2 text-xl" name="chevron-forward-outline"></ion-icon>
+                    <ion-icon class="text-light text-xl" name="chatbox-ellipses-outline"></ion-icon>
+                    <ion-icon class="text-light ml-2 text-xl" name="chevron-forward-outline"></ion-icon>
                 </btn>
             </div>
         </div>
