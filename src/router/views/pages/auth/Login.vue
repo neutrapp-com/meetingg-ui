@@ -3,22 +3,24 @@
     <h1 class="text-xl font-bold pb-3">Sign In</h1>
     <router-link to="/auth/register">You don't have an account ?</router-link>
 
+    <alert v-if="authError" :title="Error" :message="authError" type="error" />
+
     <div class="form-group">
-        <div class="flex -mr-px justify-center p-3">
-            <span class="flex items-center leading-normal bg-light px-3 border-0 rounded rounded-r-none text-2xl text-gray-500">
+        <div class="form-icon">
+            <span class="form-input-icon">
                 <ion-icon name="mail-outline"></ion-icon>
             </span>
         </div>
-        <input type="text" v-model="email" id="email" required class="flex-shrink flex-grow flex-auto leading-normal w-px flex-1 border-0 border-grey-light rounded rounded-l-none self-center relative  font-roboto text-md outline-none" placeholder="Email / Username" />
+        <input type="text" v-model="email" id="email" required class="form-input" placeholder="Email / Username" />
     </div>
 
     <div class="form-group">
-        <div class="flex -mr-px justify-center p-3">
-            <span class="flex items-center leading-normal bg-light px-3 border-0 rounded rounded-r-none text-2xl text-gray-500">
+        <div class="form-icon">
+            <span class="form-input-icon">
                 <ion-icon name="lock-closed-outline"></ion-icon>
             </span>
         </div>
-        <input type="text" v-model="password" id="password" required class="flex-shrink flex-grow flex-auto leading-normal w-px flex-1 border-0 border-grey-light rounded rounded-l-none self-center relative  font-roboto text-md outline-none" placeholder="Password" />
+        <input type="password" v-model="password" id="password" required class="form-input" placeholder="Password" />
     </div>
 
     <div class="w-full text-right">
@@ -30,9 +32,10 @@
 
 <script>
 import { authMethods } from '@/state/helpers'
+import Alert from '../../../../components/shared/Alert.vue'
 
 export default {
-    components: {},
+    components: {Alert},
     data() {
         return {
             email: null,
