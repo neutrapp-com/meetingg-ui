@@ -1,6 +1,17 @@
 <template>
-    <div class="camera">
-        <div class="informations">
+    <div class="camera relative">
+        <video controls>
+
+            <source src="/media/cc0-videos/flower.webm"
+                    type="video/webm">
+
+            <source src="/media/cc0-videos/flower.mp4"
+                    type="video/mp4">
+
+            Sorry, your browser doesn't support embedded videos.
+        </video>
+
+        <div class="informations absolute bottom-0">
             <div>
                 <p class="ml-4 bg">{{participant.lastname + ' ' + participant.firstname}}</p>
             </div>
@@ -26,12 +37,11 @@
 <style lang="scss" scoped>
 
 .camera{
-    @apply flex bg-cover;
-    background-image: url('https://ak.picdn.net/shutterstock/videos/26198027/thumb/12.jpg');
+    @apply flex w-full;
     
 
     .informations{
-        @apply flex w-full;
+        @apply flex bg-cover bg-center;
         justify-content: space-between;
 
         .bg{

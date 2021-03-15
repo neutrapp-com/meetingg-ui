@@ -42,7 +42,7 @@
             <participant class="pr-4" v-for="participant in participants" v-bind:key="participant.id" :participant="participant"/>
         </div>
         <container-list class="bg-gray-400 bg-opacity-5 scroll" title="Chat" icon="chatbox-ellipses-outline">
-            <div class="bg-opacity-0 w-full scroll">
+            <div class="bg-opacity-0 w-full pl-4 scroll">
                 <chat-box/>
             </div>
         </container-list>
