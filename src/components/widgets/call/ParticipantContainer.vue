@@ -1,13 +1,16 @@
 <template>
-    <div class="flex flex-col bg-red-600 w-full">
-        <!--<div v-for="participant in participants" v-bind:key="participant.id" class="bg-red-200 w-4/5 h-full flex grow">-->
-        <div v-for="participant in participants" v-bind:key="participant.id" class="h-full flex">
-            <camera :participant="participant"/>
+    <div class="flex w-full">
+        <div class="flex w-full h-full">
+            <camera :participant="getMainCamera"/>
+        </div>
+        <div v-for="participant in getSubCamera" v-bind:key="participant.id" class="flex flex-col">
+            <camera class="flex" :participant="participant"/>
         </div>
     </div>
 </template>
 
 <script>
+import { computed } from 'vue';
     import Camera from './Camera.vue';
     export default {
         components:{
@@ -16,6 +19,18 @@
         props:{
             participants:{
                 type:Array
+            }
+        },
+        computed:{
+            getMainCamera(){
+                return this.participants[0]
+            },
+            getSubCamera(){
+                let sub = []
+                for(let i = 1; i<this.participants.length; i++){
+                    sub.push(this.participants[i])
+                }
+                return sub
             }
         }
     }
