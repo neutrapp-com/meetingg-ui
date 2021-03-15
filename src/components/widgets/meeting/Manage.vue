@@ -10,7 +10,7 @@
             <div class="button-list">
                 <div class="flex w-full space-x-4">
                     <btn :highlighted="true">
-                        <ion-icon class="text-white mr-2 text-xl" name="caret-forward-outline"></ion-icon>
+                        <ion-icon class="text-light mr-2 text-xl" name="caret-forward-outline"></ion-icon>
                         Start
                     </btn>
                     <btn>

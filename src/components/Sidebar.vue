@@ -45,7 +45,7 @@ export default {
     }
 
     .logo{
-        @apply flex items-center bg-blue-600 text-center mt-6 mx-auto rounded-xl h-14 w-14 content-center justify-center text-white text-3xl;
+        @apply flex items-center bg-blue-600 text-center mt-6 mx-auto rounded-xl h-14 w-14 content-center justify-center text-light text-3xl;
     }
 }
 </style>

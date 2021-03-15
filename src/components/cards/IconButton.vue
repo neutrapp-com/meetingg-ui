@@ -40,7 +40,7 @@ export default {
     }
 
     .icon{
-        @apply w-full h-full text-white bg-no-repeat bg-contain;
+        @apply w-full h-full text-light bg-no-repeat bg-contain;
     }
 }
 </style>

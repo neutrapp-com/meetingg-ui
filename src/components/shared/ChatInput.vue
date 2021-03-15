@@ -1,5 +1,5 @@
 <template>
-    <div class="p-4 flex flex-col h-24">
+    <div class="p-4 flex flex-col">
         <div class="flex justify-between w-full pb-4">
             <div class="flex space-x-4">
                 <ion-icon class="text-gray-600 text-2xl" name="document-outline"></ion-icon>
@@ -11,8 +11,8 @@
         </div>
         <div class="flex w-full items-center">
             <div class="flex w-full text-gray-400">Message {{destination}}</div>
-            <btn :highlighted="true">
-                <p class="text-white">Send</p>
+            <btn :highlighted="true" class="max-h-10">
+                <p class="text-light">Send</p>
             </btn>
         </div>
     </div>

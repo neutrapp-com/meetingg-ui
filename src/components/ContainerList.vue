@@ -4,7 +4,7 @@
         <div class="flex w-full justify-between">
             <div class="flex">
                 <ion-icon class="text-xl px-3 my-3" :name="icon"></ion-icon>
-                <div class="text-white my-3">{{title}}</div>
+                <div class="text-light my-3">{{title}}</div>
             </div>
             <ion-icon class="text-xl px-3 my-3" :name="isOpen ? 'chevron-down-outline' : 'chevron-forward-outline'"></ion-icon>
         </div>

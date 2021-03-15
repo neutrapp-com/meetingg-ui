@@ -62,7 +62,7 @@ export default {
     }
 
     .active{
-        @apply text-white bg-light bg-opacity-10 rounded-lg border border-white border-opacity-5;
+        @apply text-light bg-light bg-opacity-10 rounded-lg border border-white border-opacity-5;
     }
 }
 </style>

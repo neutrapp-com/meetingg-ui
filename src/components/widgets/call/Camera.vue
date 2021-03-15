@@ -26,16 +26,12 @@
 <style lang="scss" scoped>
 
 .camera{
-    @apply flex;
-    align-items: end;
-    @apply bg-cover;
-    min-width: 33.33%;
+    @apply flex bg-cover;
     background-image: url('https://ak.picdn.net/shutterstock/videos/26198027/thumb/12.jpg');
     
 
     .informations{
         @apply flex w-full;
-        padding: 0% 5% 2% 0%;
         justify-content: space-between;
 
         .bg{
