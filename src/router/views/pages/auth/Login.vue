@@ -32,7 +32,7 @@
 
 <script>
 import { authMethods } from '@/state/helpers'
-import Alert from '../../../../components/shared/Alert.vue'
+import Alert from '@/components/shared/Alert.vue'
 
 export default {
     components: {Alert},

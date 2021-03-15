@@ -4,13 +4,16 @@
     <h1 class="text-xl font-bold pb-3">You want to join us ?</h1>
     <p>We're just going to need some information...</p>
 
+    <alert v-if="regError" :title="Error" :message="regError" type="error" />
+
     <div class="form-group">
         <div class="form-icon">
             <span class="form-input-icon">
                 <ion-icon name="person-outline"></ion-icon>
             </span>
         </div>
-        <input type="text" id="email" required class="form-input" placeholder="Username" />
+        <input type="text" v-model="firstname" id="firstname" required class="form-input" placeholder="Jhone" />
+        <input type="text" v-model="lastname" id="lastname" required class="form-input right-input" placeholder="Doe" />
     </div>
     <div class="form-group">
         <div class="form-icon">
@@ -18,7 +21,7 @@
                 <ion-icon name="mail-outline"></ion-icon>
             </span>
         </div>
-        <input type="text" id="email" required class="form-input" placeholder="Email" />
+        <input type="email" v-model="email" id="email" required class="form-input" placeholder="email@example.com" />
     </div>
     <div class="form-group">
         <div class="form-icon">
@@ -26,77 +29,80 @@
                 <ion-icon name="lock-closed-outline"></ion-icon>
             </span>
         </div>
-        <input type="text" id="email" required class="form-input" placeholder="Password" />
-    </div>
-    <div class="form-group">
+        <input type="password" id="cpassword" v-model="password" required class="form-input" placeholder="Password" />
         <div class="form-icon">
             <span class="form-input-icon">
                 <ion-icon name="repeat-outline"></ion-icon>
             </span>
         </div>
-        <input type="text" id="password" required class="form-input" placeholder="Confirm Password" />
+        <input type="password" id="cpassword" v-model="cpassword" required class="form-input" placeholder="Confirm Password" />
     </div>
 
-    <div class="w-full text-right">
+    <div class="flex space-x-2 items-center">
+        <input type="checkbox" v-model="agree" name="agree" id="agree">
+        <label for="agree">
+            I Agre the terms &amp; conditions
+        </label>
+    </div>
+
+    <div class="w-full">
         <router-link to="/auth/login">Already have an acount ?</router-link>
     </div>
 
-    <button @click="tryToLogIn" class="btn-auth">Create Account</button>
+    <button @click="tryToRegister" class="btn-auth">Create Account</button>
 </template>
 
 <script>
 import {
     authMethods
 } from '@/state/helpers'
-
+import Alert from '@/components/shared/Alert.vue'
 export default {
-    components: {},
+    components: {Alert},
     data() {
         return {
-            agree: null,
-            username: null,
+            firstname: null,
+            lastname: null,
             email: null,
             password: null,
             cpassword: null,
+            agree: false,
             regError: null,
-            tryingToRegister: false,
-            isRegisterError: false,
         }
     },
     methods: {
         ...authMethods,
         // Try to register the user in with the email, firstname
         // and password they provided.
-        tryToRegisterIn() {
-            this.tryingToRegister = true
+        tryToRegister() {
             // Reset the regError if it existed.
             this.regError = null
             return this.register({
-                    username: this.username,
+                    firstname: this.firstname,
+                    lastname: this.lastname,
                     email: this.email,
                     password: this.password,
                     cpassword: this.cpassword,
                     agree: !!this.agree,
                 })
                 .then((token) => {
-                    this.tryingToRegister = false
-                    this.isRegisterError = false
                     // Redirect to the originally requested page, or to the confirm-account page
                     this.$router.push(
-                        this.$route.query.redirectFrom || {
-                            name: 'confirm-account',
-                            params: {
-                                email: this.email
-                            }
+                        {
+                            name: 'Login'
                         }
                     )
                 })
                 .catch((error) => {
-                    this.tryingToRegister = false
                     this.regError = error.response ? error.response.data.message : ''
-                    this.isRegisterError = true
                 })
         },
     }
 }
 </script>
+<style lang="scss" scoped>
+    .right-input{
+        border-right: solid 1px rgba(25,25,25,0.1);
+    }
+
+</style>

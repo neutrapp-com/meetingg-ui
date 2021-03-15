@@ -52,7 +52,7 @@ export const actions = {
         return axios
             .post('/api/auth/login', { email, password })
             .then((response) => {
-                const user = response.data
+                const user = response.data.session
                 commit('SET_CURRENT_USER', user)
                 return user
             })
@@ -88,6 +88,7 @@ export const actions = {
     // Validates the current user's token and refreshes it
     // with new data from the API.
     validate({ commit, state }) {
+        setDefaultAuthHeaders(state)
         if (!state.user) return Promise.resolve(null)
 
         return getters.tokenExpired(state) ? axios
@@ -107,7 +108,7 @@ export const actions = {
                     // }, { root: true })
                 }
 
-                router.push('/api/500');
+                router.push({ name: '/500' });
                 return true;
             }) : new Promise(resolve => resolve(state.user))
     },
