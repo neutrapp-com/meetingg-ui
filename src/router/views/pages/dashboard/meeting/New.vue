@@ -6,32 +6,44 @@
 
             <div class="mb-6 w-full">
                 <label for="title" class="block mb-2 text-md text-gray-400">Title</label>
-                <input type="text" name="title" id="title" placeholder="Meeting" required class="w-full px-3 py-2 placeholder-gray-300 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-100 focus:border-indigo-300 dark:bg-gray-700 dark:text-white dark:placeholder-gray-500 dark:border-gray-600 dark:focus:ring-gray-900 dark:focus:border-gray-500" />
+                <div class="flex flex-row h-12 w-full bg-light mr-4 bg-opacity-5 rounded-lg p-1 noselect">
+                    <input type="text" id="title" class="flex-shrink pl-3 flex-grow bg-light bg-opacity-0 text-light flex-auto leading-normal w-px flex-1 border-0 rounded rounded-l-none self-center relative  font-roboto text-md outline-none" placeholder="Title" />
+                </div>
             </div>
             <div class="mb-6">
                 <label for="start_day" class="block mb-2 text-md text-gray-400">Start Day</label>
-                <input type="date" name="start_day" id="start_day" placeholder="you@company.com" required class="w-full px-3 py-2 placeholder-gray-300 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-100 focus:border-indigo-300 dark:bg-gray-700 dark:text-white dark:placeholder-gray-500 dark:border-gray-600 dark:focus:ring-gray-900 dark:focus:border-gray-500" />
+                <div class="flex flex-row h-12 w-full bg-light mr-4 bg-opacity-5 rounded-lg p-1 noselect">
+                    <input  type="date" name="start_day" id="start_day" class="flex-shrink pl-3 flex-grow bg-light bg-opacity-0 text-light flex-auto leading-normal w-px flex-1 border-0 rounded rounded-l-none self-center relative  font-roboto text-md outline-none" />
+                </div>
             </div>
             <div class="flex space-x-4">
                 <div class="mb-6 w-1/2">
                     <label for="start_at" class="text-sm text-md text-gray-400">Start At</label>
-                    <input type="time" name="start_at" id="start_at" placeholder="+1 (555) 1234-567" required class="w-full px-3 py-2 placeholder-gray-300 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-100 focus:border-indigo-300 dark:bg-gray-700 dark:text-white dark:placeholder-gray-500 dark:border-gray-600 dark:focus:ring-gray-900 dark:focus:border-gray-500" />
+                    <div class="flex flex-row h-12 w-full bg-light mr-4 bg-opacity-5 rounded-lg p-1 noselect">
+                        <input  type="time" name="start_at" id="start_at" class="flex-shrink pl-3 flex-grow bg-light bg-opacity-0 text-light flex-auto leading-normal w-px flex-1 border-0 rounded rounded-l-none self-center relative  font-roboto text-md outline-none" />
+                    </div>
                 </div>
                 <div class="mb-6 w-1/2">
                     <label for="end_at" class="text-sm text-md text-gray-400">End At</label>
-                    <input type="time" name="end_at" id="end_at" placeholder="+1 (555) 1234-567" required class="w-full px-3 py-2 placeholder-gray-300 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-100 focus:border-indigo-300 dark:bg-gray-700 dark:text-white dark:placeholder-gray-500 dark:border-gray-600 dark:focus:ring-gray-900 dark:focus:border-gray-500" />
+                    <div class="flex flex-row h-12 w-full bg-light mr-4 bg-opacity-5 rounded-lg p-1 noselect">
+                        <input  type="time" name="end_at" id="end_at" class="flex-shrink pl-3 flex-grow bg-light bg-opacity-0 text-light flex-auto leading-normal w-px flex-1 border-0 rounded rounded-l-none self-center relative  font-roboto text-md outline-none" />
+                    </div>
                 </div>
             </div>
             <div class="mb-6">
                 <label for="description" class="block mb-2 text-md text-gray-400">Description</label>
-
-                <textarea rows="5" name="description" id="description" placeholder="Meeting's description" class="w-full px-3 py-2 placeholder-gray-300 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-100 focus:border-indigo-300 dark:bg-gray-700 dark:text-white dark:placeholder-gray-500 dark:border-gray-600 dark:focus:ring-gray-900 dark:focus:border-gray-500" required></textarea>
+                <div class="flex flex-row h-12 w-full bg-light mr-4 bg-opacity-5 rounded-lg p-1 noselect">
+                    <input  type="text" name="description" id="description" class="flex-shrink pl-3 flex-grow bg-light bg-opacity-0 text-light flex-auto leading-normal w-px flex-1 border-0 rounded rounded-l-none self-center relative  font-roboto text-md outline-none" placeholder="Description" />
+                </div>
             </div>
         </form>
     </div>
     <div class="flex flex-col items-center w-full">
         <participant-list/>
-        <button class="btn w-1/2">Create new Meeting</button>
+        <btn :highlighted="true" class="w-4/5 h-12 m-6 rounded-lg ">
+            <ion-icon class="text-light text-xl" name="add-outline"></ion-icon>
+            <p class="text-light">Create new Meeting</p>
+        </btn>
 
     </div>
 
@@ -42,21 +54,12 @@
 
 <script>
 import ParticipantList from '../../../../../components/widgets/meeting/ParticipantList.vue'
+import Btn from '@/components/shared/Btn.vue'
 
 export default {
     components: {
-        ParticipantList
+        ParticipantList,
+        Btn
     },
 }
 </script>
-
-<style  lang="scss" scoped>
-.btn{
-    @apply w-2/3 mt-6 py-2  mx-auto bg-dark rounded font-bold text-light;
-
-    .dark & {
-        @apply bg-light text-dark;
-    }
-}
-
-</style>
