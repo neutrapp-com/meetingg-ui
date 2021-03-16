@@ -55,7 +55,8 @@ const contactComputed = mapGetters('contact', [
  */
 
 const meetingMethods = mapActions('meeting', [
-    'selectMeeting'
+    'selectMeeting',
+    'newMeeting'
 ]);
 
 const meetingComputed = mapGetters('meeting', [
@@ -76,5 +77,5 @@ const discussionComputed = mapGetters('discussion', [
     'getSelectedDiscussion',
 ]);
 
- 
+
 export { authMethods, contactComputed, contactMethods, appComputed, layoutComputed, authComputed, meetingMethods, meetingComputed, discussionMethods, discussionComputed };

@@ -62,4 +62,14 @@ export const actions = {
     selectMeeting({ commit }, data) {
         commit('SET_SELECTED_MEETING', data);
     },
+
+    newMeeting({ commit, dispatch, getters }, data) {
+        console.log(data)
+        return axios
+            .post('/api/meeting/new', data)
+            .then((response) => {
+                const user = response.data
+                return user
+            })
+    }
 }
