@@ -65,7 +65,7 @@ const meetingComputed = mapGetters('meeting', [
 ]);
 
 /**
- * Meeting
+ * Discussion
  */
 
 const discussionMethods = mapActions('discussion', [
@@ -84,4 +84,16 @@ const profileComputed = mapGetters('profile', [
     'getAvatar'
 ]);
 
-export { authMethods, profileComputed, contactComputed, contactMethods, appComputed, layoutComputed, authComputed, meetingMethods, meetingComputed, discussionMethods, discussionComputed };
+
+/**
+ * Notification
+ */
+const notificationMethods = mapActions('notification', [
+    'fetchNotification'
+]);
+
+const notificationComputed = mapGetters('notification', [
+    'getNotifications'
+]);
+
+export { authMethods, profileComputed, notificationComputed, notificationMethods, contactComputed, contactMethods, appComputed, layoutComputed, authComputed, meetingMethods, meetingComputed, discussionMethods, discussionComputed };
