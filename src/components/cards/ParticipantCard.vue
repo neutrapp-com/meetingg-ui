@@ -1,8 +1,8 @@
 <template>
-<a href="#">
-    <div class="participant">
-        <div class="avatar-contener">
-            <avatar :image="avatar" />
+    <div class="participant" :class="avatar == null ? 'active':''">
+        <div class="avatar">
+            <avatar v-if="avatar !== null" :image="avatar" size="w-14 h-14" />
+            <div  v-else class="icon"  ><slot/></div>
         </div>
         <div class="sep"></div>
         <div class="text">
@@ -10,7 +10,6 @@
         </div>
         
     </div>
-</a>
 </template>
 
 
@@ -21,15 +20,12 @@ export default {
     name: 'ParticipantCard',
     props : {
         avatar : {
-            default : '',
             type: String
         },
         fullname : {
-            default : 'name firstname',
             type: String
         },
         id : {
-            default : '#',
             type: String
         }
     }
@@ -38,36 +34,26 @@ export default {
 
 <style lang="scss">
 .participant{
-    @apply w-32 h-36 p-1;
-    @apply flex flex-col;
-    @apply border-2 rounded-lg;
-    border-color: #2f3240;
-    background-color: #242736;
+    @apply w-32 h-36 flex flex-col items-center justify-center space-y-3 border rounded-xl border-light bg-light bg-opacity-5;
 
     &:hover{
-        @apply cursor-pointer transform  scale-105 shadow-2xl ;
-    }
-
-    .avatar-contener{
-        @apply w-full h-full;
-        max-height: 30%;
-
-        .avatar{
-            margin: auto;
-        }
-    }
-
-    .sep{
-        min-height: 10%
+        @apply cursor-pointer shadow-md bg-opacity-10;
     }
 
     .text{
         @apply overflow-hidden text-center;
-        min-height: 40%;
-        max-height: 60%;
-        margin: auto;
         overflow-wrap: break-word;
         color: #93959c;
+    }
+    .icon{
+        @apply  w-14 h-14 flex items-center justify-center  rounded-xl text-3xl bg-light bg-opacity-20;
+    }
+
+    &.active{
+        @apply  bg-active text-light border border-light;
+        .text{
+            @apply text-light;
+        }
     }
 }
 </style>

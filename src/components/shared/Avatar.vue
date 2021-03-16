@@ -27,9 +27,9 @@ export default {
     background-position: center;
 }
 .avatar-border{
-    @apply rounded-lg;
+    @apply rounded-2xl;
 }
 .avatar-default{
-    @apply w-12 h-12;
+    @apply w-14 h-14;
 }
 </style>

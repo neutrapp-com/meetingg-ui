@@ -6,8 +6,10 @@
             <div v-for="member in getMembers" v-bind:key="member.id">
                 <participant-card v-bind="member"/>
             </div>
-            <div style="backgroud-color: red;">
-                <participant-card link="#" fullname="INVITE MEMBERS" avatar="https://cdn3.iconfinder.com/data/icons/basic-interface/100/add_user-512.png"/>
+            <div >
+                <participant-card link="#" fullname="Invite Members" :avatar="null">
+                    <ion-icon name="duplicate"></ion-icon>
+                </participant-card>
             </div>
 
         </div>
@@ -45,11 +47,10 @@
     }
 
     .participants{
-        @apply flex flex-wrap pt-4;
+        @apply flex flex-wrap p-4;
 
-        div{
-            padding-right: 12px;
-            padding-bottom: 12px;
+        .participant{
+            @apply m-2;
         }
     }
 }
