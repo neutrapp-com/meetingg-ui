@@ -29,7 +29,7 @@ export const getters = {
 export const actions = {
     fetchProfile({ commit }) {
         return axios
-            .get('/api/profile/me')
+            .get('/api/profile/my')
             .then(response => {
                 const profile = response.data
                 commit('SET_PROFILE', profile.data);
