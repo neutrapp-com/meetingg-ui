@@ -5,8 +5,27 @@
     </div>
     <div class="flex items-center utils">
         <div class="mode" @click="toggleTheme()">
-            <ion-icon v-if="isNightMode" name="sunny-outline"></ion-icon>
-            <ion-icon v-else name="moon-outline"></ion-icon>
+            <ion-icon :name="isNightMode ? 'sunny-outline' : 'moon-outline'"></ion-icon>
+        </div>
+
+        <div class="mode" @click="showNotif = !showNotif">
+            <ion-icon class="text-xl" name="notifications-outline"></ion-icon>
+            <div v-if="showNotif" class="dropmenu origin-top-right  absolute right-10 mt-2 w-56 rounded-md shadow-lg  focus:outline-none">
+                <div class="py-1 z-50" role="none">
+                    <a class="menuitem">
+                        <ion-icon name="cog"></ion-icon> Settings
+                    </a>
+                    <a class="menuitem">
+                        <ion-icon name="call"></ion-icon> Support
+                    </a>
+                    <a class="menuitem">
+                        <ion-icon name="log-out"></ion-icon> Logout
+                    </a>
+                    <a @click="showNotif = false" class="menuitem">
+                        <ion-icon name="close-outline"></ion-icon> Close
+                    </a>
+                </div>
+            </div>
         </div>
 
         <div>
@@ -47,7 +66,8 @@ export default {
     },
     data() {
         return {
-            showMenu: false
+            showMenu: false,
+            showNotif: false,
         }
     },
     computed: {
