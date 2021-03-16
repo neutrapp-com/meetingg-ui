@@ -24,6 +24,16 @@ const authRoutes = [
 
     route.meta = {
         layout: 'Authentification',
+        beforeResolve(routeTo, routeFrom, next) {
+            // If the user is already logged in
+            if (store.getters['auth/loggedIn']) {
+                // Redirect to the home page instead
+                next({ path: '/' })
+            } else {
+                // Continue to the login page
+                next()
+            }
+        }
     };
 
     return route;
@@ -84,13 +94,26 @@ const dashboardRoutes = [
         menu: false,
         component: () => import('./views/pages/dashboard/Dashboard.vue'),
     },
+    {
+        path: '/auth/logout',
+        name: 'Logout',
+        meta: {
+            beforeResolve(routeTo, routeFrom, next) {
+                console.log('Logout !!! ');
+                store.dispatch('auth/logOut')
+                next({ path: '/auth/login' })
+            },
+        },
+        component: () => import('./views/pages/auth/Login.vue'),
+    }
 ].map(route => {
     return {
         ...route,
         meta: {
             layout: 'Authentified',
             authRequired: true,
-            menu: route.meta && route.meta.menu && true || false
+            menu: route.meta && route.meta.menu && true || false,
+            ...route.meta || {},
         }
     }
 });

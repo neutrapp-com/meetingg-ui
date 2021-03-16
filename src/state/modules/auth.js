@@ -87,7 +87,7 @@ export const actions = {
 
     // Validates the current user's token and refreshes it
     // with new data from the API.
-    validate({ commit, state }) {
+    validate({ dispatch, commit, state }) {
         setDefaultAuthHeaders(state)
         if (!state.user) return Promise.resolve(null)
 
@@ -96,6 +96,8 @@ export const actions = {
             .then((response) => {
                 const user = response.data.session
                 commit('SET_CURRENT_USER', user)
+
+                dispatch('profile/fetchProfile', null, { root: true });
                 return user
             })
             .catch((error) => {

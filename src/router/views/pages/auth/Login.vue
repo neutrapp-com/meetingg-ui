@@ -4,30 +4,31 @@
     <router-link to="/auth/register">You don't have an account ?</router-link>
 
     <alert v-if="authError" :title="Error" :message="authError" type="error" />
-
-    <div class="form-group">
-        <div class="form-icon">
-            <span class="form-input-icon">
-                <ion-icon name="mail-outline"></ion-icon>
-            </span>
+    <form  @submit.prevent="tryToLogIn" >
+        <div class="form-group">
+            <div class="form-icon">
+                <span class="form-input-icon">
+                    <ion-icon name="mail-outline"></ion-icon>
+                </span>
+            </div>
+            <input type="text" v-model="email" id="email" required class="form-input" placeholder="Email / Username" />
         </div>
-        <input type="text" v-model="email" id="email" required class="form-input" placeholder="Email / Username" />
-    </div>
 
-    <div class="form-group">
-        <div class="form-icon">
-            <span class="form-input-icon">
-                <ion-icon name="lock-closed-outline"></ion-icon>
-            </span>
+        <div class="form-group">
+            <div class="form-icon">
+                <span class="form-input-icon">
+                    <ion-icon name="lock-closed-outline"></ion-icon>
+                </span>
+            </div>
+            <input type="password" v-model="password" id="password" required class="form-input" placeholder="Password" />
         </div>
-        <input type="password" v-model="password" id="password" required class="form-input" placeholder="Password" />
-    </div>
 
-    <div class="w-full text-right">
-        <router-link to="/auth/forget">Forgot password ?</router-link>
-    </div>
+        <div class="w-full text-right">
+            <router-link to="/auth/forget">Forgot password ?</router-link>
+        </div>
 
-    <button @click="tryToLogIn" class="btn-auth">Sign In</button>
+        <button type="submit" class="btn-auth">Sign In</button>
+    </form>
 </template>
 
 <script>
