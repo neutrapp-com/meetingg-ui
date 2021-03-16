@@ -2,7 +2,7 @@
     <div class="widget">
         <manage v-bind="meeting" />
         <meeting-id v-bind:id="meeting.id"/>
-        <participant-list :members="meeting.members" />
+        <participant-list :members="meeting.members" @change-background="changeBackground()"/>
     </div>
 </template>
 
@@ -19,6 +19,11 @@
             meeting: {
                 type: Object
             },
+        },
+        methods: {
+            changeBackground(){
+                this.$emit('changeBackground');
+            }
         },
         computed : {
             updateDateWidget(){

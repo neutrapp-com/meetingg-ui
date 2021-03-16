@@ -1,5 +1,5 @@
 <template>
-<div class="chat">
+<div class="chat" :class="{ 'opacity-10': displayAddMember }">
     <div class="flex flex-col w-1/4 divide-y divide-light ">
         <div class="flex justify-between p-6">
             <div class="flex flex-row h-12 w-full bg-light mr-4 bg-opacity-5 rounded-lg p-1 noselect">
@@ -45,7 +45,7 @@
     </div>
     <div class="flex-grow w-1/4 divide-y divide-light scroll">
         <div class="flex p-y">
-            <btn :highlighted="true" class="w-full h-12 m-6 rounded-lg ">
+            <btn :highlighted="true" class="h-12 m-6 w-full rounded-lg" @click="displayAddMember = !displayAddMember">
                 <ion-icon class="text-light text-xl" name="add-outline"></ion-icon>
                 <p class="text-light">Add members</p>
             </btn>
@@ -74,6 +74,20 @@
         </div>
     </div>
 </div>
+
+<!-- popup -->
+<div v-if="displayAddMember" class="popup">
+    <div class="flex flex-col">
+        <h1 class="m-14 text-4xl">Add a member</h1>
+        <div class="flex flex-row  h-12 bg-light mr-4 ml-4 bg-opacity-5 rounded-lg p-1 noselect">
+            <input type="text" id="addMemberName" class="flex-shrink pl-3 flex-grow bg-light bg-opacity-0 text-light flex-auto leading-normal w-px flex-1 border-0 rounded rounded-l-none self-center relative font-roboto text-md outline-none" placeholder="Member name" />
+        </div>
+        <btn :highlighted="true" class="m-6 rounded-lg" @click="displayAddMember = !displayAddMember">
+            <p class="text-light">Close</p>
+        </btn>
+
+    </div>
+</div>
 </template>
 
 <script>
@@ -91,7 +105,6 @@ import {
 } from '@/state/helpers';
 
 
-
 export default {
     components: {
         Avatar,
@@ -101,6 +114,9 @@ export default {
         ContainerList,
         Btn
     },
+    data(){
+        return {displayAddMember: false};
+    },
     methods:{
         ...discussionMethods
     },
@@ -108,11 +124,12 @@ export default {
         ...discussionComputed
     }
 }
+
 </script>
 
 <style lang="scss" scoped>
 .chat {
-    @apply flex flex-row w-full divide-x divide-light ;
+    @apply flex flex-row w-full divide-x divide-light;
 
     .chatpanel {
         @apply flex-col;
@@ -121,5 +138,9 @@ export default {
     .btn-icon{
         @apply text-gray-400 text-5xl;
     }
+}
+.popup{
+    @apply absolute;
+    background-color:#282a39;
 }
 </style>

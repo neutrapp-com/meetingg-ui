@@ -7,7 +7,7 @@
                 <participant-card v-bind="member"/>
             </div>
             <div >
-                <participant-card link="#" fullname="Invite Members" :avatar="null">
+                <participant-card link="#" fullname="Invite Members" :avatar="null" @click="changeBackground();">
                     <ion-icon name="duplicate"></ion-icon>
                 </participant-card>
             </div>
@@ -24,6 +24,11 @@
         props : {
             members : {
                 type: Array()
+            }
+        },
+        methods: {
+            changeBackground(){
+                this.$emit('changeBackground');
             }
         },
         computed :{
