@@ -1,4 +1,4 @@
-{
+export default {
     "contact": {
         "groups": [
             {
@@ -111,6 +111,9 @@
                 "firstname": "Yassin",
                 "lastname": "Rais"
             }
-        ]
+        ],
+        "messages": []
     }
 }
+
+

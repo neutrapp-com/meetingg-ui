@@ -1,6 +1,6 @@
 import router from '../../router'
 import axios from 'axios'
-import data from '../data.test.json'
+import data from '../data.test.js'
 
 export const state = {
     selected: null,
