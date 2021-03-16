@@ -97,6 +97,34 @@ export default {
                     audio:true,
                     video:false,
                 },
+                {
+                    id:4,
+                    lastname:"Rais",
+                    firstname:"Yassin",
+                    audio:true,
+                    video:false,
+                },
+                {
+                    id:5,
+                    lastname:"Rais",
+                    firstname:"Yassin",
+                    audio:true,
+                    video:false,
+                },
+                {
+                    id:6,
+                    lastname:"Rais",
+                    firstname:"Yassin",
+                    audio:true,
+                    video:false,
+                },
+                {
+                    id:7,
+                    lastname:"Rais",
+                    firstname:"Yassin",
+                    audio:true,
+                    video:false,
+                },
             ],
             viewers:[
                 {

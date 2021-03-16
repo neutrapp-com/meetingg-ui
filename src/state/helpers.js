@@ -55,7 +55,8 @@ const contactComputed = mapGetters('contact', [
  */
 
 const meetingMethods = mapActions('meeting', [
-    'selectMeeting'
+    'selectMeeting',
+    'newMeeting'
 ]);
 
 const meetingComputed = mapGetters('meeting', [

@@ -55,7 +55,7 @@ const errorPagesRoutes = [
 const dashboardRoutes = [
     {
         path: '/',
-        name: 'Dashboard',
+        name: 'Meetingg',
         icon: 'home',
         menu: true,
         component: () => import('./views/pages/dashboard/Dashboard.vue'),
@@ -120,13 +120,20 @@ const dashboardRoutes = [
 
 const dashboardMenu = dashboardRoutes.filter(route => true === route.menu);
 
-const callRoutes = [
+const hiddenRoutes = [
     {
         path: '/call',
         name: 'Call',
         icon: 'call',
         menu: true,
         component: () => import('./views/pages/dashboard/Call.vue'),
+    },
+    {
+        path: '/meeting/new',
+        name: 'New Meeting',
+        icon: 'time',
+        menu: true,
+        component: () => import('./views/pages/dashboard/meeting/New.vue'),
     },
 ].map(route => {
     return {
@@ -138,7 +145,7 @@ const callRoutes = [
     }
 });
 
-const allRoutes = [...authRoutes, ...errorPagesRoutes, ...dashboardRoutes, ...callRoutes];
+const allRoutes = [...authRoutes, ...errorPagesRoutes, ...dashboardRoutes, ...hiddenRoutes];
 
 export default allRoutes;
 export { allRoutes, dashboardMenu };
