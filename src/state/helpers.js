@@ -77,5 +77,11 @@ const discussionComputed = mapGetters('discussion', [
     'getSelectedDiscussion',
 ]);
 
+/**
+ * Profile
+ */
+const profileComputed = mapGetters('profile', [
+    'getAvatar'
+]);
 
-export { authMethods, contactComputed, contactMethods, appComputed, layoutComputed, authComputed, meetingMethods, meetingComputed, discussionMethods, discussionComputed };
+export { authMethods, profileComputed, contactComputed, contactMethods, appComputed, layoutComputed, authComputed, meetingMethods, meetingComputed, discussionMethods, discussionComputed };

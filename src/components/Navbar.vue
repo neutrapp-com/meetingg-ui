@@ -10,7 +10,7 @@
         </div>
 
         <div>
-            <avatar @click="showMenu = !showMenu" class="profile cursor-pointer" size="w-10 h-10 rounded-2xl" />
+            <avatar :image="getAvatar" @click="showMenu = !showMenu" class="profile cursor-pointer" size="w-10 h-10 rounded-2xl" />
             <div v-if="showMenu" class="dropmenu origin-top-right  absolute right-10 mt-2 w-56 rounded-md shadow-lg  focus:outline-none">
                 <div class="py-1 z-50" role="none">
                     <a class="menuitem">
@@ -19,9 +19,9 @@
                     <a class="menuitem">
                         <ion-icon name="call"></ion-icon> Support
                     </a>
-                    <a class="menuitem">
+                    <router-link to="/auth/logout" class="menuitem">
                         <ion-icon name="log-out"></ion-icon> Logout
-                    </a>
+                    </router-link>
                 </div>
             </div>
         </div>
@@ -35,6 +35,8 @@ import {
     mapGetters
 } from 'vuex'
 import Avatar from './shared/Avatar.vue'
+import { profileComputed } from '@/state/helpers'
+
 export default {
     components: {
         Avatar
@@ -51,6 +53,7 @@ export default {
         }
     },
     computed: {
+        ...profileComputed,
         ...mapGetters('theme', ['isNightMode']),
     },
     methods: {

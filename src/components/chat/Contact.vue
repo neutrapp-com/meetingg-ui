@@ -1,6 +1,6 @@
 <template>
     <div class="contact-user" :class="active == true ? 'active' : ''">
-        <avatar :image="avatar" size="w-10 h-10"/>
+        <avatar :image="avatar" size="w-12 h-12"/>
         <p class="ml-4 self-center text-sm">{{ getFullName }}</p>
     </div>
 </template>
