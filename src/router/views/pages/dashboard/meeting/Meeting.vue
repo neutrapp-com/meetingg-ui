@@ -5,8 +5,8 @@
         </div>  
         <div class="flex w-1/2 p-6 scroll">
             <actions v-if="getSelectedMeeting !== null" class="pr-6" v-bind:meeting="getSelectedMeeting"/>
-            <p v-else> eee</p>
-        </div>  
+            <p v-else>eee</p>
+        </div>
     </div>
 </template>
 

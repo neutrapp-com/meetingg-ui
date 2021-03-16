@@ -62,7 +62,7 @@ const dashboardRoutes = [
         name: 'Meetings',
         icon: 'time',
         menu: true,
-        component: () => import('./views/pages/dashboard/Meeting.vue'),
+        component: () => import('./views/pages/dashboard/meeting/Meeting.vue'),
     },
     {
         path: '/contact',
@@ -83,6 +83,12 @@ const dashboardRoutes = [
         name: 'Settings',
         menu: false,
         component: () => import('./views/pages/dashboard/Dashboard.vue'),
+    },
+    {
+        path: '/meeting/join',
+        name: 'Join Meeting',
+        menu: true,
+        component: () => import('./views/pages/dashboard/meeting/Join.vue'),
     },
 ].map(route => {
     return {
