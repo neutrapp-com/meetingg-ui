@@ -70,7 +70,7 @@ export default {
         return {
             showMenu: false,
             showNotif: false,
-            updateInterval: 3000
+            updateInterval: 50000
         }
     },
     computed: {
@@ -116,7 +116,7 @@ export default {
         }
 
         .menuitem {
-            @apply flex items-center px-4 py-2 text-sm hover:bg-gray-100 hover:text-gray-900 cursor-pointer;
+            @apply flex items-center px-4 py-3 text-sm hover:bg-gray-100 hover:text-gray-900 cursor-pointer;
 
             ion-icon {
                 @apply text-lg mr-2;
