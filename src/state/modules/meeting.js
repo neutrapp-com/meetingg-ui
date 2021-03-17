@@ -49,6 +49,7 @@ export const actions = {
             .get('/api/meeting/my')
             .then(response => {
                 const meetings = response.data.rows;
+                if (!meetings) return;
                 let columns = meetings.columns;
                 commit('SET_MEETINGS_LIST', meetings.rows.map(row => {
                     let item = {};
