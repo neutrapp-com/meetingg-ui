@@ -1,5 +1,5 @@
 <template>
-<div class="widget space-y-6  pr-4">
+<div class="newmeeting  noselect">
     <div class="flex">
         <h1 class="text-3xl">
             New Meeting
@@ -10,37 +10,37 @@
         <form method="POST" id="form" class="w-full">
             <div class="mb-6 w-full">
                 <label for="title" class="block mb-2 text-md text-gray-400">Title</label>
-                <div class="flex flex-row h-12 w-full bg-light mr-4 bg-opacity-5 rounded-lg p-1 noselect">
-                    <input v-model="title" type="text" id="title" class="flex-shrink pl-3 flex-grow bg-light bg-opacity-0 text-light flex-auto leading-normal w-px flex-1 border-0 rounded rounded-l-none self-center relative  font-roboto text-md outline-none" placeholder="Title" />
+                <div class="form-group">
+                    <input v-model="title" type="text" id="title" class="form-input" placeholder="Title" />
                 </div>
             </div>
             <div class="flex space-x-4">
                 <div class="mb-6 w-1/2">
                     <label for="start_at" class="text-sm text-md text-gray-400">Start At</label>
-                    <div class="flex flex-row h-12 w-full bg-light mr-4 bg-opacity-5 rounded-lg p-1 noselect">
-                        <input v-model="start_at" type="datetime-local" name="start_at" id="start_at" class="flex-shrink pl-3 flex-grow bg-light bg-opacity-0 text-light flex-auto leading-normal w-px flex-1 border-0 rounded rounded-l-none self-center relative  font-roboto text-md outline-none" />
+                    <div class="form-group">
+                        <input v-model="start_at" type="datetime-local" name="start_at" id="start_at" class="form-input" />
                     </div>
                 </div>
                 <div class="mb-6 w-1/2">
                     <label for="end_at" class="text-sm text-md text-gray-400">End At</label>
-                    <div class="flex flex-row h-12 w-full bg-light mr-4 bg-opacity-5 rounded-lg p-1 noselect">
-                        <input v-model="end_at" type="datetime-local" name="end_at" id="end_at" class="flex-shrink pl-3 flex-grow bg-light bg-opacity-0 text-light flex-auto leading-normal w-px flex-1 border-0 rounded rounded-l-none self-center relative  font-roboto text-md outline-none" />
+                    <div class="form-group">
+                        <input v-model="end_at" type="datetime-local" name="end_at" id="end_at" class="form-input" />
                     </div>
                 </div>
             </div>
             <div class="mb-6">
                 <label for="description" class="block mb-2 text-md text-gray-400">Description</label>
-                <div class="flex flex-row h-12 w-full bg-light mr-4 bg-opacity-5 rounded-lg p-1 noselect">
-                    <input v-model="description" type="text" name="description" id="description" class="flex-shrink pl-3 flex-grow bg-light bg-opacity-0 text-light flex-auto leading-normal w-px flex-1 border-0 rounded rounded-l-none self-center relative  font-roboto text-md outline-none" placeholder="Description" />
+                <div class="form-group">
+                    <textarea v-model="description" type="text" name="description" id="description" class="form-input" placeholder="Description" ></textarea>
                 </div>
             </div>
         </form>
-        <btn @click="tryNewMeeting" :highlighted="true" class=" rounded-lg">
+        <btn @click="tryNewMeeting" :highlighted="true" class="rounded-lg">
             <ion-icon class="text-light text-xl" name="add-outline"></ion-icon>
             <p class="text-light">Create new Meeting</p>
         </btn>
     </div>
-    <participant-list/>
+    <participant-list v-on:inviteMember="$emit('inviteMember', $target)" :members="getMembers"/>
 </div>
 
 </template>
@@ -60,14 +60,14 @@ export default {
     },
     data() {
         return {
-        title: null,
-        description: null,
-        start_day: Date.now(),
-        start_at: Date.now(),
-        end_at: null,
-        participants:[],
-        try: false,
-        error: null
+            title: null,
+            description: null,
+            start_day: Date.now(),
+            start_at: Date.now(),
+            end_at: null,
+            participants:[],
+            try: false,
+            error: null
         }
     },
     methods:{
@@ -95,13 +95,25 @@ export default {
                 this.tryingToLogIn = false
                 this.error = error.response ? error.response.data.message : ''
                 })
+        },
+    },
+    computed : {
+        getMembers(){
+            return this.participants;
         }
     }
 }
 </script>
 
 <style lang="scss" scoped>
-.widget {
-    @apply flex flex-col w-full divide-y divide-light divide-opacity-5;
+.newmeeting {
+    @apply flex flex-col w-full divide-y divide-light divide-opacity-5 space-y-6;
+
+    .form-group{
+        @apply flex flex-row py-3 w-full bg-light mr-4 bg-opacity-5 rounded-lg p-1;
+    }
+    .form-input{
+        @apply pl-3  bg-light bg-opacity-0 text-light flex-auto leading-normal w-px flex-1 border-0 rounded rounded-l-none self-center relative outline-none;
+    }
 }
 </style>

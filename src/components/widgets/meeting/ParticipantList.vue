@@ -8,7 +8,7 @@
             <div v-for="member in getMembers" v-bind:key="member.id">
                 <participant-card v-bind="member"/>
             </div>
-            <div @click="openPopUp">
+            <div @click="inviteMember()">
                 <participant-card  link="#" fullname="Invite Members" :avatar="null">
                     <ion-icon name="duplicate"></ion-icon>
                 </participant-card>
@@ -36,8 +36,8 @@
             }
         },
         methods:{
-            openPopUp(){
-                this.$emit('clicked')
+            inviteMember(){
+                this.$emit('inviteMember')
             }
         }
     }
