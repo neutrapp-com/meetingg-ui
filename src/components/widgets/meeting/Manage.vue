@@ -32,7 +32,7 @@
                 </div>
             </div>
         </div>
-        <p> {{description}} </p>
+        <p v-if="meeting.description != undefined"> {{meeting.description}} </p>
     </div>
 </template>
 
@@ -75,7 +75,7 @@
             navigateTo(link){
                 router.push(link)
             }
-        }
+        },
     }
 </script>
 
