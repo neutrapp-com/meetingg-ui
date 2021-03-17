@@ -1,8 +1,8 @@
 <template>
 <div class="sidebar">
-    <div class="logo">
+    <router-link to="/" class="logo">
         <ion-icon name="videocam"></ion-icon>
-    </div>
+    </router-link>
 
     <div class="mt-16 pt-1">
         <side-bar-element :link="route.path" v-for="route in getMenu" :key="route.name" :title="route.title"  :icon="route.icon" :active="menuActive(route.name)" />

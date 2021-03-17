@@ -1,7 +1,7 @@
 <template>
 <div class="flex md:flex-shrink-0">
     <div class="grid md:grid-cols-2 sm:grid-cols-2 w-full gap-10 sm:p-2 lg:p-16 buttons ">
-        <square-button @click="navigateTo('/meeting/new')" icon="videocam" color="#ff742e" title="New Meeting" description="Setup new meeting" />
+        <square-button @click="$store.dispatch('meeting/unselectMeeting') && navigateTo('/meetings')" icon="videocam" color="#ff742e" title="New Meeting" description="Setup new meeting" />
         <square-button icon="add-circle" color="#0e78f9" title="Join Meeting" description="Via invitation link" />
         <square-button @click="navigateTo('/shedule')" icon="calendar-outline" color="#0e78f9" title="Schedule" description="Plan your meetings" />
         <square-button @click="navigateTo('/contact')" icon="person-circle" color="#0e78f9" title="Contact" description="See your contact" />

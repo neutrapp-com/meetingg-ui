@@ -1,9 +1,13 @@
 <template>
-<div class="flex md:flex-shrink-0 w-full items-center">
-    <alert v-if="error !== null" :title="Error" :message="error" type="error" />
-    <div class="flex flex-col p-6 ml-16 w-full">
+<div class="widget space-y-6  pr-4">
+    <div class="flex">
+        <h1 class="text-3xl">
+            New Meeting
+        </h1>
+    </div>
+    <div class="form py-6">
+        <alert v-if="error !== null" :title="Error" :message="error" type="error" />
         <form method="POST" id="form" class="w-full">
-
             <div class="mb-6 w-full">
                 <label for="title" class="block mb-2 text-md text-gray-400">Title</label>
                 <div class="flex flex-row h-12 w-full bg-light mr-4 bg-opacity-5 rounded-lg p-1 noselect">
@@ -31,23 +35,18 @@
                 </div>
             </div>
         </form>
-    </div>
-    <div class="flex flex-col items-center w-full">
-        <participant-list/>
-        <btn @click="tryNewMeeting" :highlighted="true" class="w-4/5 h-12 m-6 rounded-lg ">
+        <btn @click="tryNewMeeting" :highlighted="true" class=" rounded-lg">
             <ion-icon class="text-light text-xl" name="add-outline"></ion-icon>
             <p class="text-light">Create new Meeting</p>
         </btn>
-
     </div>
-
-
+    <participant-list/>
 </div>
 
 </template>
 
 <script>
-import ParticipantList from '../../../../../components/widgets/meeting/ParticipantList.vue'
+import ParticipantList from '@/components/widgets/meeting/ParticipantList.vue'
 import Btn from '@/components/shared/Btn.vue'
 
 import {
@@ -100,3 +99,9 @@ export default {
     }
 }
 </script>
+
+<style lang="scss" scoped>
+.widget {
+    @apply flex flex-col w-full divide-y divide-light divide-opacity-5;
+}
+</style>
