@@ -91,7 +91,7 @@
     </div>
     <div class="flex flex-col items-center justify-center h-full" v-else>
         <div>
-            <img class="m-auto" src="../../../../assets/images/contact-book.png">
+            <img class="m-auto" src="@/assets/images/contact-book.png">
             <h1 class="text-center p-4 text-4xl mt-8">Contact</h1>
             <p class="text-center">Select a contact in the left panel to view his informations</p>
         </div>

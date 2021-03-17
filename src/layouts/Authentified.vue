@@ -1,7 +1,7 @@
 <template>
 <div class="lauth">
     <SideBar />
-    <div class="main">
+    <div class="main scroll">
         <navbar :title="getTitle" />
         <div class="container">
             <slot />

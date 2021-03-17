@@ -4,7 +4,7 @@ import data from '../data.test.js'
 
 export const state = {
     selected: null,
-    groups: data.contact.groups.map(group => { return { ...group, contacts: data.contact.contacts.filter(contact => contact.group_id == group.id).map((contact, id) => { return { ...contact, id: id } }) } })
+    groups: data.contact.groups.map(group => { return { ...group, contacts: data.contact.contacts.filter(contact => contact.group_id == group.id).map((contact, id) => { return { ...contact, id: Math.random() * 10000 } }) } })
 }
 
 export const mutations = {

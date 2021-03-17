@@ -40,7 +40,7 @@
             <p class="text-light">Create new Meeting</p>
         </btn>
     </div>
-    <participant-list v-on:inviteMember="$emit('inviteMember', $target)" :members="getMembers"/>
+    <participant-list v-on:inviteMember="$emit('inviteMember', participants)" :members="getMembers"/>
 </div>
 
 </template>
@@ -64,8 +64,8 @@ export default {
             description: null,
             start_day: Date.now(),
             start_at: Date.now(),
+            participants: [],
             end_at: null,
-            participants:[],
             try: false,
             error: null
         }
@@ -73,6 +73,8 @@ export default {
     methods:{
         ...meetingMethods,
         tryNewMeeting(){
+            this.participants = this.getMembers
+
             this.try = true
             // Reset the authError if it existed.
             this.error = null
@@ -96,9 +98,12 @@ export default {
                 this.error = error.response ? error.response.data.message : ''
                 })
         },
+
+        
     },
     computed : {
         getMembers(){
+            console.log(this.participants)
             return this.participants;
         }
     }
