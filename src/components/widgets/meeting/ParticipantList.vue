@@ -1,8 +1,10 @@
 <template>
     <div class="widget">
-        <h1>Participants:</h1>
+        <div class="title">
+            <ion-icon class="icon" name="people"></ion-icon>
+            <h1>Participants :</h1>
+        </div>
         <div class="participants" >
-
             <div v-for="member in getMembers" v-bind:key="member.id">
                 <participant-card v-bind="member"/>
             </div>
@@ -11,7 +13,6 @@
                     <ion-icon name="duplicate"></ion-icon>
                 </participant-card>
             </div>
-
         </div>
     </div>
 </template>
@@ -44,7 +45,7 @@
 
 <style scoped lang="scss">
 .widget {
-    @apply flex flex-col;
+    @apply flex flex-col divide-none;
 
     h1{
         @apply p-4;
@@ -56,6 +57,13 @@
 
         .participant{
             @apply m-2;
+        }
+    }
+    .title{
+        @apply flex items-center text-xl;
+
+        .icon{
+            @apply text-2xl;
         }
     }
 }

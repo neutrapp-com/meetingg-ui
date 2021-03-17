@@ -31,11 +31,11 @@ html {
 
 .scroll {
   overflow-y: scroll;
-  max-height: 100vh;
+  max-height: 100%;
   padding-right: 4px;
 }
 
-@media (min-width: 600px) {
+@media (min-width: 900px) {
   * {
     max-height: 100vh;
   }

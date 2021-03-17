@@ -1,3 +1,16 @@
+import { LoremIpsum } from "lorem-ipsum";
+
+const lipsum = new LoremIpsum({
+    sentencesPerParagraph: {
+        max: 8,
+        min: 4
+    },
+    wordsPerSentence: {
+        max: 16,
+        min: 4
+    }
+});
+
 export default {
     "contact": {
         "groups": [
@@ -98,21 +111,59 @@ export default {
         "list": [
             {
                 "id": 1,
-                "firstname": "Yassin",
-                "lastname": "Rais"
+                "firstname": lipsum.generateWords(1),
+                "lastname": lipsum.generateWords(1)
             },
             {
                 "id": 2,
-                "firstname": "Yassin",
-                "lastname": "Rais"
+                "firstname": lipsum.generateWords(1),
+                "lastname": lipsum.generateWords(1)
             },
             {
                 "id": 3,
-                "firstname": "Yassin",
-                "lastname": "Rais"
+                "firstname": lipsum.generateWords(1),
+                "lastname": lipsum.generateWords(1)
             }
         ],
         "messages": []
+    },
+    "meetings": {
+        "list": [
+            {
+                id: 1,
+                title: "Math Cours", color: '#212534', startTime: (Date.now() / 1000 + 3600 * 3), endTime: (Date.now() / 1000 + 3600 * 4), members: [
+                    { id: Math.random(), fullname: lipsum.generateWords(2), avatar: 'https://picsum.photos/300/300?i=' + Math.floor(Math.random() * 6) },
+                    { id: Math.random(), fullname: lipsum.generateWords(2), avatar: 'https://picsum.photos/300/300?i=' + Math.floor(Math.random() * 6) },
+                    { id: Math.random(), fullname: lipsum.generateWords(2), avatar: 'https://picsum.photos/300/300?i=' + Math.floor(Math.random() * 6) }]
+            },
+            {
+                id: 2,
+                title: "English Exam", color: '#212534', startTime: (Date.now() / 1000 + 3600 * 3), endTime: (Date.now() / 1000 + 3600 * 4), members: [
+                    { id: Math.random(), fullname: lipsum.generateWords(2), avatar: 'https://picsum.photos/300/300?i=' + Math.floor(Math.random() * 6) },
+                    { id: Math.random(), fullname: lipsum.generateWords(2), avatar: 'https://picsum.photos/300/300?i=' + Math.floor(Math.random() * 6) },
+                    { id: Math.random(), fullname: lipsum.generateWords(2), avatar: 'https://picsum.photos/300/300?i=' + Math.floor(Math.random() * 6) },
+                    { id: Math.random(), fullname: lipsum.generateWords(2), avatar: 'https://picsum.photos/300/300?i=' + Math.floor(Math.random() * 6) },
+                    { id: Math.random(), fullname: lipsum.generateWords(2), avatar: 'https://picsum.photos/300/300?i=' + Math.floor(Math.random() * 6) },
+                    { id: Math.random(), fullname: lipsum.generateWords(2), avatar: 'https://picsum.photos/300/300?i=' + Math.floor(Math.random() * 6) },
+                    { id: Math.random(), fullname: lipsum.generateWords(2), avatar: 'https://picsum.photos/300/300?i=' + Math.floor(Math.random() * 6) },
+                    { id: Math.random(), fullname: lipsum.generateWords(2), avatar: 'https://picsum.photos/300/300?i=' + Math.floor(Math.random() * 6) }]
+            },
+            {
+                id: 3,
+                title: "Company Creation", color: '#212534', startTime: (Date.now() / 1000 + 3600 * 3), endTime: (Date.now() / 1000 + 3600 * 4), members: [
+                    { id: Math.random(), fullname: lipsum.generateWords(2), avatar: 'https://picsum.photos/300/300?i=' + Math.floor(Math.random() * 6) },
+                    { id: Math.random(), fullname: lipsum.generateWords(2), avatar: 'https://picsum.photos/300/300?i=' + Math.floor(Math.random() * 6) },
+                    { id: Math.random(), fullname: lipsum.generateWords(2), avatar: 'https://picsum.photos/300/300?i=' + Math.floor(Math.random() * 6) }]
+            },
+            {
+                id: 4,
+                title: "Graduate Program", color: '#212534', startTime: (Date.now() / 1000 + 3600 * 3), endTime: (Date.now() / 1000 + 3600 * 4), members: [
+                    { id: Math.random(), fullname: lipsum.generateWords(2), avatar: 'https://picsum.photos/300/300?i=' + Math.floor(Math.random() * 6) },
+                    { id: Math.random(), fullname: lipsum.generateWords(2), avatar: 'https://picsum.photos/300/300?i=' + Math.floor(Math.random() * 6) },
+                    { id: Math.random(), fullname: lipsum.generateWords(2), avatar: 'https://picsum.photos/300/300?i=' + Math.floor(Math.random() * 6) },
+                    { id: Math.random(), fullname: lipsum.generateWords(2), avatar: 'https://picsum.photos/300/300?i=' + Math.floor(Math.random() * 6) }]
+            }
+        ]
     }
 }
 

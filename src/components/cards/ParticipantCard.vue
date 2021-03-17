@@ -6,7 +6,7 @@
         </div>
         <div class="sep"></div>
         <div class="text">
-            {{ fullname }}
+            {{ getFullName }}
         </div>
         
     </div>
@@ -28,7 +28,12 @@ export default {
         id : {
             type: String
         }
-    }
+    },
+    computed : {
+        getFullName(){
+            return this.fullname.charAt(0).toUpperCase() + this.fullname.slice(1);
+        }
+    },
 }
 </script>
 
