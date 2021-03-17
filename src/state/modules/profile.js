@@ -13,7 +13,11 @@ export const state = {
 
 export const mutations = {
     SET_PROFILE(state, data) {
+        console.log(state, data);
         Object.keys(data).forEach(key => state[key] = data[key]);
+
+
+        console.log(state, data);
     },
 }
 
