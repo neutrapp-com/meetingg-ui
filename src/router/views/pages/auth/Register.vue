@@ -1,5 +1,6 @@
 <template>
-    <img class="mx-auto" src="@/assets/images/logo.png" width="200">
+    <img class="mx-auto" v-if="getTheme==='light'" src="@/assets/images/logo_black.png" width="200">
+    <img class="mx-auto" v-else src="@/assets/images/logo.png" width="200">
     <h1 class="text-xl font-bold pb-3">You want to join us ?</h1>
     <p>We're just going to need some information...</p>
 
@@ -55,7 +56,8 @@
 
 <script>
 import {
-    authMethods
+    authMethods,
+    themeComputed,
 } from '@/state/helpers'
 import Alert from '@/components/shared/Alert.vue'
 export default {
@@ -98,6 +100,9 @@ export default {
                     this.regError = error.response ? error.response.data.message : ''
                 })
         },
+    },
+    computed:{
+        ...themeComputed,
     }
 }
 </script>

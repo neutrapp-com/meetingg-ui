@@ -9,10 +9,14 @@
                 <ion-icon class="icon-btn" name="search-outline"></ion-icon>
             </btn>
         </div>
-        <div class="flex flex-1  scroll">
+        <div class="flex flex-1 flex-col  scroll">
             <div class="flex flex-col w-full text-light p-6">
-                <div class="flex w-full font-bold text-xl mb-4">Discussions</div>
+                <div class="flex w-full font-bold text-xl mb-4">Last Discussions</div>
                 <contact v-for="contact in getDiscussions" :key="contact.id" @click="selectDiscussion(contact)" v-bind="contact" />
+            </div>
+            <div class="flex flex-col w-full text-light p-6">
+                <div class="flex w-full font-bold text-xl mb-4">Contacts</div>
+                <contact v-for="contact in getContacts" :key="contact.id" @click="selectDiscussion(contact)" v-bind="contact" />
             </div>
         </div>
     </div>
@@ -43,7 +47,7 @@
             <h1 class="text-center p-4 text-4xl">Chat</h1>
             <p class="text-center">Select a contact in the left panel to view the discussion</p>
     </div>
-    <div class="flex-grow w-1/4 divide-y divide-light scroll">
+    <div v-if="getSelectedDiscussion !==null" class="flex-grow w-1/4 divide-y divide-light scroll">
         <div class="flex">
             <btn :highlighted="true" class="w-full h-12 m-6 rounded-lg ">
                 <ion-icon class="text-light text-xl" name="add-outline"></ion-icon>
@@ -87,7 +91,9 @@ import Btn from '@/components/shared/Btn.vue'
 
 import {
     discussionComputed,
-    discussionMethods
+    discussionMethods,
+    contactComputed,
+    contactMethods,
 } from '@/state/helpers';
 
 
@@ -111,10 +117,16 @@ export default {
         Btn
     },
     methods:{
-        ...discussionMethods
+        ...discussionMethods,
+        ...contactMethods
     },
     computed:{
-        ...discussionComputed
+        ...discussionComputed,
+        ...contactComputed,
+    },
+    created(){
+        this.fetchContacts();
+        this.fetchDiscussions();
     }
 }
 </script>

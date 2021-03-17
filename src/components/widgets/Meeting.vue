@@ -1,5 +1,5 @@
 <template>
-    <div class="widgetmeeting" :style="{ background: color }">
+    <div class="widgetmeeting">
         <div class="w-8/12">
             <h2 class="title text-2xl font-bold">
                 {{ title }}
@@ -32,10 +32,6 @@ export default {
     props : {
         title: {
             default: "Design Daily Zoom Meeting",
-            type: String
-        },
-        color : {
-            default : '#212534',
             type: String
         },
         startTime : {
@@ -83,10 +79,14 @@ export default {
 
 <style lang="scss" scoped>
     .widgetmeeting {
-        @apply w-full p-11 rounded-2xl flex text-light;
+        @apply w-full p-11 rounded-2xl flex text-gray-600 bg-dark transition  text-dark border-b border-dark;
+
+        background-color:#E1E1E1;
+
 
         .dark & {
-            @apply text-light;
+            @apply text-light bg-light bg-opacity-5;
+            background-color:#212534;
         }
 
 

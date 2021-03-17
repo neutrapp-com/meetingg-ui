@@ -1,5 +1,6 @@
 <template>
-    <img class="mx-auto" src="@/assets/images/logo.png" width="200">
+    <img class="mx-auto" v-if="getTheme==='light'" src="@/assets/images/logo_black.png" width="200">
+    <img class="mx-auto" v-else src="@/assets/images/logo.png" width="200">
     <h1 class="text-xl font-bold pb-3">Sign In</h1>
     <router-link to="/auth/register">You don't have an account ?</router-link>
 
@@ -34,6 +35,11 @@
 <script>
 import { authMethods } from '@/state/helpers'
 import Alert from '@/components/shared/Alert.vue'
+
+
+import {
+    themeComputed,
+} from '@/state/helpers';
 
 export default {
     components: {Alert},
@@ -75,7 +81,49 @@ export default {
                     this.authError = error.response ? error.response.data.message : ''
                     this.isAuthError = true
                 })
-        },
+        }, 
+        getLogo(){
+            return  '@/assets/images/logo.png'
+        }
+    },
+    computed:{
+        ...themeComputed
+    },
+    created(){
+        console.log(this.getTheme)
     }
 }
 </script>
+
+
+<style lang="scss" scoped>
+    .widgetmeeting {
+        @apply w-full p-11 rounded-2xl flex text-gray-600 bg-dark transition text-dark;
+
+        background-color:#E1E1E1;
+
+
+        .dark & {
+            @apply text-light bg-light bg-opacity-5;
+            background-color:#212534;
+        }
+
+
+        ion-icon {
+            fill: white;
+        }
+
+        .datetime {
+            @apply  mt-2;
+        }
+
+        .members{
+            @apply flex mt-4;
+
+            .avatar {
+                @apply mr-2;
+            }
+        }
+
+    }
+</style>

@@ -1,5 +1,5 @@
 <template>
-    <div class="flex w-full divide-x divide-light divide-opacity-5">
+    <div class="meeting">
         <div class="flex flex-col w-2/5 divide-y divide-light divide-opacity-5">
             <div class="flex p-6">
                 <btn :highlighted="true" @click="openNew" class="w-full py-6 rounded-lg ">
@@ -7,7 +7,7 @@
                     <p class="text-light text-xl">New Meeting</p>
                 </btn>
             </div>
-            <list v-on:meetingClicked="selectMeeting($event); create = false"  class="p-6 scroll pt-4" :meetingsList="getMeetings"/>
+            <list v-on:meetingClicked="selectMeeting($event); create = false"  class="px-6 scroll pt-4" :meetingsList="getMeetings"/>
         </div>  
         <div class="flex w-3/5 scroll relative  py-8 px-8">
             <new v-if="create" v-on:inviteMember="inviteMember($event)" v-on:meetingCreated="create = false"/>
@@ -92,6 +92,9 @@ export default {
 </script>
 
 <style scoped>
+.meeting{
+    @apply flex w-full divide-x divide-light transition divide-opacity-5 p-0;
+}
 .bg{
     background-color: #34394e;
 }
