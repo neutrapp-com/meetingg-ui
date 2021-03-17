@@ -1,11 +1,17 @@
 <template>
 <div class="widget">
-    <meeting @click="$emit('meetingClicked' , meeting)" class="meeting-block" v-for="meeting in meetingsList" v-bind:key="meeting.id" v-bind="{ title: `${meeting.title}`, color: `${meeting.color}`, startTime: `${meeting.startTime}`, endTime: `${meeting.endTime}`, members: meeting.members}" />
+    <meeting @click="selectMeeting(meeting); $emit('meetingClicked' , meeting);navigateTo('/meetings')" class="meeting-block" v-for="meeting in meetingsList" v-bind:key="meeting.id" v-bind="meeting" />
 </div>
 </template>
 
 <script>
 import Meeting from '../Meeting.vue';
+import router from '@/router'
+
+import {
+    meetingMethods,
+} from '@/state/helpers';
+
 
 export default {
     components: {
@@ -16,6 +22,12 @@ export default {
             type: Array()
         }
     },
+    methods:{
+        ...meetingMethods,
+        navigateTo(link){
+            router.push(link)
+        }
+    }
 }
 </script>
 

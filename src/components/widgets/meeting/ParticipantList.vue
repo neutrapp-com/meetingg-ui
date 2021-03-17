@@ -1,17 +1,18 @@
 <template>
     <div class="widget">
-        <h1>Participants:</h1>
+        <div class="title">
+            <ion-icon class="icon" name="people"></ion-icon>
+            <h1>Participants :</h1>
+        </div>
         <div class="participants" >
-
             <div v-for="member in getMembers" v-bind:key="member.id">
                 <participant-card v-bind="member"/>
             </div>
-            <div >
-                <participant-card link="#" fullname="Invite Members" :avatar="null">
+            <div @click="inviteMember()">
+                <participant-card  link="#" firstname="Invite Members" lastname="" :avatar="null">
                     <ion-icon name="duplicate"></ion-icon>
                 </participant-card>
             </div>
-
         </div>
     </div>
 </template>
@@ -33,13 +34,18 @@
             countMembers(){
                 return this.members.length;
             }
+        },
+        methods:{
+            inviteMember(){
+                this.$emit('inviteMember')
+            }
         }
     }
 </script>
 
 <style scoped lang="scss">
 .widget {
-    @apply flex flex-col;
+    @apply flex flex-col divide-none;
 
     h1{
         @apply p-4;
@@ -51,6 +57,13 @@
 
         .participant{
             @apply m-2;
+        }
+    }
+    .title{
+        @apply flex items-center text-xl;
+
+        .icon{
+            @apply text-2xl;
         }
     }
 }

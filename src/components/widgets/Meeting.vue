@@ -1,5 +1,5 @@
 <template>
-    <div class="widgetmeeting" :style="{ background: color }">
+    <div class="widgetmeeting">
         <div class="w-8/12">
             <h2 class="title text-2xl font-bold">
                 {{ title }}
@@ -34,10 +34,6 @@ export default {
             default: "Design Daily Zoom Meeting",
             type: String
         },
-        color : {
-            default : '#212534',
-            type: String
-        },
         startTime : {
             default : (Date.now()/1000 + 3600 * 3),
             type: Number
@@ -46,23 +42,8 @@ export default {
             default : (Date.now()/1000  + 3600 * 4),
             type: Number
         },
-        members : {
-            default : [
-                { id: Math.random(), fullname: 'Jhon Doe', avatar: 'https://i.imgur.com/DkwKnRj.jpg' },
-                { id: Math.random(), fullname: 'Jhon Doe', avatar: 'https://i.imgur.com/DkwKnRj.jpg' },
-                { id: Math.random(), fullname: 'Jhon Doe', avatar: 'https://i.imgur.com/DkwKnRj.jpg' },
-                { id: Math.random(), fullname: 'Jhon Doe', avatar: 'https://i.imgur.com/DkwKnRj.jpg' },
-                { id: Math.random(), fullname: 'Jhon Doe', avatar: 'https://i.imgur.com/DkwKnRj.jpg' },
-                { id: Math.random(), fullname: 'Jhon Doe', avatar: 'https://i.imgur.com/DkwKnRj.jpg' },
-                { id: Math.random(), fullname: 'Jhon Doe', avatar: 'https://i.imgur.com/DkwKnRj.jpg' },
-                { id: Math.random(), fullname: 'Jhon Doe', avatar: 'https://i.imgur.com/DkwKnRj.jpg' },
-                { id: Math.random(), fullname: 'Jhon Doe', avatar: 'https://i.imgur.com/DkwKnRj.jpg' },
-                { id: Math.random(), fullname: 'Jhon Doe', avatar: 'https://i.imgur.com/DkwKnRj.jpg' },
-                { id: Math.random(), fullname: 'Jhon Doe', avatar: 'https://i.imgur.com/DkwKnRj.jpg' },
-                { id: Math.random(), fullname: 'Jhon Doe', avatar: 'https://i.imgur.com/DkwKnRj.jpg' },
-                { id: Math.random(), fullname: 'Jhon Doe', avatar: 'https://i.imgur.com/DkwKnRj.jpg' },
-                { id: Math.random(), fullname: 'Jhon Doe', avatar: 'https://www.assyst.de/cms/upload/sub/digitalisierung/18-F.jpg' }
-            ]
+        users : {
+            default : []
         }
     },
     computed : {
@@ -81,7 +62,7 @@ export default {
             return (secRem > 0 ? `starts in ${rem.getHours()} hours` : `finished ${rem.getHours()} hours ago`);
         },
         getMembers(){
-            return this.members.slice(0,5);
+            return this.users.slice(0,5);
         }
     },
     methods : {
@@ -97,10 +78,14 @@ export default {
 
 <style lang="scss" scoped>
     .widgetmeeting {
-        @apply w-full p-11 rounded-2xl flex text-light;
+        @apply w-full p-11 rounded-2xl flex text-gray-600 bg-dark transition  text-dark border-b border-dark;
+
+        background-color:#E1E1E1;
+
 
         .dark & {
-            @apply text-light;
+            @apply text-light bg-light bg-opacity-5;
+            background-color:#212534;
         }
 
 

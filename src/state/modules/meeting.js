@@ -1,51 +1,19 @@
-import router from '../../router'
 import axios from 'axios'
-import data from '../data.test.json'
+import { list } from 'postcss';
+import data from '../data.test.js'
 
 export const state = {
     selected: null,
-    list: [
-        {
-            id: 1,
-            title: "Reunion1", color: '#212534', startTime: (Date.now() / 1000 + 3600 * 3), endTime: (Date.now() / 1000 + 3600 * 4), members: [
-                { id: Math.random(), fullname: 'Jhon Doe', avatar: 'https://i.imgur.com/DkwKnRj.jpg' },
-                { id: Math.random(), fullname: 'Jhon Doe', avatar: 'https://i.imgur.com/DkwKnRj.jpg' },
-                { id: Math.random(), fullname: 'Jhon Doe', avatar: 'https://i.imgur.com/DkwKnRj.jpg' }]
-        },
-        {
-            id: 2,
-            title: "Reunion 2", color: '#212534', startTime: (Date.now() / 1000 + 3600 * 3), endTime: (Date.now() / 1000 + 3600 * 4), members: [
-                { id: Math.random(), fullname: 'Jhon Doe', avatar: 'https://i.imgur.com/DkwKnRj.jpg' },
-                { id: Math.random(), fullname: 'Jhon Doe', avatar: 'https://i.imgur.com/DkwKnRj.jpg' },
-                { id: Math.random(), fullname: 'Jhon Doe', avatar: 'https://i.imgur.com/DkwKnRj.jpg' },
-                { id: Math.random(), fullname: 'Jhon Doe', avatar: 'https://i.imgur.com/DkwKnRj.jpg' },
-                { id: Math.random(), fullname: 'Jhon Doe', avatar: 'https://i.imgur.com/DkwKnRj.jpg' },
-                { id: Math.random(), fullname: 'Jhon Doe', avatar: 'https://i.imgur.com/DkwKnRj.jpg' },
-                { id: Math.random(), fullname: 'Jhon Doe', avatar: 'https://i.imgur.com/DkwKnRj.jpg' },
-                { id: Math.random(), fullname: 'Jhon Doe', avatar: 'https://i.imgur.com/DkwKnRj.jpg' }]
-        },
-        {
-            id: 3,
-            title: "Reunion 3", color: '#212534', startTime: (Date.now() / 1000 + 3600 * 3), endTime: (Date.now() / 1000 + 3600 * 4), members: [
-                { id: Math.random(), fullname: 'Jhon Doe', avatar: 'https://i.imgur.com/DkwKnRj.jpg' },
-                { id: Math.random(), fullname: 'Jhon Doe', avatar: 'https://i.imgur.com/DkwKnRj.jpg' },
-                { id: Math.random(), fullname: 'Jhon Doe', avatar: 'https://i.imgur.com/DkwKnRj.jpg' }]
-        },
-        {
-            id: 4,
-            title: "Reunion 4", color: '#212534', startTime: (Date.now() / 1000 + 3600 * 3), endTime: (Date.now() / 1000 + 3600 * 4), members: [
-                { id: Math.random(), fullname: 'Jhon Doe', avatar: 'https://i.imgur.com/DkwKnRj.jpg' },
-                { id: Math.random(), fullname: 'Jhon Doe', avatar: 'https://i.imgur.com/DkwKnRj.jpg' },
-                { id: Math.random(), fullname: 'Jhon Doe', avatar: 'https://i.imgur.com/DkwKnRj.jpg' },
-                { id: Math.random(), fullname: 'Jhon Doe', avatar: 'https://i.imgur.com/DkwKnRj.jpg' }]
-        }
-    ],
+    list: data.meetings.list,
 }
 
 export const mutations = {
     SET_SELECTED_MEETING(state, data) {
         state.selected = data;
     },
+    SET_MEETINGS_LIST(state, data) {
+        state.list = data;
+    }
 }
 
 export const getters = {
@@ -62,4 +30,34 @@ export const actions = {
     selectMeeting({ commit }, data) {
         commit('SET_SELECTED_MEETING', data);
     },
+
+    unselectMeeting({ commit }) {
+        commit('SET_SELECTED_MEETING', null);
+    },
+
+    newMeeting({ commit, dispatch, getters }, data) {
+        return axios
+            .post('/api/meeting/new', data)
+            .then((response) => {
+                const row = response.data
+                return row
+            })
+    },
+
+    fetchMeetings({ commit }) {
+        return axios
+            .get('/api/meeting/my')
+            .then(response => {
+                const meetings = response.data.rows;
+                let columns = meetings.columns;
+                commit('SET_MEETINGS_LIST', meetings.rows.map(row => {
+                    let item = {};
+                    columns.forEach((key, index) => {
+                        item[key] = row[index];
+                    });
+                    return item;
+                }));
+            })
+    },
+
 }

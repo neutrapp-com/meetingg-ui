@@ -4,30 +4,33 @@ import jwtDecode from 'jwt-decode'
 
 
 export const state = {
-    user: getSavedState('auth.user'),
+    session: getSavedState('auth.session'),
     registered: {
         email: null
     }
 }
 
 export const mutations = {
-    SET_CURRENT_USER(state, newValue) {
-        state.user = newValue
-        saveState('auth.user', newValue)
+    SET_CURRENT_SESSION(state, newValue) {
+        state.session = newValue
+        saveState('auth.session', newValue)
         setDefaultAuthHeaders(state)
     },
 }
 
 export const getters = {
     loggedIn(state) {
-        return !!state.user
+        return !!state.session
     },
     tokenExpired(state) {
+        if (!state.session || !state.session.token) return true;
+
         try {
-            return !state.user.token || (() => {
-                let dt = jwtDecode(state.user.token);
-                return !dt || dt.exp >= (Date.now() - 3600 * 1000) / 1000;
-            })(state);
+            let dt = jwtDecode(state.session.token);
+            let expired = dt.exp - (Date.now() - 3600 * 1000) / 1000 <= 0;
+            console.log(dt, expired);
+
+            return expired;
         } catch (e) {
             // jwtDecode failed
             console.warn(e);
@@ -45,24 +48,26 @@ export const actions = {
         dispatch('validate')
     },
 
-    // Logs in the current user.
+    // Logs in the current session.
     logIn({ commit, dispatch, getters }, { email, password } = {}) {
         if (getters.loggedIn) return dispatch('validate')
 
         return axios
             .post('/api/auth/login', { email, password })
             .then((response) => {
-                const user = response.data.session
-                commit('SET_CURRENT_USER', user)
-                return user
+                const session = response.data.session
+                const profile = response.data.profile
+                commit('SET_CURRENT_SESSION', session)
+                commit('profile/SET_PROFILE', profile, { root: true });
+                return session
             })
     },
 
-    // Logs out the current user.
+    // Logs out the current session.
     logOut({ commit }) {
-        commit('SET_CURRENT_USER', null)
+        commit('SET_CURRENT_SESSION', null)
     },
-    // register the user
+    // register the session
     // eslint-disable-next-line no-unused-vars
     register({ dispatch, getters }, data) {
         if (getters.loggedIn) return dispatch('validate')
@@ -70,12 +75,12 @@ export const actions = {
         return axios
             .post('/api/auth/register', data)
             .then((response) => {
-                const user = response.data
-                return user
+                const session = response.data
+                return session
             })
     },
 
-    // register the user
+    // register the session
     resetPassword({ dispatch, getters }, { email } = {}) {
         if (getters.loggedIn) return dispatch('validate')
 
@@ -85,32 +90,36 @@ export const actions = {
         })
     },
 
-    // Validates the current user's token and refreshes it
+    // Validates the current session's token and refreshes it
     // with new data from the API.
-    validate({ commit, state }) {
+    validate({ dispatch, commit, state }) {
         setDefaultAuthHeaders(state)
-        if (!state.user) return Promise.resolve(null)
+        if (!state.session) return Promise.resolve(null)
 
         return getters.tokenExpired(state) ? axios
             .get('/api/auth/session')
             .then((response) => {
-                const user = response.data.session
-                commit('SET_CURRENT_USER', user)
-                return user
+                const session = response.data.session
+                const profile = response.data.profile
+                commit('SET_CURRENT_SESSION', session)
+
+
+                commit('profile/SET_PROFILE', profile, { root: true });
+                return session
             })
             .catch((error) => {
                 if (error.response && error.response.status === 401) {
-                    commit('SET_CURRENT_USER', null)
+                    commit('SET_CURRENT_SESSION', null)
                 } else {
-                    // commit('toasts/ADD_TOAST', {
-                    //     title: 'Server Down',
-                    //     content: error.response.data.message ? error.response.data.message : "Server down ... retry"
-                    // }, { root: true })
+                    commit('toasts/ADD_TOAST', {
+                        title: 'Server Down',
+                        content: error.response.data.message ? error.response.data.message : "Server down ... retry"
+                    }, { root: true })
                 }
 
                 router.push({ name: '/500' });
                 return true;
-            }) : new Promise(resolve => resolve(state.user))
+            }) : new Promise(resolve => resolve(state.session))
     },
 }
 
@@ -130,7 +139,7 @@ function saveState(key, state) {
 }
 
 function setDefaultAuthHeaders(state) {
-    axios.defaults.headers.common.Authorization = state.user
-        ? `Bearer ${state.user.token}`
+    axios.defaults.headers.common.Authorization = state.session
+        ? `Bearer ${state.session.token}`
         : ''
 }

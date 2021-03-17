@@ -42,11 +42,13 @@ const authMethods = mapActions('auth', [
  */
 
 const contactMethods = mapActions('contact', [
-    'selectContact'
+    'selectContact',
+    'fetchContacts'
 ]);
 
 const contactComputed = mapGetters('contact', [
     'getGroups',
+    'getContacts',
     'getSelectedContact',
 ]);
 
@@ -55,7 +57,9 @@ const contactComputed = mapGetters('contact', [
  */
 
 const meetingMethods = mapActions('meeting', [
-    'selectMeeting'
+    'selectMeeting',
+    'newMeeting',
+    'fetchMeetings'
 ]);
 
 const meetingComputed = mapGetters('meeting', [
@@ -64,17 +68,68 @@ const meetingComputed = mapGetters('meeting', [
 ]);
 
 /**
- * Meeting
+ * Discussion
  */
 
 const discussionMethods = mapActions('discussion', [
-    'selectDiscussion'
+    'selectDiscussion',
+    'sendMessage',
+    'fetchDiscussions',
+    'fetchMessages'
 ]);
 
 const discussionComputed = mapGetters('discussion', [
     'getDiscussions',
+    'getMessages',
     'getSelectedDiscussion',
 ]);
 
- 
-export { authMethods, contactComputed, contactMethods, appComputed, layoutComputed, authComputed, meetingMethods, meetingComputed, discussionMethods, discussionComputed };
+/**
+ * Theme
+ */
+
+const themeMethods = mapActions('theme', [
+    'initTheme',
+    'toggleTheme'
+]);
+
+const themeComputed = mapGetters('theme', [
+    'getTheme',
+    'isNightMode',
+]);
+
+
+/**
+ * Profile
+ */
+const profileComputed = mapGetters('profile', [
+    'getAvatar',
+    'getProfile'
+]);
+
+
+/**
+ * Notification
+ */
+const notificationMethods = mapActions('notification', [
+    'fetchNotification'
+]);
+
+const notificationComputed = mapGetters('notification', [
+    'getNotifications'
+]);
+
+/**
+ * Call
+ */
+const callMethods = mapActions('call', [
+    'toggleChat'
+]);
+
+const callComputed = mapGetters('call', [
+    'getIsChatDisplayed',
+    'getParticipants',
+    'getViewers'
+]);
+
+export { themeMethods, themeComputed, callMethods, callComputed, authMethods, profileComputed, notificationComputed, notificationMethods, contactComputed, contactMethods, appComputed, layoutComputed, authComputed, meetingMethods, meetingComputed, discussionMethods, discussionComputed };

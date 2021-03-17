@@ -3,7 +3,7 @@
         <div class="user flex">
             <avatar size="w-10 h-10"/>
             <div class="content">
-                <p>{{content}}</p>
+                <p>{{message.content}}</p>
             </div>
         </div>
     </div>
@@ -18,12 +18,9 @@ import Avatar from '../shared/Avatar.vue'
         },
 
         props:{
-            content:{
-                type: String,
-                default: ''
-            },
-            date:{
-                type: String,
+            message:{
+                type: Object,
+
             },
             self : {
                 type: Boolean
