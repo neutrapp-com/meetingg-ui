@@ -57,6 +57,7 @@ export const actions = {
             .get('/api/contact/my')
             .then(response => {
                 const contacts = response.data.rows;
+                if (!contacts || contacts.length === 0) return;
                 let columns = contacts.columns;
                 commit('SET_CONTACT_LIST', contacts.rows.map(row => {
                     let item = {};

@@ -59,6 +59,7 @@ export const actions = {
             .get('/api/discussion/my')
             .then(response => {
                 const discussions = response.data.rows;
+                if (!discussions || discussions.length === 0) return;
                 let columns = discussions.columns;
                 commit('SET_DISCUSSION_LIST', discussions.rows.map(row => {
                     let item = {};
@@ -75,6 +76,7 @@ export const actions = {
             .get('/api/discussion/' + state.selected.id + '/messages')
             .then(response => {
                 const messages = response.data.rows;
+                if (!messages || messages.length === 0) return;
                 let columns = messages.columns;
                 commit('SET_MESSAGES_LIST', {
                     messages: messages.rows.map(row => {
