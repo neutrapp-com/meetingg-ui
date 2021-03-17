@@ -10,8 +10,10 @@
             </div>
         </div>
         <div class="flex w-full items-center">
-            <div class="flex w-full text-gray-400">Message {{destination}}</div>
-            <btn :highlighted="true" class="max-h-10">
+            <div class="flex flex-row w-full mr-4 rounded-lg p-1 noselect">
+                <textarea v-model="message" type="text" class="focus:outline-none bg-light bg-opacity-0 w-full" :placeholder="'Message ' + destination" />
+            </div>
+            <btn @click="send" :highlighted="true" class="max-h-10">
                 <p class="text-light">Send</p>
             </btn>
         </div>
@@ -20,6 +22,11 @@
 
 <script>
 import Btn from '@/components/shared/Btn.vue'
+
+import {
+    discussionMethods,
+} from '@/state/helpers';
+
     export default {
         components:{
             Btn,
@@ -30,6 +37,28 @@ import Btn from '@/components/shared/Btn.vue'
                 default:'',
             }
         },
+        data(){
+            return{
+                message:null
+            }
+        },
+        methods:{
+            ...discussionMethods,
+            send(){
+
+            return this.sendMessage({
+                content: this.message,
+            })
+            .then((data) => {
+                this.message = null
+            })
+            .catch((error) => {
+                this.message = null
+
+            })
+
+        },
+    }
     }
 </script>
 
