@@ -94,7 +94,13 @@ const dashboardRoutes = [
         menu: false,
         component: () => import('./views/pages/dashboard/Dashboard.vue'),
     },
-    {
+    { 
+        path: '/meeting/join',
+        name: 'Join Meeting',
+        menu: true,
+        component: () => import('./views/pages/dashboard/Join.vue'),
+    },
+     {
         path: '/auth/logout',
         name: 'Logout',
         meta: {
@@ -105,7 +111,7 @@ const dashboardRoutes = [
             },
         },
         component: () => import('./views/pages/auth/Login.vue'),
-    }
+    } 
 ].map(route => {
     return {
         ...route,
