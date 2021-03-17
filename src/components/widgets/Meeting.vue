@@ -62,7 +62,6 @@ export default {
             return (secRem > 0 ? `starts in ${rem.getHours()} hours` : `finished ${rem.getHours()} hours ago`);
         },
         getMembers(){
-            console.log(this.users)
             return this.users.slice(0,5);
         }
     },

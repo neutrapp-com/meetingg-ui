@@ -49,7 +49,6 @@ export default {
             password: null,
             authError: null,
             tryingToLogIn: false,
-            isAuthError: false,
         }
     },
     methods: {
@@ -57,7 +56,6 @@ export default {
         // Try to log the user in with the email
         // and password they provided.
         tryToLogIn() {
-            this.tryingToLogIn = true
             // Reset the authError if it existed.
             this.authError = null
 
@@ -67,8 +65,6 @@ export default {
                     password: this.password,
                 })
                 .then((token) => {
-                    this.tryingToLogIn = false
-                    this.isAuthError = false
                     // Redirect to the originally requested page, or to the home page
                     this.$router.push(
                         this.$route.query.redirectFrom || {
@@ -77,9 +73,17 @@ export default {
                     )
                 })
                 .catch((error) => {
-                    this.tryingToLogIn = false
                     this.authError = error.response ? error.response.data.message : ''
-                    this.isAuthError = true
+
+                    if (!error.response){
+                        this.$store.dispatch('toasts/addToast', {
+                            title: 'Internal Server',
+                            content: 'Please check if your net is working ...',
+                            icon: 'globe',
+                            type: 'error',
+                            timeout: 5000
+                        })
+                    }
                 })
         }, 
         getLogo(){

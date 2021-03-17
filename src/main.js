@@ -11,12 +11,6 @@ import 'vue-ionicons/ionicons.scss';
 
 const app = createApp(App)
     .use(store)
-    .use(router);
-
-// if (process.env.VUE_APP_API_BASE_URL !== undefined) {
-//     axios.defaults.baseURL = process.env.VUE_APP_API_BASE_URL;
-// }
-// axios.defaults.headers.common['Access-Control-Allow-Origin'] = '*';
-
+    .use(router)
 
 app.mount('#app')
