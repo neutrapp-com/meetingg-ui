@@ -1,6 +1,6 @@
 <template>
     <div class="widget">
-        <manage v-bind="meeting" />
+        <manage :meeting="meeting" />
         <meeting-id v-bind:id="meeting.id" />
         <participant-list :members="meeting.members" />
     </div>
@@ -22,11 +22,6 @@ export default {
             type: Object
         },
     },
-    computed: {
-        updateDateWidget() {
-            return (new Date()).toString();
-        }
-    }
 }
 </script>
 

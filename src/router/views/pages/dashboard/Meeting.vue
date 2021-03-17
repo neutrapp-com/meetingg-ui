@@ -10,7 +10,7 @@
             <list v-on:meetingClicked="selectMeeting($event); create = false"  class="p-6 scroll pt-4" :meetingsList="getMeetings"/>
         </div>  
         <div class="flex w-3/5 scroll relative  py-8 px-8">
-            <new v-if="create" v-on:inviteMember="inviteMember($event)"/>
+            <new v-if="create" v-on:inviteMember="inviteMember($event)" v-on:meetingCreated="create = false"/>
             <panel v-else-if="getSelectedMeeting !== null" class="pr-6" v-bind:meeting="getSelectedMeeting"/>
             <div v-else class="flex flex-col items-center justify-center p-6 h-full w-full">
                 <h1 class="text-center p-4 text-4xl">Meeting</h1>
@@ -56,7 +56,7 @@ export default {
     },
     data(){
         return {
-            create: true,
+            create: false,
             new: true,
             popup: false,
             newParticipants: []
@@ -80,6 +80,9 @@ export default {
             console.log(this.create)
 
         }
+    },
+    created(){
+        this.fetchMeetings();
     },
     computed:{
         ...meetingComputed,

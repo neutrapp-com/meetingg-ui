@@ -5,8 +5,8 @@
             New Meeting
         </h1>
     </div>
+    <alert v-if="error !== null" :message="message" :type="error == false ? 'success' : 'error'" />
     <div class="form py-6">
-        <alert v-if="error !== null" :title="Error" :message="error" type="error" />
         <form method="POST" id="form" class="w-full">
             <div class="mb-6 w-full">
                 <label for="title" class="block mb-2 text-md text-gray-400">Title</label>
@@ -48,6 +48,7 @@
 <script>
 import ParticipantList from '@/components/widgets/meeting/ParticipantList.vue'
 import Btn from '@/components/shared/Btn.vue'
+import Alert from '@/components/shared/Alert.vue'
 
 import {
     meetingMethods,
@@ -56,54 +57,52 @@ import {
 export default {
     components: {
         ParticipantList,
-        Btn
+        Btn,
+        Alert
     },
     data() {
         return {
             title: null,
             description: null,
-            start_day: Date.now(),
-            start_at: Date.now(),
-            participants: [],
+            start_at: null,
             end_at: null,
-            try: false,
-            error: null
+            participants: [],
+            error: null,
+            message: '',
         }
     },
     methods:{
         ...meetingMethods,
         tryNewMeeting(){
-            this.participants = this.getMembers
-
-            this.try = true
-            // Reset the authError if it existed.
             this.error = null
+
             return this.newMeeting({
                 title: this.title,
                 description: this.description,
-                start_at: this.start_day,
-                start_end: this.end_at,
-                participants: this.participants
+                start_at: Date.parse(this.start_at)/1000,
+                end_at: Date.parse(this.end_at)/1000,
+                participants: this.participants.map(a => a.id).join(','),
             })
-                .then((token) => {
-                this.try = false
-                this.error = false
-                // Redirect to the originally requested page, or to the home page
-                this.$router.push(
-                    this.$route.query.redirectFrom || { name: 'Dashboard' }
-                )
-                })
-                .catch((error) => {
-                this.tryingToLogIn = false
-                this.error = error.response ? error.response.data.message : ''
-                })
+            .then((data) => {
+                console.log(data)
+                this.error = data.status != 'ok'
+                this.message = !this.error ? 'Meeting Created Succesfully' : data.message
+                if(!this.error){
+                    this.selectMeeting(data.row);
+                    this.$emit('meetingCreated')
+                }
+            })
+            .catch((error) => {
+                this.error = true
+                this.message = error.response.data.message
+            })
+
         },
 
         
     },
     computed : {
         getMembers(){
-            console.log(this.participants)
             return this.participants;
         }
     }
