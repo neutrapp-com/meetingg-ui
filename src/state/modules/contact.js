@@ -14,6 +14,9 @@ export const mutations = {
     },
     SET_CONTACT_LIST(state, data) {
         state.contacts = data;
+    },
+    ADD_CONTACT_TO_LIST(state, data) {
+        state.contacts.push(data);
     }
 }
 
@@ -50,6 +53,15 @@ export const actions = {
 
     selectContact({ commit }, data) {
         commit('SET_SELECTED_CONTACT', data);
+    },
+
+    searchContact({ commit }, data) {
+        return axios
+            .post('/api/profile/search', data)
+            .then((response) => {
+                const row = response.data
+                return row
+            })
     },
 
     fetchContacts({ commit }) {
