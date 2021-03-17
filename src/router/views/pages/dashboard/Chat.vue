@@ -11,20 +11,15 @@
         </div>
         <div class="flex flex-1 flex-col  scroll">
             <div class="flex flex-col w-full text-light p-6">
-                <div class="flex w-full font-bold text-xl mb-4">Last Discussions</div>
-                <contact v-for="contact in getDiscussions" :key="contact.id" @click="selectDiscussion(contact)" v-bind="contact" />
-            </div>
-            <div class="flex flex-col w-full text-light p-6">
-                <div class="flex w-full font-bold text-xl mb-4">Contacts</div>
-                <contact v-for="contact in getContacts" :key="contact.id" @click="selectDiscussion(contact)" v-bind="contact" />
+                <discussion v-for="discussion in getDiscussions" :key="discussion.id" @click="selectDiscussion(discussion); fetchMessages();" :discussion="discussion" />
             </div>
         </div>
     </div>
     <div v-if="getSelectedDiscussion !==null" class="flex-grow w-1/2 divide-y divide-light ">
         <div class="flex justify-between w-full p-6">
             <div class="flex">
-                <avatar size="w-12 h-12" />
-                <p class="self-center text-xl ml-6 text-light">{{getSelectedDiscussion.firstname + " " + getSelectedDiscussion.lastname}}</p>
+                <avatar size="w-12 h-12" :image="getSelectedDiscussion.users[0].avatar"/>
+                <p class="self-center text-xl ml-6 text-light">{{getSelectedDiscussion.title}}</p>
             </div>
             <div class="flex space-x-4">
                 <btn>
@@ -40,7 +35,7 @@
         </div>
         <div class="flex flex-col chatpanel content-between divide-y divide-light ">
             <chat-box class="p-5" />
-            <chat-input class=" w-full" :destination="getSelectedDiscussion.firstname + ' ' + getSelectedDiscussion.lastname" />
+            <chat-input class=" w-full" :destination="getSelectedDiscussion.title" />
         </div>
     </div>
     <div v-else class="flex flex-col items-center justify-center h-full flex-grow w-1/2">
@@ -84,7 +79,7 @@
 import Avatar from '@/components/shared/Avatar.vue'
 import ChatBox from '@/components/shared/ChatBox.vue'
 import ChatInput from '@/components/shared/ChatInput.vue'
-import Contact from '@/components/chat/Contact.vue'
+import Discussion from '@/components/chat/Discussion.vue'
 import ContainerList from '@/components/ContainerList.vue'
 import Btn from '@/components/shared/Btn.vue'
 
@@ -112,7 +107,7 @@ export default {
         Avatar,
         ChatBox,
         ChatInput,
-        Contact,
+        Discussion,
         ContainerList,
         Btn
     },
@@ -125,7 +120,6 @@ export default {
         ...contactComputed,
     },
     created(){
-        this.fetchContacts();
         this.fetchDiscussions();
     }
 }

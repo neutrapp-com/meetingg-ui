@@ -73,11 +73,14 @@ const meetingComputed = mapGetters('meeting', [
 
 const discussionMethods = mapActions('discussion', [
     'selectDiscussion',
-    'fetchDiscussions'
+    'sendMessage',
+    'fetchDiscussions',
+    'fetchMessages'
 ]);
 
 const discussionComputed = mapGetters('discussion', [
     'getDiscussions',
+    'getMessages',
     'getSelectedDiscussion',
 ]);
 
@@ -100,7 +103,8 @@ const themeComputed = mapGetters('theme', [
  * Profile
  */
 const profileComputed = mapGetters('profile', [
-    'getAvatar'
+    'getAvatar',
+    'getProfile'
 ]);
 
 
