@@ -9,7 +9,7 @@
                 <participant-card v-bind="member"/>
             </div>
             <div @click="inviteMember()">
-                <participant-card  link="#" fullname="Invite Members" :avatar="null">
+                <participant-card  link="#" firstname="Invite Members" lastname="" :avatar="null">
                     <ion-icon name="duplicate"></ion-icon>
                 </participant-card>
             </div>

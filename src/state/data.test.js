@@ -29,9 +29,9 @@ export default {
         ],
         "contacts": [
             {
-                "firstname": "Rais",
+                "firstname": "Aeeee",
                 "lastname": "Yassin",
-                "email": "yassine@rais.me",
+                "email": "simont@gmail.com",
                 "phone": "06 01 02 03 04",
                 "fax": "03 24 65 89 78",
                 "city": "Reims",
@@ -41,9 +41,9 @@ export default {
             },
             {
                 "id": 2,
-                "firstname": "Rais",
-                "lastname": "Yassin",
-                "email": "yassine@rais.me",
+                "firstname": "zzzz",
+                "lastname": "Florian",
+                "email": "eeeeeee@gmail.com",
                 "phone": "06 01 02 03 04",
                 "fax": "03 24 65 89 78",
                 "city": "Reims",
@@ -51,9 +51,9 @@ export default {
                 "group_id": 1
             },
             {
-                "firstname": "Rais",
-                "lastname": "Yassin",
-                "email": "yassine@rais.me",
+                "firstname": "aaaa",
+                "lastname": "Thibaut",
+                "email": "azerty@gmail.com",
                 "phone": "06 01 02 03 04",
                 "fax": "03 24 65 89 78",
                 "city": "Reims",
@@ -63,9 +63,9 @@ export default {
             },
             {
                 "id": 2,
-                "firstname": "Rais",
+                "firstname": "eeee",
                 "lastname": "Mohammed",
-                "email": "yassine@rais.me",
+                "email": "remyblog@gmail.com",
                 "phone": "06 01 02 03 04",
                 "fax": "03 24 65 89 78",
                 "city": "Reims",
@@ -76,7 +76,7 @@ export default {
                 "id": 3,
                 "firstname": "Rais",
                 "lastname": "Remy",
-                "email": "yassine@rais.me",
+                "email": "yassingmaming@gmail.com",
                 "phone": "06 01 02 03 04",
                 "fax": "03 24 65 89 78",
                 "city": "Reims",
@@ -87,7 +87,7 @@ export default {
                 "id": 4,
                 "firstname": "Papriko",
                 "lastname": "Albero",
-                "email": "alberto@rais.me",
+                "email": "alberto@gmail.com",
                 "phone": "06 01 02 03 04",
                 "fax": "03 24 65 89 78",
                 "city": "Reims",
@@ -98,7 +98,7 @@ export default {
                 "id": 5,
                 "firstname": "Rais",
                 "lastname": "Yassin",
-                "email": "yassine@rais.me",
+                "email": "yassincod@gmail.com",
                 "phone": "06 01 02 03 04",
                 "fax": "03 24 65 89 78",
                 "city": "Reims",
@@ -132,36 +132,36 @@ export default {
             {
                 id: 1,
                 title: "Math Cours", color: '#212534', startTime: (Date.now() / 1000 + 3600 * 3), endTime: (Date.now() / 1000 + 3600 * 4), members: [
-                    { id: Math.random(), fullname: lipsum.generateWords(2), avatar: 'https://picsum.photos/300/300?i=' + Math.floor(Math.random() * 6) },
-                    { id: Math.random(), fullname: lipsum.generateWords(2), avatar: 'https://picsum.photos/300/300?i=' + Math.floor(Math.random() * 6) },
-                    { id: Math.random(), fullname: lipsum.generateWords(2), avatar: 'https://picsum.photos/300/300?i=' + Math.floor(Math.random() * 6) }]
+                    { id: Math.random(), firstname: lipsum.generateWords(1), lastname: lipsum.generateWords(1), avatar: 'https://picsum.photos/300/300?i=' + Math.floor(Math.random() * 6) },
+                    { id: Math.random(), firstname: lipsum.generateWords(1), lastname: lipsum.generateWords(1), avatar: 'https://picsum.photos/300/300?i=' + Math.floor(Math.random() * 6) },
+                    { id: Math.random(), firstname: lipsum.generateWords(1), lastname: lipsum.generateWords(1), avatar: 'https://picsum.photos/300/300?i=' + Math.floor(Math.random() * 6) }]
             },
             {
                 id: 2,
                 title: "English Exam", color: '#212534', startTime: (Date.now() / 1000 + 3600 * 3), endTime: (Date.now() / 1000 + 3600 * 4), members: [
-                    { id: Math.random(), fullname: lipsum.generateWords(2), avatar: 'https://picsum.photos/300/300?i=' + Math.floor(Math.random() * 6) },
-                    { id: Math.random(), fullname: lipsum.generateWords(2), avatar: 'https://picsum.photos/300/300?i=' + Math.floor(Math.random() * 6) },
-                    { id: Math.random(), fullname: lipsum.generateWords(2), avatar: 'https://picsum.photos/300/300?i=' + Math.floor(Math.random() * 6) },
-                    { id: Math.random(), fullname: lipsum.generateWords(2), avatar: 'https://picsum.photos/300/300?i=' + Math.floor(Math.random() * 6) },
-                    { id: Math.random(), fullname: lipsum.generateWords(2), avatar: 'https://picsum.photos/300/300?i=' + Math.floor(Math.random() * 6) },
-                    { id: Math.random(), fullname: lipsum.generateWords(2), avatar: 'https://picsum.photos/300/300?i=' + Math.floor(Math.random() * 6) },
-                    { id: Math.random(), fullname: lipsum.generateWords(2), avatar: 'https://picsum.photos/300/300?i=' + Math.floor(Math.random() * 6) },
-                    { id: Math.random(), fullname: lipsum.generateWords(2), avatar: 'https://picsum.photos/300/300?i=' + Math.floor(Math.random() * 6) }]
+                    { id: Math.random(), firstname: lipsum.generateWords(1), lastname: lipsum.generateWords(1), avatar: 'https://picsum.photos/300/300?i=' + Math.floor(Math.random() * 6) },
+                    { id: Math.random(), firstname: lipsum.generateWords(1), lastname: lipsum.generateWords(1), avatar: 'https://picsum.photos/300/300?i=' + Math.floor(Math.random() * 6) },
+                    { id: Math.random(), firstname: lipsum.generateWords(1), lastname: lipsum.generateWords(1), avatar: 'https://picsum.photos/300/300?i=' + Math.floor(Math.random() * 6) },
+                    { id: Math.random(), firstname: lipsum.generateWords(1), lastname: lipsum.generateWords(1), avatar: 'https://picsum.photos/300/300?i=' + Math.floor(Math.random() * 6) },
+                    { id: Math.random(), firstname: lipsum.generateWords(1), lastname: lipsum.generateWords(1), avatar: 'https://picsum.photos/300/300?i=' + Math.floor(Math.random() * 6) },
+                    { id: Math.random(), firstname: lipsum.generateWords(1), lastname: lipsum.generateWords(1), avatar: 'https://picsum.photos/300/300?i=' + Math.floor(Math.random() * 6) },
+                    { id: Math.random(), firstname: lipsum.generateWords(1), lastname: lipsum.generateWords(1), avatar: 'https://picsum.photos/300/300?i=' + Math.floor(Math.random() * 6) },
+                    { id: Math.random(), firstname: lipsum.generateWords(1), lastname: lipsum.generateWords(1), avatar: 'https://picsum.photos/300/300?i=' + Math.floor(Math.random() * 6) }]
             },
             {
                 id: 3,
                 title: "Company Creation", color: '#212534', startTime: (Date.now() / 1000 + 3600 * 3), endTime: (Date.now() / 1000 + 3600 * 4), members: [
-                    { id: Math.random(), fullname: lipsum.generateWords(2), avatar: 'https://picsum.photos/300/300?i=' + Math.floor(Math.random() * 6) },
-                    { id: Math.random(), fullname: lipsum.generateWords(2), avatar: 'https://picsum.photos/300/300?i=' + Math.floor(Math.random() * 6) },
-                    { id: Math.random(), fullname: lipsum.generateWords(2), avatar: 'https://picsum.photos/300/300?i=' + Math.floor(Math.random() * 6) }]
+                    { id: Math.random(), firstname: lipsum.generateWords(1), lastname: lipsum.generateWords(1), avatar: 'https://picsum.photos/300/300?i=' + Math.floor(Math.random() * 6) },
+                    { id: Math.random(), firstname: lipsum.generateWords(1), lastname: lipsum.generateWords(1), avatar: 'https://picsum.photos/300/300?i=' + Math.floor(Math.random() * 6) },
+                    { id: Math.random(), firstname: lipsum.generateWords(1), lastname: lipsum.generateWords(1), avatar: 'https://picsum.photos/300/300?i=' + Math.floor(Math.random() * 6) }]
             },
             {
                 id: 4,
                 title: "Graduate Program", color: '#212534', startTime: (Date.now() / 1000 + 3600 * 3), endTime: (Date.now() / 1000 + 3600 * 4), members: [
-                    { id: Math.random(), fullname: lipsum.generateWords(2), avatar: 'https://picsum.photos/300/300?i=' + Math.floor(Math.random() * 6) },
-                    { id: Math.random(), fullname: lipsum.generateWords(2), avatar: 'https://picsum.photos/300/300?i=' + Math.floor(Math.random() * 6) },
-                    { id: Math.random(), fullname: lipsum.generateWords(2), avatar: 'https://picsum.photos/300/300?i=' + Math.floor(Math.random() * 6) },
-                    { id: Math.random(), fullname: lipsum.generateWords(2), avatar: 'https://picsum.photos/300/300?i=' + Math.floor(Math.random() * 6) }]
+                    { id: Math.random(), firstname: lipsum.generateWords(1), lastname: lipsum.generateWords(1), avatar: 'https://picsum.photos/300/300?i=' + Math.floor(Math.random() * 6) },
+                    { id: Math.random(), firstname: lipsum.generateWords(1), lastname: lipsum.generateWords(1), avatar: 'https://picsum.photos/300/300?i=' + Math.floor(Math.random() * 6) },
+                    { id: Math.random(), firstname: lipsum.generateWords(1), lastname: lipsum.generateWords(1), avatar: 'https://picsum.photos/300/300?i=' + Math.floor(Math.random() * 6) },
+                    { id: Math.random(), firstname: lipsum.generateWords(1), lastname: lipsum.generateWords(1), avatar: 'https://picsum.photos/300/300?i=' + Math.floor(Math.random() * 6) }]
             }
         ]
     }

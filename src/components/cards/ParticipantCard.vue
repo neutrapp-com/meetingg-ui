@@ -1,7 +1,7 @@
 <template>
     <div class="participant" :class="avatar == null ? 'active':''">
         <div class="avatar pt-4 space-b-0">
-            <avatar v-if="avatar !== null" :image="avatar" size="w-14 h-14" />
+            <avatar v-if="avatar !== null" :image="getUserAvatar" size="w-14 h-14" />
             <div  v-else class="icon"  ><slot/></div>
         </div>
         <div class="sep"></div>
@@ -15,25 +15,42 @@
 
 <script>
 import avatar from '../shared/Avatar.vue'
+import {getAvatar} from '@/utils/avatar'
+
 export default {
   components: { avatar },
     name: 'ParticipantCard',
     props : {
         avatar : {
+            type: String,
+            default: ''
+        },
+        firstname : {
             type: String
         },
-        fullname : {
+        lastname : {
             type: String
         },
         id : {
             type: String
+        },
+        email: {
+            type: String,
         }
     },
     computed : {
         getFullName(){
-            return this.fullname.charAt(0).toUpperCase() + this.fullname.slice(1);
+            return this.capitalize(this.lastname) + ' ' + this.capitalize(this.firstname)
+        },
+        getUserAvatar(){
+            return getAvatar({email: this.email, avatar: this.avatar})
         }
     },
+    methods:{
+        capitalize(str){
+            return str && (str.charAt(0).toUpperCase() + str.slice(1))
+        }
+    }
 }
 </script>
 

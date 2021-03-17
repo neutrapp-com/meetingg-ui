@@ -44,7 +44,7 @@
             <p class="text-center">Select a contact in the left panel to view the discussion</p>
     </div>
     <div class="flex-grow w-1/4 divide-y divide-light scroll">
-        <div class="flex p-y">
+        <div class="flex">
             <btn :highlighted="true" class="w-full h-12 m-6 rounded-lg ">
                 <ion-icon class="text-light text-xl" name="add-outline"></ion-icon>
                 <p class="text-light">Add members</p>
