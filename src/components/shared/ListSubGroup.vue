@@ -23,6 +23,9 @@ export default {
         Contact
     },
     props: {
+        id: {
+            type: String,
+        },
         title: {
             type: String,
         },

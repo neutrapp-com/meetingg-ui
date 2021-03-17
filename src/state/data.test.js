@@ -164,6 +164,103 @@ export default {
                     { id: Math.random(), firstname: lipsum.generateWords(1), lastname: lipsum.generateWords(1), avatar: 'https://picsum.photos/300/300?i=' + Math.floor(Math.random() * 6) }]
             }
         ]
+    },
+    "call": {
+        "participants": [
+            {
+                "id": 1,
+                "lastname": "Rais",
+                "firstname": "Yassin",
+                "audio": false,
+                "video": false,
+            },
+            {
+                "id": 2,
+                "lastname": "Rais",
+                "firstname": "Yassin",
+                "audio": false,
+                "video": true,
+            },
+            {
+                "id": 3,
+                "lastname": "Rais",
+                "firstname": "Yassin",
+                "audio": true,
+                "video": false,
+            },
+            {
+                "id": 4,
+                "lastname": "Rais",
+                "firstname": "Yassin",
+                "audio": true,
+                "video": false,
+            },
+            {
+                "id": 5,
+                "lastname": "Rais",
+                "firstname": "Yassin",
+                "audio": true,
+                "video": false,
+            },
+            {
+                "id": 6,
+                "lastname": "Rais",
+                "firstname": "Yassin",
+                "audio": true,
+                "video": false,
+            },
+            {
+                "id": 7,
+                "lastname": "Rais",
+                "firstname": "Yassin",
+                "audio": true,
+                "video": false,
+            },
+        ],
+        "viewers": [
+            {
+                "id": 1,
+                "lastname": "Viewers",
+                "firstname": "Yassin",
+                "audio": false,
+                "video": false,
+            },
+            {
+                "id": 2,
+                "lastname": "Viewers",
+                "firstname": "Yassin",
+                "audio": false,
+                "video": true,
+            },
+            {
+                "id": 3,
+                "lastname": "Viewers",
+                "firstname": "Yassin",
+                "audio": true,
+                "video": false,
+            },
+            {
+                "id": 4,
+                "lastname": "Viewers",
+                "firstname": "Yassin",
+                "audio": false,
+                "video": false,
+            },
+            {
+                "id": 5,
+                "lastname": "Viewers",
+                "firstname": "Yassin",
+                "audio": false,
+                "video": true,
+            },
+            {
+                "id": 6,
+                "lastname": "Viewers",
+                "firstname": "Yassin",
+                "audio": true,
+                "video": false,
+            },
+        ]
     }
 }
 

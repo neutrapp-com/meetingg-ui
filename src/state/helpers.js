@@ -42,7 +42,8 @@ const authMethods = mapActions('auth', [
  */
 
 const contactMethods = mapActions('contact', [
-    'selectContact'
+    'selectContact',
+    'fetchContacts'
 ]);
 
 const contactComputed = mapGetters('contact', [
@@ -56,7 +57,8 @@ const contactComputed = mapGetters('contact', [
 
 const meetingMethods = mapActions('meeting', [
     'selectMeeting',
-    'newMeeting'
+    'newMeeting',
+    'fetchMeetings'
 ]);
 
 const meetingComputed = mapGetters('meeting', [
@@ -96,4 +98,17 @@ const notificationComputed = mapGetters('notification', [
     'getNotifications'
 ]);
 
-export { authMethods, profileComputed, notificationComputed, notificationMethods, contactComputed, contactMethods, appComputed, layoutComputed, authComputed, meetingMethods, meetingComputed, discussionMethods, discussionComputed };
+/**
+ * Call
+ */
+const callMethods = mapActions('call', [
+    'toggleChat'
+]);
+
+const callComputed = mapGetters('call', [
+    'getIsChatDisplayed',
+    'getParticipants',
+    'getViewers'
+]);
+
+export { callMethods, callComputed, authMethods, profileComputed, notificationComputed, notificationMethods, contactComputed, contactMethods, appComputed, layoutComputed, authComputed, meetingMethods, meetingComputed, discussionMethods, discussionComputed };

@@ -1,9 +1,9 @@
 <template>
     <div class="widget flex divide-y divide-light divide-opacity-5">
         <div class="flex w-full justify-between mb-4"> 
-            <h1> {{title}} </h1>
+            <h1> {{meeting.title}} </h1>
             <p class="mr-4">
-                <ion-icon name="time-outline"></ion-icon> {{ getStartHour }} - {{ getEndHour }} |  {{ getTimeRemaining }}
+                <ion-icon name="time-outline"></ion-icon> {{ meeting.start_at }} - {{  meeting.end_at }} |  {{ getTimeRemaining }}
             </p>
         </div>
         <div class="flex w-full"> 
@@ -13,14 +13,14 @@
                         <ion-icon class="text-light mr-2 text-xl" name="caret-forward-outline"></ion-icon>
                         Start
                     </btn>
+                    <btn @click="navigateTo('/call')">
+                        <ion-icon class="text-gray-400 mr-2 text-xlv" name="log-in-outline"></ion-icon>
+                        Join
+                    </btn>
                     <btn>
                         <ion-icon class="text-gray-400 mr-2 text-xl" name="copy-outline"></ion-icon>
                         Copy invitation
-                    </btn>
-                    <btn>
-                        <ion-icon class="text-gray-400 mr-2 text-xl" name="log-in-outline"></ion-icon>
-                        Join from Room
-                    </btn>
+                    </btn>          
                 </div>
                 <div class="flex space-x-4">
                     <btn>
@@ -38,55 +38,42 @@
 
 <script>
     import Btn from '../../shared/Btn.vue';
+    import router from '@/router'
 
     export default {
         name : 'manageMeeting',
         components: { Btn },
         props : {
-            title : {
-                default : 'Meeting Title',
-                type: String
+            meeting : {
+                type: Object
             },
-            description : {
-                default : 'Your description',
-                type: String
-            },
-            startTime : {
-            default : (Date.now()/1000 + 3600 * 3),
-            type: Number
-            },
-            endTime : {
-                default : (Date.now()/1000  + 3600 * 4),
-                type: Number
+        },
+        data(){
+            return{
+                remTime: false,
             }
         },
         computed : {
             updateDateWidget(){
                 return (new Date()).toString();
             },
-            getStartHour(){
-                let startDate = this.toDateTime(this.startTime);
-                return startDate.getHours() + ':' + startDate.getMinutes();
-            },
-            getEndHour(){
-                let endDate = this.toDateTime(this.endTime);
-                return endDate.getHours() + ':' + endDate.getMinutes();
-            },
             getTimeRemaining(){
-                let secRem = this.startTime - (Date.now()/1000);
-                let rem = this.toDateTime(secRem);
-                
-                return (secRem > 0 ? `starts in ${rem.getHours()} hours` : `finished ${rem.getHours()} hours ago`);
+                return Date.now() - this.toTimeStamp(this.meeting.start_at);
             },
             getMembers(){
                 return this.members.slice(0,5);
+            },
+            isStarted(){
+                console.log(this.getTimeRemaining)
+                return this.getTimeRemaining<=0
             }
         },
          methods : {
-            toDateTime(secs) {
-                var t = new Date(1970, 0, 1);
-                t.setSeconds(secs);
-                return t;
+            toTimeStamp(date) {
+                return Date.parse(date)/1000;
+            },
+            navigateTo(link){
+                router.push(link)
             }
         }
     }
