@@ -48,6 +48,7 @@ const contactMethods = mapActions('contact', [
 
 const contactComputed = mapGetters('contact', [
     'getGroups',
+    'getContacts',
     'getSelectedContact',
 ]);
 
@@ -71,13 +72,29 @@ const meetingComputed = mapGetters('meeting', [
  */
 
 const discussionMethods = mapActions('discussion', [
-    'selectDiscussion'
+    'selectDiscussion',
+    'fetchDiscussions'
 ]);
 
 const discussionComputed = mapGetters('discussion', [
     'getDiscussions',
     'getSelectedDiscussion',
 ]);
+
+/**
+ * Theme
+ */
+
+const themeMethods = mapActions('theme', [
+    'initTheme',
+    'toggleTheme'
+]);
+
+const themeComputed = mapGetters('theme', [
+    'getTheme',
+    'isNightMode',
+]);
+
 
 /**
  * Profile
@@ -111,4 +128,4 @@ const callComputed = mapGetters('call', [
     'getViewers'
 ]);
 
-export { callMethods, callComputed, authMethods, profileComputed, notificationComputed, notificationMethods, contactComputed, contactMethods, appComputed, layoutComputed, authComputed, meetingMethods, meetingComputed, discussionMethods, discussionComputed };
+export { themeMethods, themeComputed, callMethods, callComputed, authMethods, profileComputed, notificationComputed, notificationMethods, contactComputed, contactMethods, appComputed, layoutComputed, authComputed, meetingMethods, meetingComputed, discussionMethods, discussionComputed };
