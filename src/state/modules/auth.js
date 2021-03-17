@@ -111,10 +111,10 @@ export const actions = {
                 if (error.response && error.response.status === 401) {
                     commit('SET_CURRENT_SESSION', null)
                 } else {
-                    // commit('toasts/ADD_TOAST', {
-                    //     title: 'Server Down',
-                    //     content: error.response.data.message ? error.response.data.message : "Server down ... retry"
-                    // }, { root: true })
+                    commit('toasts/ADD_TOAST', {
+                        title: 'Server Down',
+                        content: error.response.data.message ? error.response.data.message : "Server down ... retry"
+                    }, { root: true })
                 }
 
                 router.push({ name: '/500' });
