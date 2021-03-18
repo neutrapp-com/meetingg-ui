@@ -24,11 +24,22 @@ export default {
         Message,
     },
     methods:{
-        ...discussionMethods
+        ...discussionMethods,
+        scrollToElement() {
+            const el = this.$el.getElementsByClassName('chatinput')[0];
+
+            if (el) {
+            // Use el.scrollIntoView() to instantly scroll to the element
+                el.scrollIntoView({behavior: 'smooth'});
+            }
+        }
     },
     computed:{
         ...discussionComputed,
         ...profileComputed
     },
+    mounted() {
+        this.scrollToElement();
+    }
 }
 </script>

@@ -34,13 +34,13 @@
             </div>
         </div>
         <div class="flex flex-col chatpanel content-between divide-y divide-light ">
-            <chat-box class="p-5" />
-            <chat-input class=" w-full" :destination="getSelectedDiscussion.title" />
+            <chat-box class="chatbox" />
+            <chat-input class="chatinput" :destination="getSelectedDiscussion.title" />
         </div>
     </div>
     <div v-else class="flex flex-col items-center justify-center h-full flex-grow w-1/2">
-            <h1 class="text-center p-4 text-4xl">Chat</h1>
-            <p class="text-center">Select a contact in the left panel to view the discussion</p>
+        <h1 class="text-center p-4 text-4xl">Chat</h1>
+        <p class="text-center">Select a contact in the left panel to view the discussion</p>
     </div>
     <div v-if="getSelectedDiscussion !==null" class="flex-grow w-1/4 divide-y divide-light scroll">
         <div class="flex">
@@ -149,7 +149,11 @@ export default {
 
     .chatpanel {
         @apply flex-col;
-        max-height: calc(100vh - 6rem * 2);
+        max-height: calc(100vh - 6rem * 2) ;
+
+        .chatbox{
+            height: 100vh;
+        }
     }
     .btn-icon{
         @apply text-gray-400 text-5xl;
