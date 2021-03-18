@@ -56,15 +56,32 @@
                 </div>
             </container-list>
             <container-list title="Files" icon="document-outline">
-                <div v-if="files.length != 0">
-
+                <div v-if="files.length != 0" class="file-list" id="Files">
+                    <div class="file-item" v-for="file in files" :key="file" >
+                        <div class="flex-none p-5">
+                            <ion-icon :name=file.icon></ion-icon>
+                        </div>
+                        <div class="flex-grow h-16 p-2 ">
+                            <p class="truncate  text-white">{{file.title}}</p>
+                            <p>{{file.size}} mb</p>
+                        </div>
+                    </div>
                 </div>
-                <div v-if="files.length == 0"> You didn't share any file. </div>
+                <div v-else>No files shared</div>
             </container-list>
             <container-list title="Starred" icon="star-outline">
-                <div v-if="starred.length == 0">
-                    <p>Nothing starred.</p>
+                <div v-if="starred.length != 0" class="file-list" id="Starred">
+                    <div class="file-item" v-for="star in starred" :key="star" >
+                        <div class="flex-none p-5">
+                            <ion-icon :name=star.icon></ion-icon>
+                        </div>
+                        <div class="flex-grow h-16 p-2 ">
+                            <p class="truncate  text-white">{{star.title}}</p>
+                            <p>{{star.size}} mb</p>
+                        </div>
+                    </div>
                 </div>
+                <div v-else>No files starred</div>
             </container-list>
 
             <container-list title="More Options" icon="settings-outline">
@@ -98,9 +115,10 @@ export default {
         return {
             images:['https://picsum.photos/165/300?i=' + Math.random(),'https://picsum.photos/600/166?i=' + Math.random(),'https://picsum.photos/165/166?i=' + Math.random(),'https://picsum.photos/165/166?i=' + Math.random()],
             files:[
-                {title : 'hey', logo : "blabla" , size : 10}
+                {title : 'Presentation.mp4', icon : "videocam-outline" , size : 10},
+                {title : 'diapo.pdf', icon : "document-outline" , size : 24}
                 ],
-            starred:[]
+            starred:[{title : 'school.pdf', icon : "document-outline" , size : 24}]
         }
     },
     components: {
@@ -142,6 +160,13 @@ export default {
 
         .gallery-item {
             @apply h-40 w-full rounded-xl bg-cover bg-center;
+        }
+    }
+
+    .file-list{
+        @apply space-y-2;
+        .file-item{
+            @apply flex bg-gray-600 bg-opacity-25 rounded-3xl;
         }
     }
 }
