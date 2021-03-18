@@ -64,6 +64,15 @@ export const actions = {
             })
     },
 
+    addContact({ commit }, data) {
+        return axios
+            .post('/api/contact/new', data)
+            .then((response) => {
+                const row = response.data
+                return row
+            })
+    },
+
     fetchContacts({ commit }) {
         return axios
             .get('/api/contact/my')
