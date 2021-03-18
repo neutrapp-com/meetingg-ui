@@ -89,10 +89,10 @@ const dashboardRoutes = [
         component: () => import('./views/pages/dashboard/Shedule.vue'),
     },
     {
-        path: '/profile/settings',
+        path: '/settings',
         name: 'Settings',
         menu: false,
-        component: () => import('./views/pages/dashboard/Dashboard.vue'),
+        component: () => import('./views/pages/dashboard/Settings.vue'),
     },
     {
         path: '/auth/logout',

@@ -62,7 +62,7 @@
                         <div class="flex-none p-5">
                             <ion-icon :name=file.icon></ion-icon>
                         </div>
-                        <div class="flex-grow h-16 p-2 ">
+                        <div class="flex-grow h-12 p-2 ">
                             <p class="truncate  text-white">{{file.title}}</p>
                             <p>{{file.size}} mb</p>
                         </div>
@@ -76,7 +76,7 @@
                         <div class="flex-none p-5">
                             <ion-icon :name=star.icon></ion-icon>
                         </div>
-                        <div class="flex-grow h-16 p-2 ">
+                        <div class="flex-grow h-10 p-2 ">
                             <p class="truncate  text-white">{{star.title}}</p>
                             <p>{{star.size}} mb</p>
                         </div>
@@ -85,9 +85,6 @@
                 <div v-else>No files starred</div>
             </container-list>
 
-            <container-list title="More Options" icon="settings-outline">
-                    
-            </container-list>
         </div>
     </div>
 </div>

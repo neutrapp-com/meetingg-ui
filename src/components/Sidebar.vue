@@ -9,7 +9,7 @@
     </div>
 
     <div class="w-24 absolute bottom-0">
-        <side-bar-element link="/profile/settings" icon="cog" :active="menuActive('Settings')" />         
+        <side-bar-element link="/settings" icon="cog" :active="menuActive('Settings')" />         
     </div>
 </div>
 </template>
