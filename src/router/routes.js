@@ -90,6 +90,12 @@ const dashboardRoutes = [
         menu: true,
         component: () => import('./views/pages/dashboard/Join.vue'),
     },
+    {
+        path: '/call/private',
+        name: 'Private Meeting',
+        menu: false,
+        component: () => import('./views/pages/dashboard/PrivateCall.vue'),
+    },
 ].map(route => {
     return {
         ...route,
