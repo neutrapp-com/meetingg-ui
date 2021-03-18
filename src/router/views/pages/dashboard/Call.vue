@@ -73,6 +73,7 @@ import ContainerList from '@/components/ContainerList.vue'
 import ChatInput from '../../../../components/shared/ChatInput.vue'
 import Btn from '../../../../components/shared/Btn.vue'
 import router from '@/router'
+import peer from 'peerjs'
 
 import {
     callMethods,
@@ -114,7 +115,16 @@ export default {
             router.push(link)
         },
         ...callMethods,
-        ...meetingMethods
+        ...meetingMethods,
+    },
+    created(){
+
+        //connect
+        let data={}
+        const conn = peer.connect()
+        conn.on('open', () =>{
+            conn.send(data)
+        })
     }
 }
 </script>
