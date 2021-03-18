@@ -3,12 +3,12 @@
     <div class="header">
         <div class="flex w-full space-x-6">
             <Switch class="w-2/3" :items="contactSwitch" v-on:switch="tab = $event" />
-            <btn @click="addContact = true" class="flex flex-grow space-x-4" :highlighted="true">
-                <ion-icon class="text-light text-xl" name="person-add"></ion-icon>
-                <p>Contact</p>
+            <btn @click="openSearch = !openSearch;" class="flex flex-grow space-x-4" :highlighted="true">
+                <ion-icon class="text-light text-xl" :name="openSearch ?  'close-outline' :'person-add'"></ion-icon>
+                <p>{{openSearch ? 'Close' : 'Contact'}}</p>
             </btn>
         </div>
-        <div v-if="addContact" class="flex w-full mt-6">
+        <div v-if="openSearch" class="flex w-full mt-6">
             <div class="flex flex-row h-12 w-full bg-light mr-4 bg-opacity-5 rounded-lg p-1 noselect">
                 <input v-model="contactName" type="text" id="search" class="flex-shrink pl-3 flex-grow bg-light bg-opacity-0 text-light flex-auto leading-normal w-px flex-1 border-0 rounded rounded-l-none self-center relative  font-roboto text-md outline-none" placeholder="Add contact..." />
             </div>
@@ -18,7 +18,10 @@
         </div>
     </div>
     <div class="w-full p-6 scroll">
-        <list-group class="pr-6" :title="tab.title">
+        <list-group v-if="searchResultDisplay && openSearch" class="pr-6" title="Search Results">
+            <result v-on:addProfile="_addContact($event)" v-for="profile in searchResult" :key="profile.id" :profile="profile" />
+        </list-group>
+        <list-group v-else class="pr-6" :title="tab.title">
             <list-sub-group v-on:contactClicked="selectContact($event)" v-for="group in getGroups" v-bind:key="group.id" :items="group.contacts" :title="group.title" />
         </list-group>
     </div>
@@ -49,7 +52,7 @@
                 <btn>
                     <ion-icon class="text-gray-400 text-xl" name="create-outline"></ion-icon>
                 </btn>
-                <btn>
+                <btn @click="_deleteContact">
                     <ion-icon class="text-gray-400 text-xl" name="trash-outline"></ion-icon>
                 </btn>
             </div>
@@ -117,6 +120,7 @@ import ListSubGroup from '@/components/shared/ListSubGroup.vue'
 import Btn from '@/components/shared/Btn.vue'
 import Switch from '@/components/shared/Switch.vue'
 import router from '@/router'
+import Result from '@/components/shared/Result.vue'
 
 import {
     contactComputed,
@@ -132,11 +136,14 @@ export default {
         ListSubGroup,
         Btn,
         Switch,
+        Result
     },
     data() {
         return {
+            searchResultDisplay: false,
+            searchResult: [],
             contactName: null,
-            addContact: false,
+            openSearch: false,
             contactSwitch:[{name : 'contact',title :'Contact', selected:true},{name : 'channels',title :'Meetings'}],
             tab: {},
         }
@@ -157,13 +164,33 @@ export default {
             return this.searchContact({
                     search: this.contactName,
                 })
-                .then((token) => {
-                   console.log(token)
+                .then((response) => {
+                   this.searchResultDisplay = true
+                   this.searchResult = response.rows
                 })
                 .catch((error) => {
-                   console.log(error)
                 })
         }, 
+        _addContact(contact){
+            return this.addContact({
+                    target_id: contact.id,
+                    title: contact.lastname + ' ' + contact.firstname
+                })
+                .then((response) => {
+                   this.fetchContacts()
+                })
+                .catch((error) => {
+                })
+        },
+        _deleteContact(){
+            console.log('ee')
+            return this.deleteContact({})
+            .then((response) => {
+                   this.fetchContacts()
+                })
+                .catch((error) => {
+                })
+        }
     },
     created(){
         this.fetchContacts()
