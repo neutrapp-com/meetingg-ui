@@ -45,7 +45,6 @@ export default {
     },
     watch: {
         selected : function (selected) {
-            console.log('selected',selected);
             this.$emit('switch' , selected);
             return selected;
         }

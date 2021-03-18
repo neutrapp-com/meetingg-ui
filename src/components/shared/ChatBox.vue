@@ -5,7 +5,7 @@
             <p class="mx-auto">Start the discussion</p>
         </div>
         <div v-else v-for="message in getMessages" v-bind:key="message.id">
-            <message  :self="message.user_id == getProfile.id" :message="message"/>
+            <message  :self="message.user_id == getProfile.id" :avatar="getAvatar" :message="message"/>
         </div>
     </div>
 </template>

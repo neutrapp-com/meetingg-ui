@@ -105,7 +105,6 @@ const dashboardRoutes = [
         name: 'Logout',
         meta: {
             beforeResolve(routeTo, routeFrom, next) {
-                console.log('Logout !!! ');
                 store.dispatch('auth/logOut')
                 next({ path: '/auth/login' })
             },

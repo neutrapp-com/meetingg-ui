@@ -130,13 +130,13 @@ const notificationComputed = mapGetters('notification', [
  * Call
  */
 const callMethods = mapActions('call', [
-    'toggleChat'
+    'toggleChat',
+    'setMeeting'
 ]);
 
 const callComputed = mapGetters('call', [
     'getIsChatDisplayed',
-    'getParticipants',
-    'getViewers'
+    'getMeeting'
 ]);
 
 export { themeMethods, themeComputed, callMethods, callComputed, authMethods, profileComputed, notificationComputed, notificationMethods, contactComputed, contactMethods, appComputed, layoutComputed, authComputed, meetingMethods, meetingComputed, discussionMethods, discussionComputed };

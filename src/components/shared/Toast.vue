@@ -66,7 +66,6 @@ export default {
         if (this.timeout > 0){
             this.timeleft = this.timeout;
 
-            console.log(this.timeout);
             this.timer = setInterval(()=>{
                 this.updateTime();
             },this.clock);

@@ -92,9 +92,6 @@ export default {
     },
     computed:{
         ...themeComputed
-    },
-    created(){
-        console.log(this.getTheme)
     }
 }
 </script>

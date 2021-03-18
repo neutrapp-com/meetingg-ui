@@ -1,7 +1,7 @@
 <template>
     <div class="widget">
         <manage v-on:deleteMeeting="deleteM" :meeting="meeting" />
-        <participant-list v-on:inviteMember="$emit('inviteMember', participants)" :members="meeting.members" />
+        <participant-list v-on:inviteMember="$emit('inviteMember', participants)" :members="meeting.users" />
     </div>
 </template>
 

@@ -1,7 +1,7 @@
 <template>
     <div class="flex w-full h-full">
         <div class="flex w-full items-center">
-            <avatar size="w-10 h-10"/>
+            <avatar size="w-10 h-10" :image="participant.avatar"/>
             <p class="ml-4">{{participant.lastname + ' ' + participant.firstname}}</p>
         </div>
         <div v-if="!viewer" class="flex items-center">

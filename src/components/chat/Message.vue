@@ -1,7 +1,7 @@
 <template>
     <div class="message" :class="self ? 'self':''">
         <div class="user flex">
-            <avatar size="w-10 h-10"/>
+            <avatar :image="avatar" size="w-10 h-10"/>
             <div class="content">
                 <p>{{message.content}}</p>
             </div>
@@ -21,6 +21,10 @@ import Avatar from '../shared/Avatar.vue'
             message:{
                 type: Object,
 
+            },
+            avatar:{
+                type:String,
+                default: ''
             },
             self : {
                 type: Boolean
