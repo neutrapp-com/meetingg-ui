@@ -1,10 +1,8 @@
 import axios from 'axios'
-import { list } from 'postcss';
-import data from '../data.test.js'
 
 export const state = {
     selected: null,
-    list: data.meetings.list,
+    list: [],
 }
 
 export const mutations = {
@@ -13,6 +11,9 @@ export const mutations = {
     },
     SET_MEETINGS_LIST(state, data) {
         state.list = data;
+    },
+    PUSH_NEW_MEETING(state, data) {
+        state.list.push(data);
     }
 }
 
@@ -40,6 +41,8 @@ export const actions = {
             .post('/api/meeting/new', data)
             .then((response) => {
                 const row = response.data
+
+                commit('PUSH_NEW_MEETING', row.row);
                 return row
             })
     },
@@ -49,15 +52,17 @@ export const actions = {
             .get('/api/meeting/my')
             .then(response => {
                 const meetings = response.data.rows;
-                if (!meetings) return;
+                if (!meetings || meetings.length === 0) return;
                 let columns = meetings.columns;
-                commit('SET_MEETINGS_LIST', meetings.rows.map(row => {
-                    let item = {};
-                    columns.forEach((key, index) => {
-                        item[key] = row[index];
-                    });
-                    return item;
-                }));
+                commit('SET_MEETINGS_LIST',
+                    meetings.rows.map(row => {
+                        let item = {};
+                        columns.forEach((key, index) => {
+                            item[key] = row[index];
+                        });
+                        return item;
+                    }).sort((a, b) => a.timeleft - b.timeleft)
+                );
             })
     },
 
