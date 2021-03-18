@@ -182,15 +182,6 @@ export default {
                 .catch((error) => {
                 })
         },
-        _deleteContact(){
-            return this.deleteContact({})
-            .then((response) => {
-                    this.unselectContact()
-                   this.fetchContacts()
-                })
-                .catch((error) => {
-                })
-        }
     },
     created(){
         this.fetchContacts()

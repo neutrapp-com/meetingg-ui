@@ -90,7 +90,9 @@ export default {
         }
     },
     created(){
+        console.log(this.getMeetings)
         this.fetchMeetings();
+        this.fetchContacts();
     },
     computed:{
         ...meetingComputed,

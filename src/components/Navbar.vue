@@ -82,7 +82,6 @@ export default {
         ...notificationMethods,
         ...mapActions('theme', ['toggleTheme']),
         updateNotification(){
-            console.log('Update Notification ...');
             this.fetchNotification();
             setTimeout(()=> {this.fetchNotification()}, this.updateInterval || 1000);
         }

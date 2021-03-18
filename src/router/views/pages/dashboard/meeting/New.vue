@@ -84,7 +84,6 @@ export default {
                 participants: this.participants.map(a => a.id).join(','),
             })
             .then((data) => {
-                console.log(data)
                 this.error = data.status != 'ok'
                 this.message = !this.error ? 'Meeting Created Succesfully' : data.message
                 if(!this.error){

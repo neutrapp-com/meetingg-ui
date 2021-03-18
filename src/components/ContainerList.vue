@@ -33,9 +33,6 @@ export default {
         }
     },
     methods: {
-        open() {
-            console.log(this.getIsChatDisplayed)
-        },
         ...callMethods
     },
     computed:{

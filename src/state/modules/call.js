@@ -4,29 +4,26 @@ import data from '../data.test.js'
 
 export const state = {
     displayChat: false,
-    participants: data.call.participants,
-    viewers: data.call.viewers
-
+    meeting: null,
+    discussion: null,
 }
 
 export const mutations = {
     TOGGLE_CHAT(state) {
         state.displayChat = !state.displayChat;
     },
+    SET_MEETING(state, data) {
+        state.meeting = data
+    }
 }
 
 export const getters = {
     getIsChatDisplayed(state) {
         return state.displayChat;
     },
-
-    getParticipants(state) {
-        return state.participants;
+    getMeeting(state) {
+        return state.meeting;
     },
-
-    getViewers(state) {
-        return state.viewers;
-    }
 }
 
 export const actions = {
@@ -34,4 +31,8 @@ export const actions = {
     toggleChat({ commit }) {
         commit('TOGGLE_CHAT');
     },
+
+    setMeeting({ commit }, data) {
+        commit('SET_MEETING', data)
+    }
 }

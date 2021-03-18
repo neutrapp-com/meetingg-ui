@@ -13,7 +13,7 @@
                         <ion-icon class="text-light mr-2 text-xl" name="caret-forward-outline"></ion-icon>
                         Start
                     </btn>
-                    <btn @click="navigateTo('/call')">
+                    <btn @click="setMeeting(meeting); navigateTo('/call')">
                         <ion-icon class="text-gray-400 mr-2 text-xlv" name="log-in-outline"></ion-icon>
                         Join
                     </btn>
@@ -42,6 +42,11 @@
     import Btn from '../../shared/Btn.vue';
     import router from '@/router'
 
+import {
+    callComputed,
+    callMethods
+} from '@/state/helpers';
+
     export default {
         name : 'manageMeeting',
         components: { Btn },
@@ -56,6 +61,7 @@
             }
         },
         computed : {
+            ...callComputed,
             updateDateWidget(){
                 return (new Date()).toString();
             },
@@ -63,25 +69,25 @@
                 return this.members.slice(0,5);
             },
             isStarted(){
-                console.log(this.getTimeRemaining)
                 return this.getTimeRemaining<=0
             },
             getStartHour(){
-                let startDate = this.toDateTime(this.toTimeStamp(this.meeting.start_at));
-                return startDate.getHours() + ':' + startDate.getMinutes();
+            let start = new Date(this.meeting.start_at)
+            return  start.toTimeString().split(' ')[0].substring(0,5)
             },
             getEndHour(){
-                let endDate = this.toDateTime(this.toTimeStamp(this.meeting.start_at));
-                return endDate.getHours() + ':' + endDate.getMinutes();
+                let end = new Date(this.meeting.end_at)
+                return  end.toTimeString().split(' ')[0].substring(0,5)
             },
             getTimeRemaining(){
-                let secRem = this.toTimeStamp(this.meeting.start_at) - (Date.now()/1000);
+                let secRem = new Date(this.meeting.start_at) - (Date.now());
                 let rem = this.toDateTime(secRem);
                 
-                return (secRem > 0 ? `starts in ${rem.getHours()} hours` : `finished ${rem.getHours()} hours ago`);
+                return (secRem > 0 ? `starts in ${rem.getHours()} hours` : `started since ${rem.getHours()} hours`);
             },
         },
          methods : {
+            ...callMethods,
             toTimeStamp(date) {
                 return Date.parse(date)/1000;
             },

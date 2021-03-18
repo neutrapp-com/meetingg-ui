@@ -2,7 +2,7 @@
     <div class="widgetmeeting">
         <div class="w-8/12">
             <h2 class="title text-2xl font-bold">
-                {{ title }}
+                {{ meeting.title }}
             </h2>
             <p class="datetime">
                 <ion-icon name="time-outline"></ion-icon> {{ getStartHour }} - {{ getEndHour }} |  {{ getTimeRemaining }}
@@ -30,9 +30,8 @@ import avatar from '../shared/Avatar.vue';
 export default {
   components: { avatar },
     props : {
-        title: {
-            default: "Design Daily Zoom Meeting",
-            type: String
+        meeting: {
+            type: Object
         },
         startTime : {
             default : (Date.now()/1000 + 3600 * 3),
@@ -42,27 +41,24 @@ export default {
             default : (Date.now()/1000  + 3600 * 4),
             type: Number
         },
-        users : {
-            default : []
-        }
     },
     computed : {
         getStartHour(){
-            let startDate = this.toDateTime(this.startTime);
-            return startDate.getHours() + ':' + startDate.getMinutes();
+            let start = new Date(this.meeting.start_at)
+            return  start.toTimeString().split(' ')[0].substring(0,5)
         },
         getEndHour(){
-            let endDate = this.toDateTime(this.endTime);
-            return endDate.getHours() + ':' + endDate.getMinutes();
+            let end = new Date(this.meeting.end_at)
+            return  end.toTimeString().split(' ')[0].substring(0,5)
         },
         getTimeRemaining(){
-            let secRem = this.startTime - (Date.now()/1000);
+            let secRem = new Date(this.meeting.start_at) - (Date.now());
             let rem = this.toDateTime(secRem);
             
-            return (secRem > 0 ? `starts in ${rem.getHours()} hours` : `finished ${rem.getHours()} hours ago`);
+            return (secRem > 0 ? `starts in ${rem.getHours()} hours` : `started since ${rem.getHours()} hours`);
         },
         getMembers(){
-            return this.users.slice(0,5);
+            return this.meeting.users.slice(0,5);
         },
        
     },
