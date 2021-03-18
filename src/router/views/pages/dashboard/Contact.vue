@@ -23,11 +23,12 @@
         </list-group>
         <list-group v-else class="pr-6" :title="tab.title">
             <list-sub-group v-on:contactClicked="selectContact($event)" v-for="group in getGroups" v-bind:key="group.id" :items="group.contacts" :title="group.title" />
+            <list-sub-group v-on:contactClicked="selectContact($event)" :items="getContacts" title="All" />
         </list-group>
     </div>
 </div>
 
-<div class="flex-grow h-full p-6">
+<div class="flex-grow h-full p-6 scroll">
     <div v-if="getSelectedContact !== null" class="contact-box">
         <div class="flex w-full pb-10">
             <avatar :image="getSelectedContact.avatar" size="w-32 h-32" />
@@ -57,8 +58,22 @@
                 </btn>
             </div>
         </div>
+        <div class="flex flex-col w-full">
+            <div class="flex w-full">
+                <p class="text-xl font-bold text-light mt-6">Contact's Group</p>
+            </div>
+            <div class="flex space-x-4 py-6 w-full">
+                <select v-model="selectedGroup" class="w-full text-gray-400 bg-light bg-opacity-5 px-2 rounded px-3 py-2 outline-none">
+                    <option  v-for="group in getGroups" v-bind:key="group.id" class="bg-light bg-opacity-5 px-4 text-gray-400">{{group.title}}</option>
+                </select>
+                <btn @click="_updateGroup()">
+                    <ion-icon class="text-gray-400 text-xl mr-4" name="save-outline"></ion-icon>
+                    <p>Save</p>
+                </btn>
+            </div>
+        </div>
         <div class="flex w-full pb-6">
-            <p class="text-xl font-bold text-light mt-16">Contact's Info</p>
+            <p class="text-xl font-bold text-light mt-6">Contact's Info</p>
         </div>
         <div>
             <div class="flex w-full pt-6">
@@ -144,6 +159,7 @@ export default {
             searchResult: [],
             contactName: null,
             openSearch: false,
+            selectedGroup: null,
             contactSwitch:[{name : 'contact',title :'Contact', selected:true},{name : 'channels',title :'Meetings'}],
             tab: {},
         }
@@ -182,9 +198,20 @@ export default {
                 .catch((error) => {
                 })
         },
+        _updateGroup(){
+            return this.updateGroup({
+
+                    title: this.selectedGroup
+                })
+                .then((response) => {
+                })
+                .catch((error) => {
+                })
+        }
     },
     created(){
         this.fetchContacts()
+        this.fetchGroups()
     }
 }
 </script>
