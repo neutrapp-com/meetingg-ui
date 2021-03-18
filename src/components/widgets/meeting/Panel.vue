@@ -1,6 +1,6 @@
 <template>
     <div class="widget">
-        <manage :meeting="meeting" />
+        <manage v-on:deleteMeeting="deleteM" :meeting="meeting" />
         <participant-list v-on:inviteMember="$emit('inviteMember', participants)" :members="meeting.members" />
     </div>
 </template>
@@ -19,6 +19,11 @@ export default {
             type: Object
         },
     },
+    methods:{
+        deleteM(){
+            this.$emit('deleteMeeting')
+        }
+    }
 }
 </script>
 
