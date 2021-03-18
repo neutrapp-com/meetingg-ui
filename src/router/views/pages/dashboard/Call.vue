@@ -131,7 +131,7 @@ export default {
             document.getElementById('videolist').append(video);
         }
     },
-    created(){
+    created(){ 
         let did = this.getMeeting.discussion.id;
         this.$socket.client.on('user-connected', user => {
             console.log('user-connected' , user)
@@ -186,7 +186,7 @@ export default {
         })
     },
     beforeUnmount(){
-        this.peerJs && this.peerJs.destroy();
+        this.peerJs && this.peerJs.destroy(); 
     }
 }
 </script>

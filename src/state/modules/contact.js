@@ -17,29 +17,15 @@ export const mutations = {
     },
     ADD_CONTACT_TO_LIST(state, data) {
         state.contacts.push(data);
+    },
+    SET_GROUP_LIST(state, data) {
+        state.groups = data
     }
 }
 
 export const getters = {
     getGroups(state) {
-        let groups = []
-        let contacts = state.contacts
-        groups = state.groups.map(group => {
-            contacts = contacts.filter(contact => {
-                return group.contacts.find(g => g.id == contact.id) === undefined
-            })
-            group.contacts = contacts.filter(contact => {
-                return group.contacts.find(g => g.id == contact.id)
-            })
-            return group
-        })
-        groups.push({
-            id: -1,
-            title: "Others",
-            count: contacts.length,
-            contacts: contacts
-        })
-        return groups
+        return state.groups
     },
     getSelectedContact(state) {
         return state.selected
@@ -77,6 +63,24 @@ export const actions = {
             })
     },
 
+    updateGroup({ commit }, { data, group_id }) {
+        return axios
+            .post('/api/group/' + group_id + '/update', data)
+            .then((response) => {
+                const row = response.data
+                return row
+            })
+    },
+
+    addGroup({ commit }, data) {
+        return axios
+            .post('/api/group/new', data)
+            .then((response) => {
+                const row = response.data
+                return row
+            })
+    },
+
     deleteContact({ commit, state }, data) {
         return axios
             .post('/api/contact/' + state.selected.id + '/delete', data)
@@ -100,6 +104,15 @@ export const actions = {
                     });
                     return item;
                 }));
+            })
+    },
+
+    fetchGroups({ commit }) {
+        return axios
+            .get('/api/group/my')
+            .then(response => {
+                const groups = response.data.rows;
+                commit('SET_GROUP_LIST', response.data.rows);
             })
     }
 }

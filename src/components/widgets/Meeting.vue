@@ -52,8 +52,9 @@ export default {
             return  end.toTimeString().split(' ')[0].substring(0,5)
         },
         getTimeRemaining(){
-            let secRem = new Date(this.meeting.start_at) - (Date.now());
-            let rem = this.toDateTime(secRem);
+ 
+            let secRem = new Date(this.meeting.start_at).getTime() / 1000 - (Date.now()/ 1000);
+             let rem = this.toDateTime(this.timeleft);
             
             return (secRem > 0 ? `starts in ${rem.getHours()} hours` : `started since ${rem.getHours()} hours`);
         },
