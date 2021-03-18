@@ -13,7 +13,7 @@
         </div>  
         <div class="flex w-3/5 scroll relative  py-8 px-8">
             <new v-if="create" v-on:inviteMember="inviteMember($event)" v-on:meetingCreated="create = false"/>
-            <panel v-else-if="getSelectedMeeting !== null" v-on:inviteMember="inviteMember($event)" class="pr-6" v-bind:meeting="getSelectedMeeting"/>
+            <panel v-else-if="getSelectedMeeting !== null" v-on:inviteMember="inviteMember($event)" v-on:deleteMeeting="delMeeting($event)" class="pr-6" v-bind:meeting="getSelectedMeeting"/>
             <div v-else class="flex flex-col items-center justify-center p-6 h-full w-full">
                 <h1 class="text-center p-4 text-4xl">Meeting</h1>
                 <p class="text-center">Select a meeting in the left panel to view informations</p>
@@ -78,6 +78,15 @@ export default {
         },
         openNew(){
             this.create = !this.create
+        },
+        delMeeting(){
+            return this.deleteMeeting({})
+            .then((response) => {
+                    this.unselectMeeting()
+                   this.fetchMeetings()
+                })
+                .catch((error) => {
+                })
         }
     },
     created(){

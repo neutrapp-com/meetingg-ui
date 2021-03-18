@@ -63,7 +63,9 @@ const contactComputed = mapGetters('contact', [
 
 const meetingMethods = mapActions('meeting', [
     'selectMeeting',
+    'unselectMeeting',
     'newMeeting',
+    'deleteMeeting',
     'fetchMeetings'
 ]);
 

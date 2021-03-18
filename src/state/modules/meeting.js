@@ -47,6 +47,15 @@ export const actions = {
             })
     },
 
+    deleteMeeting({ commit, state }, data) {
+        return axios
+            .post('/api/meeting/' + state.selected.id + '/delete', data)
+            .then((response) => {
+                const row = response.data
+                return row
+            })
+    },
+
     fetchMeetings({ commit }) {
         return axios
             .get('/api/meeting/my')

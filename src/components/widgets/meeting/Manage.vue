@@ -23,7 +23,7 @@
                     </btn>          
                 </div>
                 <div class="flex space-x-4">
-                    <btn>
+                    <btn @click="$emit('deleteMeeting')">
                         <ion-icon class="text-gray-400 text-xl" name="trash-outline"></ion-icon>
                     </btn>
                     <btn>
