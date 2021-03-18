@@ -52,7 +52,7 @@
                 <btn>
                     <ion-icon class="text-gray-400 text-xl" name="create-outline"></ion-icon>
                 </btn>
-                <btn>
+                <btn @click="_deleteContact">
                     <ion-icon class="text-gray-400 text-xl" name="trash-outline"></ion-icon>
                 </btn>
             </div>
@@ -177,7 +177,15 @@ export default {
                     title: contact.lastname + ' ' + contact.firstname
                 })
                 .then((response) => {
-                   console.log(response)
+                   this.fetchContacts()
+                })
+                .catch((error) => {
+                })
+        },
+        _deleteContact(){
+            console.log('ee')
+            return this.deleteContact({})
+            .then((response) => {
                    this.fetchContacts()
                 })
                 .catch((error) => {

@@ -45,6 +45,7 @@ const contactMethods = mapActions('contact', [
     'selectContact',
     'fetchContacts',
     'addContact',
+    'deleteContact',
     'searchContact',
     'selectContact',
 ]);

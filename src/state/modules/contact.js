@@ -73,6 +73,15 @@ export const actions = {
             })
     },
 
+    deleteContact({ commit, state }, data) {
+        return axios
+            .post('/api/contact/' + state.selected.id + '/delete')
+            .then((response) => {
+                const row = response.data
+                return row
+            })
+    },
+
     fetchContacts({ commit }) {
         return axios
             .get('/api/contact/my')
