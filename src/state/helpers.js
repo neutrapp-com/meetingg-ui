@@ -43,7 +43,9 @@ const authMethods = mapActions('auth', [
 
 const contactMethods = mapActions('contact', [
     'selectContact',
-    'fetchContacts'
+    'fetchContacts',
+    'searchContact',
+    'selectContact',
 ]);
 
 const contactComputed = mapGetters('contact', [

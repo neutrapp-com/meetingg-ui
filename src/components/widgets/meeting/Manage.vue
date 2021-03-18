@@ -33,7 +33,7 @@
             </div>
         </div>
         <div>
-            <p class="py-4"> {{ meeting.description }} </p>
+             <p class="py-4" v-if="meeting.description != undefined"> {{meeting.description}} </p>
         </div>
     </div>
 </template>
@@ -93,7 +93,7 @@
                 t.setSeconds(secs);
                 return t;
             }
-        }
+        },
     }
 </script>
 

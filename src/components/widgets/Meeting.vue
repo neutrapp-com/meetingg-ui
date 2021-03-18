@@ -63,7 +63,8 @@ export default {
         },
         getMembers(){
             return this.users.slice(0,5);
-        }
+        },
+       
     },
     methods : {
         toDateTime(secs) {
@@ -71,7 +72,6 @@ export default {
             t.setSeconds(secs);
             return t;
         }
-
     }
 }
 </script>

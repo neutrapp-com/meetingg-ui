@@ -1,11 +1,21 @@
 <template>
 <div class="contact-list">
     <div class="header">
-        <Switch class="w-4/5" :items="contactSwitch" v-on:switch="tab = $event" />
-
-        <btn>
-            <ion-icon class="text-light text-xl" name="person-add"></ion-icon>
-        </btn>
+        <div class="flex w-full space-x-6">
+            <Switch class="w-2/3" :items="contactSwitch" v-on:switch="tab = $event" />
+            <btn @click="addContact = true" class="flex flex-grow space-x-4" :highlighted="true">
+                <ion-icon class="text-light text-xl" name="person-add"></ion-icon>
+                <p>Contact</p>
+            </btn>
+        </div>
+        <div v-if="addContact" class="flex w-full mt-6">
+            <div class="flex flex-row h-12 w-full bg-light mr-4 bg-opacity-5 rounded-lg p-1 noselect">
+                <input v-model="contactName" type="text" id="search" class="flex-shrink pl-3 flex-grow bg-light bg-opacity-0 text-light flex-auto leading-normal w-px flex-1 border-0 rounded rounded-l-none self-center relative  font-roboto text-md outline-none" placeholder="Add contact..." />
+            </div>
+            <btn @click="searchContacts" class="w-16 space-x-4">
+                <ion-icon class="text-light text-xl" name="search-outline"></ion-icon>
+            </btn>
+        </div>
     </div>
     <div class="w-full p-6 scroll">
         <list-group class="pr-6" :title="tab.title">
@@ -13,6 +23,7 @@
         </list-group>
     </div>
 </div>
+
 <div class="flex-grow h-full p-6">
     <div v-if="getSelectedContact !== null" class="contact-box">
         <div class="flex w-full pb-10">
@@ -25,7 +36,7 @@
                     <ion-icon class="text-gray-400 text-xl" name="call-outline"></ion-icon>
                     <p class="ml-4">Call</p>
                 </btn>
-                <btn @click="selectDiscussion(getSelectedContact); navigateTo('/chat')" :highlighted="true">
+                <btn :highlighted="true">
                     <ion-icon class="text-light text-xl" name="chatbox-ellipses-outline"></ion-icon>
                     <p class="ml-4 text-light">Message</p>
                 </btn>
@@ -124,6 +135,8 @@ export default {
     },
     data() {
         return {
+            contactName: null,
+            addContact: false,
             contactSwitch:[{name : 'contact',title :'Contact', selected:true},{name : 'channels',title :'Meetings'}],
             tab: {},
         }
@@ -139,7 +152,18 @@ export default {
         ...discussionMethods,
         navigateTo(link){
             router.push(link)
-        }
+        },
+        searchContacts(){
+            return this.searchContact({
+                    search: this.contactName,
+                })
+                .then((token) => {
+                   console.log(token)
+                })
+                .catch((error) => {
+                   console.log(error)
+                })
+        }, 
     },
     created(){
         this.fetchContacts()
@@ -152,7 +176,7 @@ export default {
     @apply flex flex-col w-2/5 divide-y divide-light divide-opacity-5;
 
     .header{
-        @apply flex w-full p-6 justify-between;
+        @apply flex flex-col w-full p-6 justify-between;
     }
 }
 
