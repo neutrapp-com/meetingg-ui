@@ -13,7 +13,7 @@
                         <ion-icon class="text-light mr-2 text-xl" name="caret-forward-outline"></ion-icon>
                         Start
                     </btn>
-                    <btn @click="setMeeting(meeting); navigateTo('/call')">
+                    <btn @click="joinMeeting">
                         <ion-icon class="text-gray-400 mr-2 text-xlv" name="log-in-outline"></ion-icon>
                         Join
                     </btn>
@@ -44,7 +44,7 @@
 
 import {
     callComputed,
-    callMethods
+    callMethods,
 } from '@/state/helpers';
 
     export default {
@@ -98,6 +98,10 @@ import {
                 var t = new Date(1970, 0, 1);
                 t.setSeconds(secs);
                 return t;
+            },
+            joinMeeting(){
+                this.setMeeting(this.meeting);
+                this.$router.push({ path : '/call' });
             }
         },
     }

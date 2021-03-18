@@ -84,13 +84,12 @@ export default {
             .then((response) => {
                     this.unselectMeeting()
                    this.fetchMeetings()
-                })
-                .catch((error) => {
-                })
+            })
+            .catch((error) => {
+            })
         }
     },
     created(){
-        console.log(this.getMeetings)
         this.fetchMeetings();
         this.fetchContacts();
     },

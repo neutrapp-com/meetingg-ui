@@ -53,8 +53,6 @@ export default {
         },
         getTimeRemaining(){
             let secRem = new Date(this.meeting.start_at) - (Date.now());
-            console.log(new Date(this.meeting.start_at) )
-            console.log(Date.now() )
             let rem = this.toDateTime(secRem);
             
             return (secRem > 0 ? `starts in ${rem.getHours()} hours` : `started since ${rem.getHours()} hours`);

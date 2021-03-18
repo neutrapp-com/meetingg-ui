@@ -13,6 +13,8 @@
 <script>
 import SideBar from '@/components/Sidebar.vue'
 import Navbar from '@/components/Navbar.vue';
+import { authComputed } from '@/state/helpers'
+import { io } from 'socket.io-client'
 
 export default {
     components: {
@@ -20,9 +22,14 @@ export default {
         Navbar,
     },
     computed: {
+        ...authComputed,
         getTitle() {
             return this.$route.name;
         }
+    },
+    created(){
+        let jwt = this.getToken;
+        this.$socket.client.open();
     }
 }
 </script>

@@ -4,7 +4,7 @@
             <p class="mx-auto">There is no message in this discussion</p>
             <p class="mx-auto">Start the discussion</p>
         </div>
-        <div v-else v-for="message in getMessages" v-bind:key="message.id">
+        <div v-else v-for="message in getMessages" v-bind:key="message.id" class="px-4">
             <message  :self="message.user_id == getProfile.id" :avatar="getAvatar" :message="message"/>
         </div>
     </div>
