@@ -13,11 +13,21 @@ export const mutations = {
     },
     SET_DISCUSSION_LIST(state, data) {
         state.discussions = data;
+        data.forEach(d => {
+            state.messages[d.id] = [];
+        })
     },
     SET_MESSAGES_LIST(state, { messages, discussionId }) {
+        if (!state.messages[discussionId]) {
+            state.messages[discussionId] = []
+        }
         state.messages[discussionId] = messages;
     },
     PUSH_NEW_MESSAGE(state, { message, discussionId }) {
+        if (!state.messages[discussionId]) {
+            state.messages[discussionId] = []
+        }
+
         state.messages[discussionId].push(message)
     }
 }

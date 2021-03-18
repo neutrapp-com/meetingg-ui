@@ -27,7 +27,11 @@ const authComputed = {
     ...mapState('auth', {
         currentUser: (state) => state.currentUser,
     }),
-    ...mapGetters('auth', ['loggedIn', 'getName', 'getAvatar', 'getDefaultAvatar']),
+    ...mapGetters('auth',
+        [
+            'loggedIn',
+            'getToken'
+        ]),
 }
 
 const authMethods = mapActions('auth', [

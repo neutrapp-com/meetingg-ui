@@ -22,6 +22,9 @@ export const mutations = {
 }
 
 export const getters = {
+    getToken(state) {
+        return state.session && state.session.token;
+    },
     loggedIn(state) {
         return !!state.session
     },

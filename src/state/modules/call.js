@@ -1,6 +1,3 @@
-import router from '../../router'
-import axios from 'axios'
-import data from '../data.test.js'
 
 export const state = {
     displayChat: false,
@@ -34,5 +31,6 @@ export const actions = {
 
     setMeeting({ commit }, data) {
         commit('SET_MEETING', data)
+        commit('discussion/SET_SELECTED_DISCUSSION', data.discussion, { root: true })
     }
 }

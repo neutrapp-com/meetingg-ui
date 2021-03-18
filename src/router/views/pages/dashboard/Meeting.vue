@@ -89,9 +89,9 @@ export default {
             .then((response) => {
                     this.unselectMeeting()
                    this.fetchMeetings()
-                })
-                .catch((error) => {
-                })
+            })
+            .catch((error) => {
+            })
         }
     },
     created(){
