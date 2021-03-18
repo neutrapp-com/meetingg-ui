@@ -1,6 +1,4 @@
-import router from '../../router'
 import axios from 'axios'
-import data from '../data.test.js'
 
 export const state = {
     selected: null,
@@ -19,7 +17,7 @@ export const mutations = {
     SET_MESSAGES_LIST(state, { messages, discussionId }) {
         state.messages[discussionId] = messages;
     },
-    SET_LAST_MESSAGE(state, { message, discussionId }) {
+    PUSH_NEW_MESSAGE(state, { message, discussionId }) {
         state.messages[discussionId].push(message)
     }
 }
@@ -48,9 +46,9 @@ export const actions = {
         return axios
             .post('/api/message/' + state.selected.id, data)
             .then((response) => {
-                const message = response.data
-                commit('SET_LAST_MESSAGE', { message: message, discussionId: state.selected.id })
-                return message
+                const data = response.data
+                commit('PUSH_NEW_MESSAGE', { message: data.row, discussionId: state.selected.id })
+                return data
             })
     },
 
@@ -85,7 +83,7 @@ export const actions = {
                             item[key] = row[index];
                         });
                         return item;
-                    }), discussionId: state.selected.id
+                    }).sort((a, b) => Date.parse(a.created_at) - Date.parse(b.created_at)), discussionId: state.selected.id
                 });
             })
     }

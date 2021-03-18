@@ -5,6 +5,7 @@ import jwtDecode from 'jwt-decode'
 
 export const state = {
     session: getSavedState('auth.session'),
+    initialized: false,
     registered: {
         email: null
     }
@@ -15,6 +16,8 @@ export const mutations = {
         state.session = newValue
         saveState('auth.session', newValue)
         setDefaultAuthHeaders(state)
+
+        state.initialized = true;
     },
 }
 
@@ -28,8 +31,6 @@ export const getters = {
         try {
             let dt = jwtDecode(state.session.token);
             let expired = dt.exp - (Date.now() - 3600 * 1000) / 1000 <= 0;
-            console.log(dt, expired);
-
             return expired;
         } catch (e) {
             // jwtDecode failed
@@ -43,7 +44,6 @@ export const actions = {
     // This is automatically run in `src/state/store.js` when the app
     // starts, along with any other actions named `init` in other modules.
     init({ state, dispatch }) {
-        console.log('init auth');
         setDefaultAuthHeaders(state)
         dispatch('validate')
     },
@@ -96,30 +96,34 @@ export const actions = {
         setDefaultAuthHeaders(state)
         if (!state.session) return Promise.resolve(null)
 
-        return getters.tokenExpired(state) ? axios
-            .get('/api/auth/session')
-            .then((response) => {
-                const session = response.data.session
-                const profile = response.data.profile
-                commit('SET_CURRENT_SESSION', session)
+        if (!state.initialized || getters.tokenExpired(state)) {
 
+            return axios
+                .get('/api/auth/session')
+                .then((response) => {
+                    const session = response.data.session
+                    const profile = response.data.profile
+                    commit('SET_CURRENT_SESSION', session)
+                    commit('profile/SET_PROFILE', profile, { root: true });
 
-                commit('profile/SET_PROFILE', profile, { root: true });
-                return session
-            })
-            .catch((error) => {
-                if (error.response && error.response.status === 401) {
-                    commit('SET_CURRENT_SESSION', null)
-                } else {
-                    commit('toasts/ADD_TOAST', {
-                        title: 'Server Down',
-                        content: error.response.data.message ? error.response.data.message : "Server down ... retry"
-                    }, { root: true })
-                }
+                    return session
+                })
+                .catch((error) => {
+                    if (error.response && error.response.status === 401) {
+                        commit('SET_CURRENT_SESSION', null)
+                    } else {
+                        commit('toasts/ADD_TOAST', {
+                            title: 'Server Down',
+                            content: error.response.data.message ? error.response.data.message : "Server down ... retry"
+                        }, { root: true })
+                    }
 
-                router.push({ name: '/500' });
-                return true;
-            }) : new Promise(resolve => resolve(state.session))
+                    router.push({ name: '/500' });
+                    return true;
+                })
+        }
+
+        return new Promise(resolve => resolve(state.session));
     },
 }
 

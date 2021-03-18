@@ -1,6 +1,11 @@
 <template>
 <div class="widget">
-    <meeting @click="selectMeeting(meeting); $emit('meetingClicked' , meeting);navigateTo('/meetings')" class="meeting-block" v-for="meeting in meetingsList" v-bind:key="meeting.id" v-bind="meeting" />
+    <template v-if="meetingsList && meetingsList.length > 0">
+        <meeting @click="selectMeeting(meeting); $emit('meetingClicked' , meeting);navigateTo('/meetings')" class="meeting-block" v-for="meeting in meetingsList" v-bind:key="meeting.id" v-bind="meeting" />
+    </template>
+    <div v-else class="flex items-center py-8 justify-center">
+        <h2 class="text-xl">You don't have any upcoming meetings!!</h2>
+    </div>
 </div>
 </template>
 

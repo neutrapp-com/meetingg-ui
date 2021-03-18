@@ -3,7 +3,7 @@
         <div class="flex w-full justify-between mb-4"> 
             <h1> {{meeting.title}} </h1>
             <p class="mr-4">
-                <ion-icon name="time-outline"></ion-icon> {{ meeting.start_at }} - {{  meeting.end_at }} |  {{ getTimeRemaining }}
+                <ion-icon name="time-outline"></ion-icon> {{ getStartHour }} - {{ getEndHour }} |  {{ getTimeRemaining }}
             </p>
         </div>
         <div class="flex w-full"> 
@@ -32,7 +32,9 @@
                 </div>
             </div>
         </div>
-        <p v-if="meeting.description != undefined"> {{meeting.description}} </p>
+        <div>
+             <p class="py-4" v-if="meeting.description != undefined"> {{meeting.description}} </p>
+        </div>
     </div>
 </template>
 
@@ -57,16 +59,27 @@
             updateDateWidget(){
                 return (new Date()).toString();
             },
-            getTimeRemaining(){
-                return Date.now() - this.toTimeStamp(this.meeting.start_at);
-            },
             getMembers(){
                 return this.members.slice(0,5);
             },
             isStarted(){
                 console.log(this.getTimeRemaining)
                 return this.getTimeRemaining<=0
-            }
+            },
+            getStartHour(){
+                let startDate = this.toDateTime(this.toTimeStamp(this.meeting.start_at));
+                return startDate.getHours() + ':' + startDate.getMinutes();
+            },
+            getEndHour(){
+                let endDate = this.toDateTime(this.toTimeStamp(this.meeting.start_at));
+                return endDate.getHours() + ':' + endDate.getMinutes();
+            },
+            getTimeRemaining(){
+                let secRem = this.toTimeStamp(this.meeting.start_at) - (Date.now()/1000);
+                let rem = this.toDateTime(secRem);
+                
+                return (secRem > 0 ? `starts in ${rem.getHours()} hours` : `finished ${rem.getHours()} hours ago`);
+            },
         },
          methods : {
             toTimeStamp(date) {
@@ -74,6 +87,11 @@
             },
             navigateTo(link){
                 router.push(link)
+            },
+            toDateTime(secs) {
+                var t = new Date(1970, 0, 1);
+                t.setSeconds(secs);
+                return t;
             }
         },
     }
