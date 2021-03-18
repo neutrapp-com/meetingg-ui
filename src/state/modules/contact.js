@@ -55,6 +55,10 @@ export const actions = {
         commit('SET_SELECTED_CONTACT', data);
     },
 
+    unselectContact({ commit }) {
+        commit('SET_SELECTED_CONTACT', null);
+    },
+
     searchContact({ commit }, data) {
         return axios
             .post('/api/profile/search', data)
@@ -75,7 +79,7 @@ export const actions = {
 
     deleteContact({ commit, state }, data) {
         return axios
-            .post('/api/contact/' + state.selected.id + '/delete')
+            .post('/api/contact/' + state.selected.id + '/delete', data)
             .then((response) => {
                 const row = response.data
                 return row

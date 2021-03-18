@@ -43,6 +43,7 @@ const authMethods = mapActions('auth', [
 
 const contactMethods = mapActions('contact', [
     'selectContact',
+    'unselectContact',
     'fetchContacts',
     'addContact',
     'deleteContact',

@@ -177,15 +177,15 @@ export default {
                     title: contact.lastname + ' ' + contact.firstname
                 })
                 .then((response) => {
-                   this.fetchContacts()
+                    this.fetchContacts()
                 })
                 .catch((error) => {
                 })
         },
         _deleteContact(){
-            console.log('ee')
             return this.deleteContact({})
             .then((response) => {
+                    this.unselectContact()
                    this.fetchContacts()
                 })
                 .catch((error) => {
