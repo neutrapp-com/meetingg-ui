@@ -1,5 +1,5 @@
 <template>
-    <div class="flex flex-col md:w-1/2 lg:w-1/5 justify-center space-y-8 items-center">
+    <div class="flex flex-col w-full justify-center space-y-8 items-center">
         <div class="flex text-8xl">
             <ion-icon name="people-circle-outline"></ion-icon>
         </div>
@@ -11,8 +11,9 @@
                 <input v-model="meeting" type="text" id="search" class="flex-shrink pl-3 flex-grow bg-light bg-opacity-0 text-light flex-auto leading-normal w-px flex-1 border-0 rounded rounded-l-none self-center relative  font-roboto text-md outline-none" placeholder="xxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxx" />
             </div>
             
-            <btn>
+            <btn class="space-x-4">
                 <ion-icon class="icon-btn" name="search-outline">Join Meeting</ion-icon>
+                <p>Join</p>
             </btn>
         </div>
     </div>
@@ -37,7 +38,7 @@ export default {
 
 <style lang="scss" scoped>
 .join {
-    @apply flex flex-col space-y-6 justify-center w-full divide-x divide-light divide-opacity-5;
+    @apply flex flex-col space-y-6 justify-center w-1/2 divide-x divide-light divide-opacity-5;
 
     input {}
 }

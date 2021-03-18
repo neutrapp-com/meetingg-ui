@@ -1,18 +1,23 @@
 <template>
     <div class="meeting">
         <div class="flex flex-col w-2/5 divide-y divide-light divide-opacity-5">
-            <div class="flex p-6">
-                <btn :highlighted="true" @click="openNew" class="w-full py-6 rounded-lg ">
+            <div class="flex p-6 space-x-4">
+                <btn :highlighted="true" @click="create = true" class="w-full py-6 rounded-lg ">
                     <ion-icon class="text-light text-xl mr-6" name="videocam"></ion-icon>
                     <p class="text-light text-xl">New Meeting</p>
                 </btn>
+                <btn @click="join = true; create = false" class="w-full py-6 rounded-lg ">
+                    <ion-icon class="text-light text-xl mr-6" name="log-in-outline"></ion-icon>
+                    <p class="text-light text-xl">Join Meeting</p>
+                </btn>
             </div>
             <div class="w-full scroll pr-6">
-                <list v-on:meetingClicked="selectMeeting($event); create = false"  class="p-6 pt-4" :meetingsList="getMeetings"/>
+                <list @click="join = false; create = false" v-on:meetingClicked="selectMeeting($event); create = false"  class="p-6 pt-4" :meetingsList="getMeetings"/>
             </div>
         </div>  
         <div class="flex w-3/5 scroll relative  py-8 px-8">
             <new v-if="create" v-on:inviteMember="inviteMember($event)" v-on:meetingCreated="create = false"/>
+            <join v-else-if="join" v-on:inviteMember="inviteMember($event)" v-on:meetingCreated="create = false"/>
             <panel v-else-if="getSelectedMeeting !== null" v-on:inviteMember="inviteMember($event)" v-on:deleteMeeting="delMeeting($event)" class="pr-6" v-bind:meeting="getSelectedMeeting"/>
             <div v-else class="flex flex-col items-center justify-center p-6 h-full w-full">
                 <h1 class="text-center p-4 text-4xl">Meeting</h1>
@@ -46,12 +51,14 @@ import {
     contactMethods
 } from '@/state/helpers';
 import New from './meeting/New.vue';
+import Join from './meeting/Join.vue';
 
 export default {
     components: {
         List,
         Panel,
         New,    
+        Join,
         Btn,
         ListGroup,
         ListSubGroup
@@ -59,6 +66,7 @@ export default {
     data(){
         return {
             create: false,
+            join: false,
             new: true,
             popup: false,
             newParticipants: []
@@ -75,9 +83,6 @@ export default {
             if(!this.newParticipants.find(item => item.id == contact.id)){
                 this.newParticipants.push(contact)
             }
-        },
-        openNew(){
-            this.create = !this.create
         },
         delMeeting(){
             return this.deleteMeeting({})

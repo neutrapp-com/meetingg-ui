@@ -118,13 +118,6 @@ export default {
         ...meetingMethods,
     },
     created(){
-
-        //connect
-        let data={}
-        const conn = peer.connect()
-        conn.on('open', () =>{
-            conn.send(data)
-        })
     }
 }
 </script>
