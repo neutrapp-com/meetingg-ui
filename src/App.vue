@@ -58,7 +58,7 @@ export default {
 </script>
 <style lang="scss" scoped>
 .toasts{
-  @apply  absolute flex flex-col space-y-4 top-0 right-4;
+  @apply  absolute flex flex-col space-y-4 top-0 right-4 z-50;
 }
 </style>
 <style lang="scss">
